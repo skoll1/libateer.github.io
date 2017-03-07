@@ -5,7 +5,7 @@
   <link href="/libateer.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/skoll1/libateer.github.io/"/>
-  <updated>2017-03-07T09:55:03.000Z</updated>
+  <updated>2017-03-07T10:23:55.000Z</updated>
   <id>https://github.com/skoll1/libateer.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-6/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-6/</id>
     <published>2017-03-07T09:54:30.000Z</published>
-    <updated>2017-03-07T09:55:03.000Z</updated>
+    <updated>2017-03-07T10:23:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>1：js的数字只有一种类型，他把所有的数字都成为浮点型数字。但是他会在内部做优化并且区分浮点数字和整数，但是程序员都看不到。—所以一个数字字面量可以使整型，也可以是浮点型，或者16进制。</p>
 <p>2：123 ..toString() 把数字转为字符的时候要注意浮点和转化方法用的那个点的区别。</p>
@@ -48,6 +48,8 @@
     
     </summary>
     
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
     
   </entry>
   
@@ -56,7 +58,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-5/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-5/</id>
     <published>2017-03-07T09:53:19.000Z</published>
-    <updated>2017-03-07T09:53:57.000Z</updated>
+    <updated>2017-03-07T10:23:47.000Z</updated>
     
     <content type="html"><![CDATA[<p>1：闭包：一个函数外加上该函数所创建时所建立的作用域。闭包的名字来源于闭包“关闭”一个函数中自由变量的访问的权利。我们所说的变量是自由的，是指该变量定义在函数外部的，而非函数内部。这个不懂。。。。如果一个函数访问了它的外部变量，那么它就是一个闭包。<br>2：function create(start){return function(step){start+=step;return start;}};var inc=create(5)(1);<br>3：闭包是一个代码执行完成后离开作用域环境依然存在的例子。这个懂。。<br>4：for(var i=0;i&lt;5;i++){ (function(){return function(){return i;}result.push(i)}())};不成功的闭包。<br>5:var result=[];<br>        for(var i=0;i&lt;5;i++){<br>            (function(){<br>                var func=function(){<br>                    return i;<br>                };<br>                result.push(func)<br>            }());<br>        }二改，还是出来的函数。返回的数组<br>6：var result=[];<br>        for(var i=0;i&lt;5;i++){<br>            (function(){<br>                var pos=i;<br>                var func=function(){<br>                    return pos;<br>                };<br>                result.push(func)<br>            }());<br>        }三改，<br>7：函数变量可以保存在函数的作用域内，因此看起来就好像是函数将变量包起来了。包含变量的函数就是闭包。—有权访问另一个函数作用域内变量的函数就是闭包。<br>8：函数声明和函数表达式。给一个函数加上括号就把他从一个声明变成了表达式。可以直接调用。<br>9：闭包的三个条件：访问所在的作用域，函数嵌套，在所在作用域外被调用。<br>10：初级阶段：function f(value){var b=value;return function(){return b;}};f(‘libateer’)();<br>11：高级一点：var n;function f(){var b=1123;n=function(){return b;}};n();<br>12: 在高级一点：function show(first,last){var name=”hello”;function make(){return name+first+””+last}return make()};show(“lilei”,”wanggua”);<br>13：在高级一点：(function (first,last){var name=”hello”;function make(){return name+first+””+last}return make()})(str,str);<br>14:for(var i=0;i&lt;7;i++){(function (first,last){var name=”hello”;function make(){return name+first+””+last}return make()})(i-100,i+100);}和上面那个差不多了吧。。<br>15:在在高级一点：function hello(){var name=999;return {get:function(){return name;},set:function(id){name=id;}}}var f1=hello();f1.set(‘lailai’);f1.get();<br>16:找到那个怎么搞的了？function f(){var a=[];for(var i=0;i&lt;4;i++){a[i]=function(){return i;}}return a;};var a=f();和原来出的一样现在f()函数出来的还是函数，所以要这样a<a href="">1</a>;我要取到他的函数，在把这个函数表达出来。但是现在他的值还是4.是最后的，所以要在那里吧那个替换了。var pos=i；来个这个东西。<br>17:闭包的经常用法：var db = (function() {<br>// 创建一个隐藏的object, 这个object持有一些数据<br>// 从外部是不能访问这个object的<br>var data = {};<br>// 创建一个函数, 这个函数提供一些访问data的数据的方法<br>return function(key, val) {<br>    if (val === undefined) { return data[key] } // get<br>    else { return data[key] = val } // set<br>    }<br>// 我们可以调用这个匿名方法<br>// 返回这个内部函数，它是一个闭包<br>})();</p>
 <p>db(‘x’); // 返回 undefined<br>db(‘x’, 1); // 设置data[‘x’]为1<br>db(‘x’); // 返回 1<br>// 我们不可能访问data这个object本身<br>// 但是我们可以设置它的成员<br>17：函数的参数和变量不会被垃圾回收机制所回收，因为他是一只被另一个函数所引用的。<br>18：闭包的好处：希望一个变量长期的驻扎到里面，避免全局变量的污染。<br>19：回到初级：function aaa(){var a=1;return function(){a++;console.log(a)}};var b=aaa()不论是这种形式，还是下面的function aaa(){var a=1;var a=function(){a++;console.log(a)};return a;};一开始都要这样：先把原函数取出来。<br>20：var a=(function(){var a=1;return function(){a++;console.log(a)}})();有那么点意思了，a();执行时变成了这样。、<br>21：用法：模块化代码，私有成员方法的存在。<br>22:var a=(function(){<br>            var a=1;<br>            function a1(){<br>                a++;<br>                console.log(a);<br>            }<br>            function a2(){<br>                a+=3;<br>                console.log(a+100);<br>            }<br>            return {<br>                a1:a1,<br>                a2:a2<br>            }<br>        })()我让他私有了。。a.a1();<br>23：又来了：window.onload=function(){<br>            var Oli=document.getElementsByTagName(‘li’);<br>            for(var i=0;i&lt;Oli.length;i++){<br>                var pos=i;<br>                Oli[i].onclick=(function(){<br>                    console.log(pos);<br>                })(pos);<br>            }–改造以后for(var i=0;i&lt;Oli.length;i++){</p>
@@ -73,6 +75,8 @@
     
     </summary>
     
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
     
   </entry>
   
@@ -81,7 +85,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-4/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-4/</id>
     <published>2017-03-07T09:52:18.000Z</published>
-    <updated>2017-03-07T09:53:09.000Z</updated>
+    <updated>2017-03-07T10:23:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>1 :Try{}catch(){}finally{}catch会捕获到前面抛出的异常，无论是直接抛出的还是函数调用的异常。如果想要区分这两种异常。可以使用构造器实现。<br>2：无论发生了什么？finallly是永远都会执行的东西。<br>3：形参是在函数创建的时候括号里面写的东西，实参是在调用函数的时候添加的具体值。<br>4： 函数声明：function add(x,y){return a+b}；<br>5：函数表达式 var add=function(x,y){retrurn a+b;}<br>6: 大多数的Js引擎对于函数对象都会提供一个非标准的name属性，这个对与debug非常有用。<br>7：在定义函数的时候应该使用函数声明：第一是可以函数提升，第二是他们具有名字。<br>8：控制函数的调用：func.apply(thisValue,argArray)<br>9: apply()用在一个函数需要以类似数组的形式接受多个参数，在非面向对象的调用中他是不必要的，这里我们把它设定为null.thisValue这个值是用来制定这个函数执行时this的值。<br>10: bind（thisValue,rg1…argN）会执行原函数的函数功能，他会创立一个新的函数，这个函数会调用原函数，并将this替换为Thisvalue，同时应用以下参数。<br>11:function add(x,y){return x+y}  var ad=add.bind(null,1,2,3,4,5,6,7);<br>12: 参数缺失的时候：形参会被赋予undefined,实参数量多于形参，多余的参数会被忽略。<br>13：arguments是数组但又是非数组的。一方面，他有一个length属性，所有的参数都可以通过索引值来读写。他是一个对象，支持所有的对象的方法和操作。<br>14： 强制性参数，限制参数的最小值。可选参数。通过检测传入的参数的值来时先这一操作。单独使用这一种检测方法会出现漏洞。。。<br>15：非预期的可选参数：如果你要将一个函数c作为另一个函数f的参数引入，那么你需要注意一下另种情况：1：函数f签名声明需要传入的参数。f可能提供多个参数，C决定使用哪个参数。2：C的实际签名，他可能支持的可选参数。<br>[1,2,3].map(function(x){return parseInt(x,10)});必须格外声明函数接受哪些参数，同事你会传入哪些参数。<br>16： 具名参数的优点：他对函数的参数进行了描述，同属对于可选参数的场景的实现也很有帮助。在JS中模拟具名参数。将对象作为一个实参传入函数。function add(numbers){number=numbers||{};var num1=oprions.start||0;var num2=numbers}<br>14： 变量的作用域指的是变量在何处可以访问到。<br>15：js的变量是函数作用域级别的，不像其他的语言，是以块来划分作用域的，在js中，只有函数可以创建新的作用域。<br>16：举个例子就是说，如果你不想总的变量被污染，就可以做一个立即执行函数，把变量包起来。以实现对块的模拟。对于立即执行函数来说。有以下需要注意的：他必须是个表达式，而且后面必须有分号。如果在两个立即执行函数中间漏掉分号，那么系统就会认为他们两个是一个函数调用，前面是函数，后面是变量。<br>17：其他两种方式：!function(){console.log(“123”)}(); void function(){console.log(“hahah”)}();就和后面加分号没关系了。。。<br>18:var x=23;(function(){var t=x<em>2;console.log(t)}());(function (t){console.log(t)}(x</em>2));一开始–后来<br>19：立即执行函数的应用：避免全局变量，隐藏全局作用域的变量。创建新环境避免共享。保持全局对象对于构造器函数的相对独立。</p>
 ]]></content>
@@ -92,6 +96,8 @@
     
     </summary>
     
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
     
   </entry>
   
@@ -100,7 +106,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-3/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-3/</id>
     <published>2017-03-07T09:51:36.000Z</published>
-    <updated>2017-03-07T09:52:06.000Z</updated>
+    <updated>2017-03-07T09:58:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>1：原始值与对象最大的区别是如何比较的，每个对象有唯一的标识符并且只和自己相等。相反，所有的原始值只要编码相同，就认为是相等。</p>
 <p>2：如果函数中没有任何显示的返回值得话，那么会隐式的返回undefined.</p>
@@ -133,6 +139,8 @@
     
     </summary>
     
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
     
   </entry>
   
@@ -141,7 +149,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-2/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/07/best-1-2/</id>
     <published>2017-03-07T09:50:27.000Z</published>
-    <updated>2017-03-07T09:51:26.000Z</updated>
+    <updated>2017-03-07T09:58:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>1：所有的运算符都会强制要求他们的运算数为合适的类型。大部分运算符只会对原始值有效，这意味着对象在运算之前会被转换成原始值。【1，2】+【3】1,23.</p>
 <p>2:[‘li’,2]+[2]-li,22   [1,2]+{name:”ha”}–NAN辛亏是这个….</p>
@@ -177,6 +185,8 @@
 &lt;p&gt;2:[‘li’,2]+[2]-li,22   [1,2]+{name:”ha”}–NAN辛亏是这个….&lt;/
     
     </summary>
+    
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
     
     
   </entry>
