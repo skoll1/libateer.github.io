@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>李巴特儿de小屋子</title>
-  <subtitle>..触之不动..</subtitle>
+  <subtitle>...触之不动...</subtitle>
   <link href="/libateer.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/skoll1/libateer.github.io/"/>
-  <updated>2017-03-06T16:35:15.000Z</updated>
+  <updated>2017-03-07T09:46:05.000Z</updated>
   <id>https://github.com/skoll1/libateer.github.io/</id>
   
   <author>
@@ -16,40 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test2</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/test2/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/07/test2/</id>
-    <published>2017-03-06T16:30:33.000Z</published>
-    <updated>2017-03-06T16:35:15.000Z</updated>
+    <title>js-1</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/07/best-1/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/07/best-1/</id>
+    <published>2017-03-07T09:45:05.000Z</published>
+    <updated>2017-03-07T09:46:05.000Z</updated>
     
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/06/test/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/06/test/</id>
-    <published>2017-03-06T15:40:02.000Z</published>
-    <updated>2017-03-06T15:55:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>###就是爱测试哈哈<br><img src="/images/libateer.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p>1：对象只能和自己相等。甚至两个空对象都不相等。</p>
+<p>2：基本类型都是不可以添加属性的。</p>
+<p>3：利用arr.length可以做出很多精彩的操作。</p>
+<p>4：typeOf ,instanceOf 分别是用来检测基本变量和对象的属性的。</p>
+<p>5：typeOf {}:object,typeOf undefined:undefined,typeOf null:object,typeOf true boolean.</p>
+<p>6:Boolean()是一个用来测试真假的函数，只会返回布尔值。Boolean({}),Boolean([]),返回true。表示里面有0个元素这是对的。。</p>
+<p>7：Js中所有的数字都是浮点数。1===1.000。</p>
+<p>8：函数声明具有提升的特性，这意味着我们可以用到下面定义的函数，但是var 声明的变量，只会提升变量的位置，而不会去管他的值得位置在哪。</p>
+<p>9：数组可以有自己的属性，因为他本质上是一个对象。</p>
+<p>10：在使用this的时候可以把不同层次的this保存起来就不会出现this指代不明的情况了。</p>
+<p>11：立即执行函数可以使防止全局变量的出现。</p>
+<p>12：闭包会持续的与内部变量连接，但是有的时候我们可能不需要这个东西.</p>
+<p>13：数组当中可以添加对象，对象中也可以添加数组。</p>
+<p>14：通过【】或是“.”来应用对象属性或数组元素的值来构成一个表达式。</p>
+<p>15：用var 定义的变量，成为该定义域内的局部变量，这个变量在退出取得时候就会立刻被销毁</p>
+<p>16：表示输入的最大和最小值，每个字母都是大写或者小写的。</p>
+<p>17：不同类型之间加减号操作引发强制转换。</p>
+<p>18：速度永远让人兴奋。</p>
+<p>19：在编写dom脚本的时候，你会想当然的认为这个是dom元素节点，这是一种常见的错误，可以查看这个元素的nodeType属性，许多只能在元素节点的方法，是不能用在文本节点的。</p>
+<p>20：函数名字命名的时候：getresult. isShow.</p>
+<p>当需要引出对象内的函数，他所指的对象可能会发生变化，这个时候需要给他加个bind(此处是原来的对象名字)；让他找到回家的路就可以了。<br>var result=[];</p>
+<p>for(var I=0;i&lt;6;i++){</p>
+<p>result[I]=i……..result.push(i);都可以的。</p>
+<p>result.push(function(){return I;}) 返回的都是空函数为什么？但是只要把这个变成立即执行函数就可以了。。</p>
+<p>}<br>function pair(x,y){x=x||0;y=y||0;return  [x,y];}</p>
+<p>pair():[0,0]</p>
+<p>利用这个特性可以做到自动填充东西。可以给他后面加上数组。就可以填充名字了。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;###就是爱测试哈哈&lt;br&gt;&lt;img src=&quot;/images/libateer.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
+      &lt;p&gt;1：对象只能和自己相等。甚至两个空对象都不相等。&lt;/p&gt;
+&lt;p&gt;2：基本类型都是不可以添加属性的。&lt;/p&gt;
+&lt;p&gt;3：利用arr.length可以做出很多精彩的操作。&lt;/p&gt;
+&lt;p&gt;4：typeOf ,instanceOf 分别是用来检测基本变量和对象的属性的。&lt;/p&gt;
+&lt;
     
     </summary>
     
-      <category term="js" scheme="https://github.com/skoll1/libateer.github.io/categories/js/"/>
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
     
-    
-      <category term="test" scheme="https://github.com/skoll1/libateer.github.io/tags/test/"/>
     
   </entry>
   
