@@ -1,0 +1,886 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libateer.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libateer.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/libateer.github.io/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="weui," />
+
+
+
+
+
+  <link rel="alternate" href="/libateer.github.io/atom.xml" title="李巴特儿de小屋子" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/libateer.github.io/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。
+他的样式注意啊：position:fixed;top:0;left:0;right:0;自动撑满页面。连宽高都没有就可以填出来颜色为什么？还用padding调整大小。
+然后他最大的所有的容器也是用了position:absolute;top:0,left:0;right:0;bottom:0;这个是可以撑满整个页面的么？那这个abso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weui">
+<meta property="og:url" content="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-weui/index.html">
+<meta property="og:site_name" content="李巴特儿de小屋子">
+<meta property="og:description" content="首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。
+他的样式注意啊：position:fixed;top:0;left:0;right:0;自动撑满页面。连宽高都没有就可以填出来颜色为什么？还用padding调整大小。
+然后他最大的所有的容器也是用了position:absolute;top:0,left:0;right:0;bottom:0;这个是可以撑满整个页面的么？那这个abso">
+<meta property="og:updated_time" content="2017-03-09T13:20:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weui">
+<meta name="twitter:description" content="首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。
+他的样式注意啊：position:fixed;top:0;left:0;right:0;自动撑满页面。连宽高都没有就可以填出来颜色为什么？还用padding调整大小。
+然后他最大的所有的容器也是用了position:absolute;top:0,left:0;right:0;bottom:0;这个是可以撑满整个页面的么？那这个abso">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/libateer.github.io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-weui/"/>
+
+
+
+
+
+  <title> weui | 李巴特儿de小屋子 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/libateer.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李巴特儿de小屋子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">...触之不动...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/libateer.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/libateer.github.io/categories/Code" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            程序笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-person">
+          <a href="/libateer.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            个人日记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/libateer.github.io/categories/Read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            读书笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/libateer.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://github.com/skoll1/libateer.github.io/libateer.github.io/2017/03/09/best-1-weui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李巴特儿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/libateer.github.io/images/libateer.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李巴特儿de小屋子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                weui
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T21:19:26+08:00">
+                2017-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/libateer.github.io/2017/03/09/best-1-weui/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/best-1-weui/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li>首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。</li>
+<li>他的样式注意啊：position:fixed;top:0;left:0;right:0;自动撑满页面。连宽高都没有就可以填出来颜色为什么？还用padding调整大小。</li>
+<li>然后他最大的所有的容器也是用了position:absolute;top:0,left:0;right:0;bottom:0;这个是可以撑满整个页面的么？那这个absolute的用处是什么？</li>
+<li>还有就是所有如果想要自己重新调整他的顺序的话，就要调整display。</li>
+<li>Overflow：hidden;</li>
+<li>在body里面添加公共样式，如字体，颜色。</li>
+<li>正式看到了用opacity来实现出现和消失的效果。原来是自己做过这个。</li>
+<li>用padding来调整里面的位置。甚至是变相改变盒子的大小。</li>
+<li>好像什么里面都可以加img标签。p ,a ,h1,</li>
+<li>他这个里面的字体好像没变化，都是加上px。还是不知道是不一开做了兼容。</li>
+<li>只要是大量重复的东西都是用列表做成的。偏偏li里面还什么都能包。</li>
+<li>这个里面变化都要加css的transition.现在还没发现是哪块需要这个过渡。。</li>
+<li>.flex{</li>
+<li>height: 100px;</li>
+<li>border:1px solid red;</li>
+<li></li>
+<li>/<em> display: -webkit-box; </em>/</li>
+<li>/<em> display: -webkit-flex; </em>/</li>
+<li></li>
+<li>/<em> display: -moz-box; </em>/</li>
+<li>/<em> display: -moz-flex; </em>/</li>
+<li></li>
+<li>/<em> display: -ms-flexbox; </em>/</li>
+<li></li>
+<li>display: flex;</li>
+<li></li>
+<li>/<em> 水平居中</em>/</li>
+<li>/<em> -webkit-box-align: center; </em>/</li>
+<li>/<em> -moz-box-align: center; </em>/</li>
+<li>-ms-flex-align:center;/<em> IE 10 </em>/</li>
+<li></li>
+<li>/<em> -webkit-justify-content: center; </em>/</li>
+<li>/<em> -moz-justify-content: center; </em>/</li>
+<li>/<em> justify-content: center; </em>/</li>
+<li>/<em> IE 11+,Firefox 22+,Chrome 29+,Opera 12.1</em>/</li>
+<li></li>
+<li>/<em> 垂直居中 </em>/</li>
+<li>-webkit-box-pack: center;</li>
+<li>-moz-box-pack: center;</li>
+<li>-ms-flex-pack:center;/<em> IE 10 </em>/</li>
+<li></li>
+<li>-webkit-align-items: center;</li>
+<li>-moz-align-items: center;</li>
+<li>align-items: center;</li>
+<li>}</li>
+<li>.flex&gt;div{</li>
+<li>background-color:red;</li>
+<li>padding:5px 10px;</li>
+<li>}</li>
+<li></li>
+<li></li>
+<li><body></body></li>
+<li><div class="flex"></div></li>
+<li><div>test</div></li>
+<li><div>haha</div></li>
+<li>水平这个简单，垂直居中怎么搞？下面明天。这个就是做遮罩的时候容易找到中间的东西，还必须是个正方形的时候才行。</li>
+<li>结构：li&gt;div|div(div&gt;a|a|a|a|a &gt;(div&gt;p,div,div)下面的div是隐藏起来的一开始)</li>
+<li>.jian{</li>
+<li>display: inline-block;</li>
+<li>height: 6px;</li>
+<li>width: 6px;</li>
+<li>border-width: 2px 2px 0 0;</li>
+<li>border-color:red;</li>
+<li>border-style: solid;</li>
+<li>position: relative;</li>
+<li>-webkit-transform:matrix(0.71,0.71,-0.71,-0.71,0,0);</li>
+<li>transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);</li>
+<li>left: 305px;</li>
+<li>}一个箭头的css.</li>
+<li>P，span包裹文字有什么区别么？</li>
+<li>weui层级规范，四层—最下面是内容，然后是fixed元素，然后是遮罩，最后是遮罩上的点击东西。</li>
+<li>他一开始的结构是很简单的，后来的样式都是拿js渲染出来的。一开始就两个div,一个是警告的，一个是container</li>
+<li>$(function(){</li>
+<li>var winH = $(window).height();</li>
+<li>console.log(winH);</li>
+<li><p>var categorySpace = 10;</p>
+</li>
+<li><p>$(‘.js_item’).on(‘click’, function(){</p>
+</li>
+<li>var id = $(this).data(‘id’);</li>
+<li>window.pageManager.go(id);</li>
+<li>console.log(“1”);</li>
+<li>});</li>
+<li>$(‘.js_category’).on(‘click’, function(){</li>
+<li>var $this = $(this),</li>
+<li>$inner = $this.next(‘.js_categoryInner’),</li>
+<li>$page = $this.parents(‘.page’),</li>
+<li>$parent = $(this).parent(‘li’);</li>
+<li>var innerH = $inner.data(‘height’);</li>
+<li><p>bear = $page;</p>
+</li>
+<li><p>if(!innerH){</p>
+</li>
+<li>$inner.css(‘height’, ‘auto’);</li>
+<li>innerH = $inner.height();</li>
+<li>$inner.removeAttr(‘style’);</li>
+<li>$inner.data(‘height’, innerH);</li>
+<li><p>}</p>
+</li>
+<li><p>if($parent.hasClass(‘js_show’)){</p>
+</li>
+<li>$parent.removeClass(‘js_show’);</li>
+<li>}else{</li>
+<li><p>$parent.siblings().removeClass(‘js_show’);</p>
+</li>
+<li><p>$parent.addClass(‘js_show’);</p>
+</li>
+<li>if(this.offsetTop + this.offsetHeight + innerH &gt; $page.scrollTop() + winH){</li>
+<li><p>var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;</p>
+</li>
+<li><p>if(scrollTop &gt; this.offsetTop){</p>
+</li>
+<li>scrollTop = this.offsetTop - categorySpace;</li>
+<li><p>}</p>
+</li>
+<li><p>$page.scrollTop(scrollTop);</p>
+</li>
+<li>}</li>
+<li>}</li>
+<li>});</li>
+<li>});第一段js代码。</li>
+<li>a标签这个里面很多的都是不直接规定大小的，例如长度和高度，而是利用padding，line-height;来撑开高度。而实现这种类似块的结构的都是加display：block;</li>
+<li>为什么他不直接加上边框，非要用这个呢？<br>.weui-btn:after {</li>
+<li>content: “ “;</li>
+<li>width: 200%;</li>
+<li>height: 200%;</li>
+<li>position: absolute;</li>
+<li>top: 0;</li>
+<li>left: 0;</li>
+<li>border: 1px solid rgba(0, 0, 0, 0.2);</li>
+<li>-webkit-transform: scale(0.5);</li>
+<li>transform: scale(0.5);</li>
+<li>-webkit-transform-origin: 0 0;<br>11.<br>transform-origin: 22 12;</li>
+<li>box-sizing: border-box;</li>
+<li>border-radius: 10px;</li>
+<li>} </li>
+</ol>
+<p>*<br>.weui-btn + .weui-btn {</p>
+<pre><code>1. margin-top: 15px;
+</code></pre><p>}<br>想在一些东西之间除了第一个都来些上下间距。。。就用这个。。。</p>
+<ul>
+<li>Input</li>
+<li>为什么他这块的单位又可以是em.</li>
+<li>为什么简单得加个边框，他非要做成这样。。<br>.weui-cells:before {</li>
+</ul>
+<ol>
+<li>content: “ “;</li>
+<li>position: absolute;</li>
+<li>left: 0;</li>
+<li>top: 0;</li>
+<li>right: 0;</li>
+<li>height: 1px;</li>
+<li>border-top: 1px solid #D9D9D9;</li>
+<li>color: #D9D9D9;</li>
+<li>-webkit-transform-origin: 0 0;</li>
+<li>transform-origin: 0 0;</li>
+<li>-webkit-transform: scaleY(0.5);</li>
+<li>transform: scaleY(0.5);<br>}<br>.weui-cells:after {</li>
+<li>content: “ “;</li>
+<li>position: absolute;</li>
+<li>left: 0;</li>
+<li>bottom: 0;</li>
+<li>right: 0;</li>
+<li>height: 1px;</li>
+<li>border-bottom: 1px solid #D9D9D9;</li>
+<li>color: #D9D9D9;</li>
+<li>-webkit-transform-origin: 0 100%;</li>
+<li>transform-origin: 0 100%;</li>
+<li>-webkit-transform: scaleY(0.5);</li>
+<li>transform: scaleY(26.5);<br>}</li>
+</ol>
+<p>一个是给上边的加一个，一个是给下边的加一个。。</p>
+<ol>
+<li>想在下一行用一个很小的地方做个图标之类的东西，那就可以用给他的父元素设置flex，下面整个都是flex=1;</li>
+<li>他那个自定义选择的对勾，就是checbox,那个。。。</li>
+<li>先看结构吧。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/libateer.github.io/tags/weui/" rel="tag"># weui</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/09/best-3-人工智能/" rel="next" title="人工智能">
+                <i class="fa fa-chevron-left"></i> 人工智能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/09/best-3-移动设计/" rel="prev" title="移动设计-互动精髓">
+                移动设计-互动精髓 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/09/best-1-weui/"
+           data-title="weui" data-url="https://github.com/skoll1/libateer.github.io/libateer.github.io/2017/03/09/best-1-weui/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/libateer.github.io/images/libateer.jpg"
+               alt="李巴特儿" />
+          <p class="site-author-name" itemprop="name">李巴特儿</p>
+           
+              <p class="site-description motion-element" itemprop="description">每天写一点。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/libateer.github.io/">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/libateer.github.io/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/libateer.github.io/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/libateer.github.io/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李巴特儿</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/libateer.github.io/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/libateer.github.io/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://libateer.duoshuo.com"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/libateer.github.io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/libateer.github.io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
