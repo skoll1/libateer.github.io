@@ -1,0 +1,926 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libateer.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libateer.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/libateer.github.io/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="页面优化," />
+
+
+
+
+
+  <link rel="alternate" href="/libateer.github.io/atom.xml" title="李巴特儿de小屋子" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/libateer.github.io/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="###dns预加载
+
+
+用meta信息来告知浏览器, 当前页面要做DNS预解析:
+
+
+  
+图片都可以
+
+&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//www.itechzero.com&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//api.share.baidu.c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面优化">
+<meta property="og:url" content="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-页面优化/index.html">
+<meta property="og:site_name" content="李巴特儿de小屋子">
+<meta property="og:description" content="###dns预加载
+
+
+用meta信息来告知浏览器, 当前页面要做DNS预解析:
+
+
+  
+图片都可以
+
+&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//www.itechzero.com&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//api.share.baidu.c">
+<meta property="og:updated_time" content="2017-03-13T11:59:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="页面优化">
+<meta name="twitter:description" content="###dns预加载
+
+
+用meta信息来告知浏览器, 当前页面要做DNS预解析:
+
+
+  
+图片都可以
+
+&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//www.itechzero.com&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//api.share.baidu.c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/libateer.github.io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-页面优化/"/>
+
+
+
+
+
+  <title> 页面优化 | 李巴特儿de小屋子 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/libateer.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李巴特儿de小屋子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">...触之不动...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/libateer.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/libateer.github.io/categories/Code" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            程序笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-person">
+          <a href="/libateer.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            个人日记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/libateer.github.io/categories/Read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            读书笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/libateer.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://github.com/skoll1/libateer.github.io/libateer.github.io/2017/03/13/best-1-页面优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李巴特儿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/libateer.github.io/images/libateer.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李巴特儿de小屋子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                页面优化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T14:07:57+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/libateer.github.io/2017/03/13/best-1-页面优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/best-1-页面优化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###dns预加载</p>
+<ol>
+<li><ol>
+<li>用meta信息来告知浏览器, 当前页面要做DNS预解析:<meta http-equiv="x-dns-prefetch-control" content="on"></li>
+</ol>
+</li>
+<li><link rel="prefetch" href="http://www.example.com/"> <!-- Firefox --> </li>
+<li><link rel="prefetch" href="/images/test.jpg">图片都可以</li>
+<li><meta http-equiv="x-dns-prefetch-control" content="on"></li>
+<li><code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//www.itechzero.com&quot;&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//api.share.baidu.com&quot;&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//bdimg.share.baidu.com&quot;&gt;</code></li>
+<li><ol>
+<li>尽量减少HTTP请求。合并文件。csssprites(www.csssprites.com)</li>
+</ol>
+</li>
+<li>使用cdn。</li>
+<li>设置头文件过期或是静态存储。</li>
+<li>Gzip压缩。</li>
+<li>把css放在头部。把js放在底部</li>
+<li>避免css表达式。</li>
+<li>减少dns查询。</li>
+<li>一些较为公开的js.css文件可以使用外链的形式。</li>
+<li>减少重定向。</li>
+<li>删除重复脚本</li>
+<li>用get 方法来进行ajax交互。</li>
+<li>预加载组建。</li>
+<li>减少dom结构，更多的dom复杂的页面结构意味着需要更多的响应时间。</li>
+<li>iframe:详细解释</li>
+<li>cookie的使用。</li>
+<li>js访问DOM是很慢的，尽量减少不用js构建网页结构。</li>
+<li>使用事件代理。不要为dom树中的元素附加过多的事件句柄，并且这些被频繁触发。</li>
+<li>图片要用多大就用多大的，网页内改变图片大小，它本身的大小是不会变化的。</li>
+<li>别替用户做决定。</li>
+<li>别让我等。别让我想。（包装好自己的网站，关注用户极其行为，引导用户，）别让我烦。缩短途径就是帮用户偷懒，那就是好的用户体验。</li>
+<li>目标信息要醒目而且近，距离越远，越难点击。<br>###初级优化###</li>
+<li>减少http请求</li>
+<li>使用内容发布网络</li>
+<li>添加expires头</li>
+<li>Gzip压缩组件</li>
+<li>减少dns查询</li>
+<li>避免重定向</li>
+<li>配置ETAG</li>
+<li>使用AJAX缓存。</li>
+<li>YSlow规则来重构代码</li>
+<li>js代码的3个速度0.1 ,1,10.</li>
+<li>webworker</li>
+<li>想要开发离线应用，首先需要一种本地缓存和拦截文档的方法。还需要一种储存包括新旧两种文件的方法。d</li>
+<li>当web worker不可用的话，使用greats和js定势器，来拆分代码。</li>
+<li>拆分初始化加载，知道那些是必须加载的，那些是可以后来加载的。页面初始化，</li>
+<li>script的阻塞行为，但浏览器解析dom的时候一但遇到script标签，就会立即下载并执行，与此同对浏览器的文档解析会停止，直到script标签的结束，出现这种阻塞行为一方面是因为浏览器的ui渲染，交互行为都是单线程操作，另一方面是因为script里面的代码可能会影响到后面文档的解析。</li>
+<li>优化方案：尽量把脚本放在文档的后边，尽量按照脚本之间的依赖关系放在一个文件中，</li>
+<li>延迟脚本：defer属性，可以让文档树全部解析完毕后触发，但不是所有的浏览器都支持这个属性。</li>
+<li>动态脚本：用脚本创建script元素，设置src<br>function loadJS(url, callback){<br>var script = document.createElement(‘script’);<br>script.type = ‘text/javascript’;<br>if(script.readyState){  // 兼容IE的旧版本<br>script.onreadystatechange = function(){<br>  if(script.readyState == ‘loaded’ || script.readyState == ‘complete’){<pre><code>script.onreadystatechange = null;
+callback();
+</code></pre>  }<br>}<br>}<br>else{<br>script.onload = function(){<br>  callback();<br>}<br>}<br>script.src = url;<br>document.getElementsByTagName(‘head’)[0].appendChild(script);<br>}<br>19.<br>loadJS(‘a.js’, function(){<br>loadJS(‘b.js’, function(){<br>loadJS(‘c.js’, function(){<br>  app.init();<br>})<br>})<br>})</li>
+<li>xmlhttprequest动态插入；优点是可以：懒加载：也就是下载好了可以不执行，等她需要的时候在用<br>function xhrLoadJS (url, callback){<br>var xhr = new XMLHttpRequest();<br>xhr.open(‘get’, url, true);<br>xhr.onreadystatechange = function(){<br>if(xhr.readyState == 4){<br>  if(xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status == 304){<pre><code>var script = document.createElement(&apos;script&apos;);
+script.type = &apos;text/script&apos;;
+script.text = xhr.responseText;
+eval(xhr.responseText);  // 执行代码
+document.body.appendChild(script);
+callback();
+</code></pre>  }<br>}<br>}<br>xhr.send(null);<br>}缺点是不能跨域加载。</li>
+<li>js加载与执行：合并多个标签，减少请求次数</li>
+<li>xor注入 var xhrObj=getXHRObject();xhrObj.onreadystatechange=function(){if(xhrObj.readyState==4){var }}getXHRObject(){var xhrObj=false;try{xhrObj=new XMLHttpRequest()</li>
+<li>scriptdomelement: 创建，地址，加入，三步。允许跨域加载</li>
+<li>忙指示器在某些情况下，我们需要忙指示器来告诉用户网页正在加载，其他情况下，最好不现实，鼓励用户和页面互动。</li>
+<li>不同决策情况：不同域，无序，scriptdomelement</li>
+<li>不同域，保持顺序：script defer，scriptdomelement</li>
+<li>同域，无序，无忙指示器。xhreval xhr </li>
+<li>无阻塞加载脚本可能出现竞争状态，我们关注依赖外部脚本里东移的标识符的行内脚本来，如果外部的脚本异步加载不考虑行内代码的依赖，那么可能会由于竞争出现为定义标示符的错误。以下就是整合两个代码之间的关系</li>
+<li>绝大多数的网页在加载外部脚本的同时也包含使用了外部脚本定义的表示符内的行内脚本，因为行内脚本依赖于外部脚本，那么</li>
+<li>在执行行内脚本的时候，必须保证外部脚本已被加载。</li>
+<li>异步加载保证执行顺序。把行内代码和依赖行内代码的外部脚本整合起来。</li>
+<li>var domscript=document.createElement(‘script’);</li>
+<li>domscript.src=”menu.js”;document.getElementsByTagName(‘head’)[0].appendChild(domscript);</li>
+<li>domscript.onloadDone=false;</li>
+<li>domscript.onload=function(){</li>
+<li>domscript.onloadDone=true;</li>
+<li>init()</li>
+<li>};</li>
+<li>domscript.onreadystatechange=function(){</li>
+<li>if((“loaded”===domscript.readyState||”complete”===domscript.readyState)&amp;&amp;!Domscript.onloadDone){</li>
+<li>domscript.onloadDone=true;</li>
+<li>init();</li>
+<li>}</li>
+<li>}</li>
+<li>document.getElementsByTagName(‘head’)[0].appendChild(domscript);</li>
+<li>// 单个脚本的情况下。</li>
+<li>managed XHR技术是实现多个的方法。</li>
+<li>＊行内脚本的的一些小知识点</li>
+<li>行内脚本不仅阻塞下载，还阻塞渲染，</li>
+<li>异步加载执行行内脚本：</li>
+<li>function longCode(){</li>
+<li>var tSatrt=Number(new Date());</li>
+<li>while((tSatrt+5000)&gt;Number(new Date())){};</li>
+<li>}</li>
+<li>setTimeout(longCode,0);</li>
+<li>在样式表后面的行内脚本会阻塞所有后续资源的下载。</li>
+<li><ol>
+<li>了解浏览器工作的原理：哪怕只知道个大概，也能知道在什么地方来优化</li>
+</ol>
+</li>
+<li>减少html中元素的元素的数量，用最少量但是必须的html语义化去布局。</li>
+<li>减少重绘，在绘制完成之后在动态的更改dom结构或者css样式都会引发浏览器的重绘。</li>
+<li>浏览器的重绘：</li>
+<li>性能的损耗直接取决于动态修改的范围。如果只是改动一个css的话，那么只是重绘一个元素，如果是在原来的地方加上一个元素的话，那么就是改变所有兄弟元素，会引发大量重绘。</li>
+<li>在改变元素的时候，能改多深就改多深，这样越独立，对其他的节点影响越小。</li>
+<li>如果要对dom操作的话，尽量合并到一次做完而不是奉承一次一次的做。css是我们改变dom的好伙伴。</li>
+<li>浏览器的渲染页面是在渲染一系列的盒子，而且这些盒子里面还包括了许多其他的盒子。所以说我们浏览器的天然渲染模型是“很多盒子套许多盒子”，</li>
+<li>完美实现这“盒子套盒子”的方法就是把一个或几个元素抱在一个大盒子里面。</li>
+<li>渐进增强：</li>
+<li>使用特征检测来显示渐进增强：不能用浏览器版本的检测来判断页面优化，而是要用特征检测：这样你可以检测是否有这个功能，悠久使用他，没有就给用户提供一个有吸引力的替代品。使用modernizr检测文档，开放者源码库</li>
+<li>在任何时候都要尽可能的用css来完成交互，因为浏览器天生就可以处理它们，同时css的代码量要比js少很多。</li>
+<li>性能准则：</li>
+<li>cdn加速服务</li>
+<li>页面加载时间，加载时间每延长100ms，销量就涨1%。</li>
+<li>减少http请求：了解多少资源是可以一同加载的，（看苹果的网站：页面加载很快，其他资源是一组一组的加载，如何分组是根据浏览器能并行链接几个来决定的。可以把资源文件放置在不同的域名下，这种做法充分利用了浏览器并发）2:合并资源文件，大的文件比小的文件好，把内容尽可能的合并成较少的文件。图片精灵的好处是谁让你只是用了一小部分，但还是增长图片都被缓存好了，这样就不用每一次都去请求图片。</li>
+<li>避免空的src和href属性，增加过期头，过期的日期要设置的非常远，那样浏览器就会缓存文件，第二次访问就会很方便。</li>
+<li>Gzip压缩所有的文字代码，但不是图片。</li>
+<li>避免使用css表达式，移除不用的css语句，不规定图片的宽和高（浏览器每次渲染都要猜，而且猜错的概率很大）浏览器在布局的好时候，会给每一个元素留下特定的位置，如果没有大小的话，只有来猜了。</li>
+<li>提高开发效率：响应式网页设计</li>
+<li>媒体查询功能:手机横，竖布局都要考虑到。。。我去。。。</li>
+<li>自适应图片：img{max-width:40px}</li>
+<li>弹性栅格：预先定义好者可以完美适应者鞋栅栏的样式，12个,classOne,classTwo,classThree———.</li>
+<li>页面重用机制：</li>
+<li><ol>
+<li>所有看到的东西都是通过引擎绘制出来的，更新频率取决于开发者指定的FPS，帧数越高，视觉上感觉越流畅，60是满值。在实际运行情况中，性能还取决于JS解析器的效率，制定的FPS帧数可能在低性能解释器中得不到体现，所以这不是开发者所能决定的，说一只能做的是尽可能的优化代码，关注每帧执行逻辑代码带来的CPU消耗，好需要注意每帧调用回吐指令的数量以及CPu的纹理提交速度</li>
+</ol>
+</li>
+<li>基准测试：实时监测当前性能。FPS越高越好。Sprite：渲染节点数量：越低越好</li>
+<li>内存优化：对象池：涉及到不断重复使用的对象。在初始化应用的程序期间创建一定的数量的对象并将其存储在一个池中。对一个对象完成操作后，将该对象放回到池中，在需要新对象时可i对其进行检索</li>
+<li>h5内嵌框架标签元素，iframe<iframe src="http://www.divcss5.com/" width="400" height="200" scrolling="yes">使用框架不利于网页搜索的优化。</iframe></li>
+<li>闭合标签就是标签又开始，有结束</li>
+<li>h5可以支持很多标签不闭合</li>
+<li>无内容元素：是一种不能包含任何内容的特殊的元素，例如:br,hr,img,link,meta,area,base,col,command,embed,keygen,param,source,track,war,渊源：sgml时期有一种标签叫无尾标签，当一个标签内只有简单的文字的时候，就可以使用无尾标签无须闭合这个标签了。</li>
+<li>接下来升级为无标签元素，<br>这样写起来自然，当h5的时候，他们是这样说的：HTML5 的语法完全兼容 HTML4 和 XHTML1，但是不兼容 SGML 中那些晦涩的 HTML4 特性。比如无尾标签（&lt;em/content/）。</li>
+<li>自闭合标签到底要不要加／号，</li>
+<li>创建按钮的四种方法<input type="button"> 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。</li>
+<li><input type="submit"> 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。<button> 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容问题。其他标签，例如 a, img, span, div，然后用图片把它伪装成一个按钮.如果只是歌单纯的按钮，触发一些动画动作，那么button,当要把画面数据提交给服务器的submit。</button></li>
+<li>button和input:button.在button内部，您可以放置内容，比如文本或图像。这是该元素与实用input元素不同的之处。button与button之间的所有内容都是按钮内容，其中包括可接受的正文内容，文本或者多媒体内容。需要注意的是要始终给她加上type属性，IE的默认类型是button而其他的浏览器着submit。</li>
+<li>web安全色216种，</li>
+<li>img上title和alt  title是在鼠标悬停上显示的内容，alt是在某种情况无法显示图片的情况下出现的信息。</li>
+<li>网页字体用偶数不用奇数</li>
+<li>网页元素</li>
+<li>meta：位于文档的头部，定义了与文档相关联的元信息，这些元对象是以名称的形式成对定义的。一个页面可以定义多个meta标签，每个标签分别通过对应的name（关联到http头部）和content（把属性关联到一个名称）属性定义键值，来定义不同的原信息。</li>
+<li>base指定所有页面中所有链接的基础路径。如果没有base的话，那么页面所有的相对路径将生成绝对路径作为默认的基础路径。</li>
+<li>style的type 指定样式类型，浏览器支持的样式只有css一种，所以这个属性只有css一种，media属性置顶使用的媒体，表明文档在什么时候用什么元素定义的样式。</li>
+<li>media属性详解：运算符 and,not ,or,</li>
+<li>link:link和style 怎么结合起来用啊？link内部也有一些属性，media.</li>
+<li>给网站添加logo。&lt;link rel=“shortcut icon” href=“” type=“image/x-icon”&gt;</li>
+<li>预先获取资源：等同于让浏览器在空闲时间或预读取一些资源文档，不造成资源浪费。</li>
+<li>link rel=“prefetch” href=“页面地址” 怎样控制什么时候开始。。</li>
+<li>这是什么书？真是菜啊。。</li>
+<li>异步执行脚本。方法：回调函数，事件监听，观察者模式，promise对象。</li>
+<li>meta定义页面关键<meta name="“keywords”" content="“”">设置页面描述：<meta name="“description”" content="“输入内容"">都是为了搜索引擎，只是输入的字数限制不同。<meta name="“author”" content="“"">设置作者信息，<meta name="“robots”" content="“可选值”">：可以限制搜索网站方式，也就是把自己藏起来，</li>
+<li>语言和文字:<meta http-equiv="“content-language”" content="“Zh-CN”/"></li>
+<li>定时跳转页面：&lt;meta http-equiv=“Refresh” content=“10,url=http:www.baidu.com”&gt;也可以刷新网页</li>
+<li>设置网页缓存过期的时间。</li>
+<li>禁止从缓存中调用。</li>
+<li>删除过期的cookie.</li>
+<li>网页过渡效果：什么都可以，我去长见识了</li>
+<li>标记文字</li>
+<li>强调em.外文或科技术语i.重要的文字:strong.表示不正确和较正s.</li>
+<li>为文字加下划线u.小号字体small.添上标sub.下标sup.</li>
+<li>表示缩写abbr.定义术语<dfn title="“sdfsdf”">jlkjlklkjl</dfn>;</li>
+<li>引用其他处的内容<q cite="“http://baidu.com”">sdkls<p></p>;</q></li>
+<li>cite引用其他作品的标题。</li>
+<li><ruby>漠&lt;&gt;</ruby></li>
+<li>显示图像</li>
+<li>图像预先加载</li>
+<li>图像区域映射 <img><map>&lt;area shape=“circle coords=“0,100,200,30,9”&gt;</map></li>
+<li>使用base64:url格式的图片。data取的数据的协定名称。就是代码表示一张图片，但是不能大于32k.高清图片不能显示，不可以裁成小段么？</li>
+<li>生成超链接</li>
+<li>指向外部的</li>
+<li>使用相对url，相对路径和。绝对路径。</li>
+<li>生成页面⚓️点</li>
+<li>生成图像链接，电子邮件链接mailto</li>
+<li>设定浏览环境——self当前页面打开，_blank创建新页面打开。</li>
+<li>组织文字内容</li>
+<li>pre：可以定义预格式化的文本。被包围在pre中的元素会保留空格和换行符。而文本也会呈现为等宽字体。pre标签的一个常见的应用就是来显示计算机的代码可以显示非格式化的内容。</li>
+<li>应用他处内容block quote 他们之间的所有文本都会被从常规的文本中分离出来，经常会在左右两边缩进，而且有时会用斜体，也就是说，块引用有自己的空间。</li>
+<li>dialog h5中用于定义对话框或窗口</li>
+<li>划分文档结构：标题的使用是十分常见的，页面标题，模块标题，块区标题，各式各样的标题都可以使用h1-h6来实现。</li>
+<li>hgroup 给标题分组隐藏起来，那就可以出现多个了。</li>
+<li>section:对内容进行块划分，代码层次结构简单。在一个页面里面可以使用多个footer，既可以做页面的整体页脚，也可以做为一个内容区块的结尾。</li>
+<li>语义化写代码article大段纯文字   附注栏：aside. </li>
+<li>adress在页面输出联系人信息。</li>
+<li>details summary 配合起来可以提供一个显示和隐藏文字的小工具。</li>
+<li>使用下拉列表：label for=“sd”我最爱的球队 input type=“text” name=“team” id=“team_list”<pre><code>1. datalist id=“team_list&quot;
+2. option edg
+                        1. option rng但是这个怎么自动生成啊，这只能玩现成的？
+</code></pre></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/libateer.github.io/tags/页面优化/" rel="tag"># 页面优化</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/13/best-1-浏览器缓存机制/" rel="next" title="浏览器缓存机制">
+                <i class="fa fa-chevron-left"></i> 浏览器缓存机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/13/best-1-关于图片的一些问题/" rel="prev" title="关于图片的一些问题">
+                关于图片的一些问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/13/best-1-页面优化/"
+           data-title="页面优化" data-url="https://github.com/skoll1/libateer.github.io/libateer.github.io/2017/03/13/best-1-页面优化/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/libateer.github.io/images/libateer.jpg"
+               alt="李巴特儿" />
+          <p class="site-author-name" itemprop="name">李巴特儿</p>
+           
+              <p class="site-description motion-element" itemprop="description">每天写一点。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/libateer.github.io/">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/libateer.github.io/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/libateer.github.io/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/libateer.github.io/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李巴特儿</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/libateer.github.io/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/libateer.github.io/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://libateer.duoshuo.com"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/libateer.github.io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/libateer.github.io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

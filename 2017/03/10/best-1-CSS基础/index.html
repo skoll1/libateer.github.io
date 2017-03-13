@@ -94,7 +94,8 @@
 字体–font-style:让字体变斜就这个。
 font-weight:粗细就看这个
 font-stretch:chrome不支持
-@font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。">
+@font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。
+font-varight">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css-基础">
 <meta property="og:url" content="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-CSS基础/index.html">
@@ -104,8 +105,9 @@ font-stretch:chrome不支持
 字体–font-style:让字体变斜就这个。
 font-weight:粗细就看这个
 font-stretch:chrome不支持
-@font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。">
-<meta property="og:updated_time" content="2017-03-10T16:06:15.000Z">
+@font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。
+font-varight">
+<meta property="og:updated_time" content="2017-03-11T10:44:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css-基础">
 <meta name="twitter:description" content="小东西：淘宝，搭配，比较-游戏-社交-好的一部分-商品评论
@@ -113,7 +115,8 @@ font-stretch:chrome不支持
 字体–font-style:让字体变斜就这个。
 font-weight:粗细就看这个
 font-stretch:chrome不支持
-@font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。">
+@font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。
+font-varight">
 
 
 
@@ -397,6 +400,33 @@ font-stretch:chrome不支持
 <li>font-weight:粗细就看这个</li>
 <li>font-stretch:chrome不支持</li>
 <li>@font-face{<br> font-family:’iconfont’;<br> src:url(‘’);<br>}引入字体。</li>
+<li>font-varight:今年仅针对字母：小型的大写字母。</li>
+<li>text-transform:也是和字母有关系，将第一个值变成大写字母，全变成大写，全变成小写。</li>
+<li>white-space:和文字空间有关系的。pre:不会合并文字间的空白，超出边界不换行只会显示一行。nowrap:合并文字间空格，只会显示一行。pre-wrap:不合并空格，但是会发生换行碰到边界。pre-line:会合并空格，也会换行。</li>
+<li>word-space:单词之间的间距,在这个测试里好像他完全是以空格来区分单词的，不论是汉字还是英文。</li>
+<li>letter-space:字符之间的间距</li>
+<li>text-indent:文本缩进。</li>
+<li>word-break:break-all;word-wrap:break-word;想要节省地方，这么写就对了。</li>
+<li>text-align-last:只对最后一行做这个属性设置</li>
+<li>text-justify:类似于flex那种对齐方式，但是没什么卵用，好多浏览器不支持。</li>
+<li>vertical-align:他的百分比是按照line-height计算的。</li>
+<li>vertain—align：起作用的前提是他的元素是inline属性才行。inline-block.table-cell()简单来说就是图片，按钮，文字和单元格。这只是在默认的情况下，当给他设置属性的时候或者使用浮动以后，那就不能显示了。`.test&gt;span{<pre><code>    display: inline-block;width: 210px;vertical-align: middle;
+}
+.test&gt;img{
+    vertical-align: middle;
+    width: 300px;
+    height: auto;
+}`
+</code></pre></li>
+<li>text-size-adjust:auto;文字根据设备大小自动调整</li>
+<li>text-decoration:怎么改下划线加颜色啊。text-decoration-color: #f06d06;这个好像不能显示，只能和color共用一个颜色。</li>
+<li>writing-mode:实现文字的排列</li>
+<li>只要你是内联元素，你就受到vertain-align和line-height的影响。</li>
+<li>行高是字符大小乘百分比。</li>
+<li>定位position:staticabsolute,relative,center,fixed;</li>
+<li>布局：display:inline,block,flex,inline-felx,table</li>
+<li>display:none;彻底消失，原来是位置也腾出来。visibilty:hidden.就是简单的影藏，原来的位置还在。</li>
+<li>margin:相邻的margin会发生合并，我们称之为margin折叠。折叠只会发生在block元素。浮动元素的margin不发生任何折叠。根元素，绝对定位的元素也不发生折叠。</li>
 <li></li>
 </ol>
 
@@ -444,6 +474,10 @@ font-stretch:chrome不支持
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/11/best-1-面向对象/" rel="prev" title="面向对象">
+                面向对象 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +544,7 @@ font-stretch:chrome不支持
           
             <div class="site-state-item site-state-posts">
               <a href="/libateer.github.io/">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -532,7 +566,7 @@ font-stretch:chrome不支持
             
             <div class="site-state-item site-state-tags">
               <a href="/libateer.github.io/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

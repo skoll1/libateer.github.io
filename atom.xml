@@ -5,7 +5,7 @@
   <link href="/libateer.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/skoll1/libateer.github.io/"/>
-  <updated>2017-03-10T16:06:15.000Z</updated>
+  <updated>2017-03-13T12:38:55.000Z</updated>
   <id>https://github.com/skoll1/libateer.github.io/</id>
   
   <author>
@@ -16,11 +16,557 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>面试html-css-1</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E9%9D%A2%E8%AF%95html-css-1/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-面试html-css-1/</id>
+    <published>2017-03-13T12:37:07.000Z</published>
+    <updated>2017-03-13T12:38:55.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="面试html-css-1" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95html-css-1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于图片的一些问题</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-关于图片的一些问题/</id>
+    <published>2017-03-13T12:20:55.000Z</published>
+    <updated>2017-03-13T12:36:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>###图片格式###</p>
+<ol>
+<li>jpg:这种图片一生成就是有损的，他把一些不打算不打算保存的数据抹掉，可支持有损压缩，不支持透明，动画，非矢量。</li>
+<li>我们常见的图片格式是不能保存透明信息，系统会默认为白色背景。gif可以保存透明信息，但是gif最多有256种颜色，只能用在对图片要求不高的场景。</li>
+<li>png可以支持无损压缩，而且可以很好地保存透明的信息。</li>
+<li>jpeg：在拷贝照片的时候看到，一般都是我们先保存jpg,这种图片比较大是因为里面保存了相机里面拍摄的参数，色相，饱和度，对比度。可以直接的打印。</li>
+<li>png:网页中用的最多，应为它支持透明，但是不考虑他的大小么？</li>
+<li>盒模型溢出问题：用min－Height来解决溢出行为。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###图片格式###&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;jpg:这种图片一生成就是有损的，他把一些不打算不打算保存的数据抹掉，可支持有损压缩，不支持透明，动画，非矢量。&lt;/li&gt;
+&lt;li&gt;我们常见的图片格式是不能保存透明信息，系统会默认为白色背景。gif可以保存透明信息，但是gif
+    
+    </summary>
+    
+    
+      <category term="关于图片的一些问题" scheme="https://github.com/skoll1/libateer.github.io/tags/%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>页面优化</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E9%A1%B5%E9%9D%A2%E4%BC%98%E5%8C%96/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-页面优化/</id>
+    <published>2017-03-13T06:07:57.000Z</published>
+    <updated>2017-03-13T11:59:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>###dns预加载</p>
+<ol>
+<li><ol>
+<li>用meta信息来告知浏览器, 当前页面要做DNS预解析:<meta http-equiv="x-dns-prefetch-control" content="on"></li>
+</ol>
+</li>
+<li><link rel="prefetch" href="http://www.example.com/"> <!-- Firefox --> </li>
+<li><link rel="prefetch" href="/images/test.jpg">图片都可以</li>
+<li><meta http-equiv="x-dns-prefetch-control" content="on"></li>
+<li><code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//www.itechzero.com&quot;&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//api.share.baidu.com&quot;&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//bdimg.share.baidu.com&quot;&gt;</code></li>
+<li><ol>
+<li>尽量减少HTTP请求。合并文件。csssprites(www.csssprites.com)</li>
+</ol>
+</li>
+<li>使用cdn。</li>
+<li>设置头文件过期或是静态存储。</li>
+<li>Gzip压缩。</li>
+<li>把css放在头部。把js放在底部</li>
+<li>避免css表达式。</li>
+<li>减少dns查询。</li>
+<li>一些较为公开的js.css文件可以使用外链的形式。</li>
+<li>减少重定向。</li>
+<li>删除重复脚本</li>
+<li>用get 方法来进行ajax交互。</li>
+<li>预加载组建。</li>
+<li>减少dom结构，更多的dom复杂的页面结构意味着需要更多的响应时间。</li>
+<li>iframe:详细解释</li>
+<li>cookie的使用。</li>
+<li>js访问DOM是很慢的，尽量减少不用js构建网页结构。</li>
+<li>使用事件代理。不要为dom树中的元素附加过多的事件句柄，并且这些被频繁触发。</li>
+<li>图片要用多大就用多大的，网页内改变图片大小，它本身的大小是不会变化的。</li>
+<li>别替用户做决定。</li>
+<li>别让我等。别让我想。（包装好自己的网站，关注用户极其行为，引导用户，）别让我烦。缩短途径就是帮用户偷懒，那就是好的用户体验。</li>
+<li>目标信息要醒目而且近，距离越远，越难点击。<br>###初级优化###</li>
+<li>减少http请求</li>
+<li>使用内容发布网络</li>
+<li>添加expires头</li>
+<li>Gzip压缩组件</li>
+<li>减少dns查询</li>
+<li>避免重定向</li>
+<li>配置ETAG</li>
+<li>使用AJAX缓存。</li>
+<li>YSlow规则来重构代码</li>
+<li>js代码的3个速度0.1 ,1,10.</li>
+<li>webworker</li>
+<li>想要开发离线应用，首先需要一种本地缓存和拦截文档的方法。还需要一种储存包括新旧两种文件的方法。d</li>
+<li>当web worker不可用的话，使用greats和js定势器，来拆分代码。</li>
+<li>拆分初始化加载，知道那些是必须加载的，那些是可以后来加载的。页面初始化，</li>
+<li>script的阻塞行为，但浏览器解析dom的时候一但遇到script标签，就会立即下载并执行，与此同对浏览器的文档解析会停止，直到script标签的结束，出现这种阻塞行为一方面是因为浏览器的ui渲染，交互行为都是单线程操作，另一方面是因为script里面的代码可能会影响到后面文档的解析。</li>
+<li>优化方案：尽量把脚本放在文档的后边，尽量按照脚本之间的依赖关系放在一个文件中，</li>
+<li>延迟脚本：defer属性，可以让文档树全部解析完毕后触发，但不是所有的浏览器都支持这个属性。</li>
+<li>动态脚本：用脚本创建script元素，设置src<br>function loadJS(url, callback){<br>var script = document.createElement(‘script’);<br>script.type = ‘text/javascript’;<br>if(script.readyState){  // 兼容IE的旧版本<br>script.onreadystatechange = function(){<br>  if(script.readyState == ‘loaded’ || script.readyState == ‘complete’){<pre><code>script.onreadystatechange = null;
+callback();
+</code></pre>  }<br>}<br>}<br>else{<br>script.onload = function(){<br>  callback();<br>}<br>}<br>script.src = url;<br>document.getElementsByTagName(‘head’)[0].appendChild(script);<br>}<br>19.<br>loadJS(‘a.js’, function(){<br>loadJS(‘b.js’, function(){<br>loadJS(‘c.js’, function(){<br>  app.init();<br>})<br>})<br>})</li>
+<li>xmlhttprequest动态插入；优点是可以：懒加载：也就是下载好了可以不执行，等她需要的时候在用<br>function xhrLoadJS (url, callback){<br>var xhr = new XMLHttpRequest();<br>xhr.open(‘get’, url, true);<br>xhr.onreadystatechange = function(){<br>if(xhr.readyState == 4){<br>  if(xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status == 304){<pre><code>var script = document.createElement(&apos;script&apos;);
+script.type = &apos;text/script&apos;;
+script.text = xhr.responseText;
+eval(xhr.responseText);  // 执行代码
+document.body.appendChild(script);
+callback();
+</code></pre>  }<br>}<br>}<br>xhr.send(null);<br>}缺点是不能跨域加载。</li>
+<li>js加载与执行：合并多个标签，减少请求次数</li>
+<li>xor注入 var xhrObj=getXHRObject();xhrObj.onreadystatechange=function(){if(xhrObj.readyState==4){var }}getXHRObject(){var xhrObj=false;try{xhrObj=new XMLHttpRequest()</li>
+<li>scriptdomelement: 创建，地址，加入，三步。允许跨域加载</li>
+<li>忙指示器在某些情况下，我们需要忙指示器来告诉用户网页正在加载，其他情况下，最好不现实，鼓励用户和页面互动。</li>
+<li>不同决策情况：不同域，无序，scriptdomelement</li>
+<li>不同域，保持顺序：script defer，scriptdomelement</li>
+<li>同域，无序，无忙指示器。xhreval xhr </li>
+<li>无阻塞加载脚本可能出现竞争状态，我们关注依赖外部脚本里东移的标识符的行内脚本来，如果外部的脚本异步加载不考虑行内代码的依赖，那么可能会由于竞争出现为定义标示符的错误。以下就是整合两个代码之间的关系</li>
+<li>绝大多数的网页在加载外部脚本的同时也包含使用了外部脚本定义的表示符内的行内脚本，因为行内脚本依赖于外部脚本，那么</li>
+<li>在执行行内脚本的时候，必须保证外部脚本已被加载。</li>
+<li>异步加载保证执行顺序。把行内代码和依赖行内代码的外部脚本整合起来。</li>
+<li>var domscript=document.createElement(‘script’);</li>
+<li>domscript.src=”menu.js”;document.getElementsByTagName(‘head’)[0].appendChild(domscript);</li>
+<li>domscript.onloadDone=false;</li>
+<li>domscript.onload=function(){</li>
+<li>domscript.onloadDone=true;</li>
+<li>init()</li>
+<li>};</li>
+<li>domscript.onreadystatechange=function(){</li>
+<li>if((“loaded”===domscript.readyState||”complete”===domscript.readyState)&amp;&amp;!Domscript.onloadDone){</li>
+<li>domscript.onloadDone=true;</li>
+<li>init();</li>
+<li>}</li>
+<li>}</li>
+<li>document.getElementsByTagName(‘head’)[0].appendChild(domscript);</li>
+<li>// 单个脚本的情况下。</li>
+<li>managed XHR技术是实现多个的方法。</li>
+<li>＊行内脚本的的一些小知识点</li>
+<li>行内脚本不仅阻塞下载，还阻塞渲染，</li>
+<li>异步加载执行行内脚本：</li>
+<li>function longCode(){</li>
+<li>var tSatrt=Number(new Date());</li>
+<li>while((tSatrt+5000)&gt;Number(new Date())){};</li>
+<li>}</li>
+<li>setTimeout(longCode,0);</li>
+<li>在样式表后面的行内脚本会阻塞所有后续资源的下载。</li>
+<li><ol>
+<li>了解浏览器工作的原理：哪怕只知道个大概，也能知道在什么地方来优化</li>
+</ol>
+</li>
+<li>减少html中元素的元素的数量，用最少量但是必须的html语义化去布局。</li>
+<li>减少重绘，在绘制完成之后在动态的更改dom结构或者css样式都会引发浏览器的重绘。</li>
+<li>浏览器的重绘：</li>
+<li>性能的损耗直接取决于动态修改的范围。如果只是改动一个css的话，那么只是重绘一个元素，如果是在原来的地方加上一个元素的话，那么就是改变所有兄弟元素，会引发大量重绘。</li>
+<li>在改变元素的时候，能改多深就改多深，这样越独立，对其他的节点影响越小。</li>
+<li>如果要对dom操作的话，尽量合并到一次做完而不是奉承一次一次的做。css是我们改变dom的好伙伴。</li>
+<li>浏览器的渲染页面是在渲染一系列的盒子，而且这些盒子里面还包括了许多其他的盒子。所以说我们浏览器的天然渲染模型是“很多盒子套许多盒子”，</li>
+<li>完美实现这“盒子套盒子”的方法就是把一个或几个元素抱在一个大盒子里面。</li>
+<li>渐进增强：</li>
+<li>使用特征检测来显示渐进增强：不能用浏览器版本的检测来判断页面优化，而是要用特征检测：这样你可以检测是否有这个功能，悠久使用他，没有就给用户提供一个有吸引力的替代品。使用modernizr检测文档，开放者源码库</li>
+<li>在任何时候都要尽可能的用css来完成交互，因为浏览器天生就可以处理它们，同时css的代码量要比js少很多。</li>
+<li>性能准则：</li>
+<li>cdn加速服务</li>
+<li>页面加载时间，加载时间每延长100ms，销量就涨1%。</li>
+<li>减少http请求：了解多少资源是可以一同加载的，（看苹果的网站：页面加载很快，其他资源是一组一组的加载，如何分组是根据浏览器能并行链接几个来决定的。可以把资源文件放置在不同的域名下，这种做法充分利用了浏览器并发）2:合并资源文件，大的文件比小的文件好，把内容尽可能的合并成较少的文件。图片精灵的好处是谁让你只是用了一小部分，但还是增长图片都被缓存好了，这样就不用每一次都去请求图片。</li>
+<li>避免空的src和href属性，增加过期头，过期的日期要设置的非常远，那样浏览器就会缓存文件，第二次访问就会很方便。</li>
+<li>Gzip压缩所有的文字代码，但不是图片。</li>
+<li>避免使用css表达式，移除不用的css语句，不规定图片的宽和高（浏览器每次渲染都要猜，而且猜错的概率很大）浏览器在布局的好时候，会给每一个元素留下特定的位置，如果没有大小的话，只有来猜了。</li>
+<li>提高开发效率：响应式网页设计</li>
+<li>媒体查询功能:手机横，竖布局都要考虑到。。。我去。。。</li>
+<li>自适应图片：img{max-width:40px}</li>
+<li>弹性栅格：预先定义好者可以完美适应者鞋栅栏的样式，12个,classOne,classTwo,classThree———.</li>
+<li>页面重用机制：</li>
+<li><ol>
+<li>所有看到的东西都是通过引擎绘制出来的，更新频率取决于开发者指定的FPS，帧数越高，视觉上感觉越流畅，60是满值。在实际运行情况中，性能还取决于JS解析器的效率，制定的FPS帧数可能在低性能解释器中得不到体现，所以这不是开发者所能决定的，说一只能做的是尽可能的优化代码，关注每帧执行逻辑代码带来的CPU消耗，好需要注意每帧调用回吐指令的数量以及CPu的纹理提交速度</li>
+</ol>
+</li>
+<li>基准测试：实时监测当前性能。FPS越高越好。Sprite：渲染节点数量：越低越好</li>
+<li>内存优化：对象池：涉及到不断重复使用的对象。在初始化应用的程序期间创建一定的数量的对象并将其存储在一个池中。对一个对象完成操作后，将该对象放回到池中，在需要新对象时可i对其进行检索</li>
+<li>h5内嵌框架标签元素，iframe<iframe src="http://www.divcss5.com/" width="400" height="200" scrolling="yes">使用框架不利于网页搜索的优化。</iframe></li>
+<li>闭合标签就是标签又开始，有结束</li>
+<li>h5可以支持很多标签不闭合</li>
+<li>无内容元素：是一种不能包含任何内容的特殊的元素，例如:br,hr,img,link,meta,area,base,col,command,embed,keygen,param,source,track,war,渊源：sgml时期有一种标签叫无尾标签，当一个标签内只有简单的文字的时候，就可以使用无尾标签无须闭合这个标签了。</li>
+<li>接下来升级为无标签元素，<br>这样写起来自然，当h5的时候，他们是这样说的：HTML5 的语法完全兼容 HTML4 和 XHTML1，但是不兼容 SGML 中那些晦涩的 HTML4 特性。比如无尾标签（&lt;em/content/）。</li>
+<li>自闭合标签到底要不要加／号，</li>
+<li>创建按钮的四种方法<input type="button"> 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。</li>
+<li><input type="submit"> 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。<button> 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容问题。其他标签，例如 a, img, span, div，然后用图片把它伪装成一个按钮.如果只是歌单纯的按钮，触发一些动画动作，那么button,当要把画面数据提交给服务器的submit。</button></li>
+<li>button和input:button.在button内部，您可以放置内容，比如文本或图像。这是该元素与实用input元素不同的之处。button与button之间的所有内容都是按钮内容，其中包括可接受的正文内容，文本或者多媒体内容。需要注意的是要始终给她加上type属性，IE的默认类型是button而其他的浏览器着submit。</li>
+<li>web安全色216种，</li>
+<li>img上title和alt  title是在鼠标悬停上显示的内容，alt是在某种情况无法显示图片的情况下出现的信息。</li>
+<li>网页字体用偶数不用奇数</li>
+<li>网页元素</li>
+<li>meta：位于文档的头部，定义了与文档相关联的元信息，这些元对象是以名称的形式成对定义的。一个页面可以定义多个meta标签，每个标签分别通过对应的name（关联到http头部）和content（把属性关联到一个名称）属性定义键值，来定义不同的原信息。</li>
+<li>base指定所有页面中所有链接的基础路径。如果没有base的话，那么页面所有的相对路径将生成绝对路径作为默认的基础路径。</li>
+<li>style的type 指定样式类型，浏览器支持的样式只有css一种，所以这个属性只有css一种，media属性置顶使用的媒体，表明文档在什么时候用什么元素定义的样式。</li>
+<li>media属性详解：运算符 and,not ,or,</li>
+<li>link:link和style 怎么结合起来用啊？link内部也有一些属性，media.</li>
+<li>给网站添加logo。&lt;link rel=“shortcut icon” href=“” type=“image/x-icon”&gt;</li>
+<li>预先获取资源：等同于让浏览器在空闲时间或预读取一些资源文档，不造成资源浪费。</li>
+<li>link rel=“prefetch” href=“页面地址” 怎样控制什么时候开始。。</li>
+<li>这是什么书？真是菜啊。。</li>
+<li>异步执行脚本。方法：回调函数，事件监听，观察者模式，promise对象。</li>
+<li>meta定义页面关键<meta name="“keywords”" content="“”">设置页面描述：<meta name="“description”" content="“输入内容"">都是为了搜索引擎，只是输入的字数限制不同。<meta name="“author”" content="“"">设置作者信息，<meta name="“robots”" content="“可选值”">：可以限制搜索网站方式，也就是把自己藏起来，</li>
+<li>语言和文字:<meta http-equiv="“content-language”" content="“Zh-CN”/"></li>
+<li>定时跳转页面：&lt;meta http-equiv=“Refresh” content=“10,url=http:www.baidu.com”&gt;也可以刷新网页</li>
+<li>设置网页缓存过期的时间。</li>
+<li>禁止从缓存中调用。</li>
+<li>删除过期的cookie.</li>
+<li>网页过渡效果：什么都可以，我去长见识了</li>
+<li>标记文字</li>
+<li>强调em.外文或科技术语i.重要的文字:strong.表示不正确和较正s.</li>
+<li>为文字加下划线u.小号字体small.添上标sub.下标sup.</li>
+<li>表示缩写abbr.定义术语<dfn title="“sdfsdf”">jlkjlklkjl</dfn>;</li>
+<li>引用其他处的内容<q cite="“http://baidu.com”">sdkls<p></p>;</q></li>
+<li>cite引用其他作品的标题。</li>
+<li><ruby>漠&lt;&gt;</ruby></li>
+<li>显示图像</li>
+<li>图像预先加载</li>
+<li>图像区域映射 <img><map>&lt;area shape=“circle coords=“0,100,200,30,9”&gt;</map></li>
+<li>使用base64:url格式的图片。data取的数据的协定名称。就是代码表示一张图片，但是不能大于32k.高清图片不能显示，不可以裁成小段么？</li>
+<li>生成超链接</li>
+<li>指向外部的</li>
+<li>使用相对url，相对路径和。绝对路径。</li>
+<li>生成页面⚓️点</li>
+<li>生成图像链接，电子邮件链接mailto</li>
+<li>设定浏览环境——self当前页面打开，_blank创建新页面打开。</li>
+<li>组织文字内容</li>
+<li>pre：可以定义预格式化的文本。被包围在pre中的元素会保留空格和换行符。而文本也会呈现为等宽字体。pre标签的一个常见的应用就是来显示计算机的代码可以显示非格式化的内容。</li>
+<li>应用他处内容block quote 他们之间的所有文本都会被从常规的文本中分离出来，经常会在左右两边缩进，而且有时会用斜体，也就是说，块引用有自己的空间。</li>
+<li>dialog h5中用于定义对话框或窗口</li>
+<li>划分文档结构：标题的使用是十分常见的，页面标题，模块标题，块区标题，各式各样的标题都可以使用h1-h6来实现。</li>
+<li>hgroup 给标题分组隐藏起来，那就可以出现多个了。</li>
+<li>section:对内容进行块划分，代码层次结构简单。在一个页面里面可以使用多个footer，既可以做页面的整体页脚，也可以做为一个内容区块的结尾。</li>
+<li>语义化写代码article大段纯文字   附注栏：aside. </li>
+<li>adress在页面输出联系人信息。</li>
+<li>details summary 配合起来可以提供一个显示和隐藏文字的小工具。</li>
+<li>使用下拉列表：label for=“sd”我最爱的球队 input type=“text” name=“team” id=“team_list”<pre><code>1. datalist id=“team_list&quot;
+2. option edg
+                        1. option rng但是这个怎么自动生成啊，这只能玩现成的？
+</code></pre></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###dns预加载&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;用meta信息来告知浏览器, 当前页面要做DNS预解析:&lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;on&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+    
+      <category term="页面优化" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%A1%B5%E9%9D%A2%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器缓存机制</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-浏览器缓存机制/</id>
+    <published>2017-03-13T05:45:16.000Z</published>
+    <updated>2017-03-13T05:45:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1. </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1. &lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="浏览器缓存机制" scheme="https://github.com/skoll1/libateer.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试html-css-2</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-%E9%9D%A2%E8%AF%95html-css-2/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-面试html-css-2/</id>
+    <published>2017-03-12T08:08:01.000Z</published>
+    <updated>2017-03-13T12:18:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>标准盒模型：外盒尺寸：h+p+b+m  内盒：h+p+b</li>
+<li>ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以才是h+m</li>
+<li>在网页上显示的时候：实际的占据位置和他的实际大小是不一样的，因为margin是看不到的。</li>
+<li>在选择的时候，我们要用IE的标准盒子模型。在doctype中声明。如果不这样，那就会按照自己的默认方式去解析。</li>
+<li>所以box-sizing:如果值为border-box的话，那就是IE那个样子解析的，如果是content-box的话，就是w3c的解析方式。</li>
+<li>原来border一直都是跟随着padding在变，而margin择跟随border变。</li>
+<li>Box-sizing统一form元素风格：、box-sizing拯救我们的布局</li>
+<li>使用not()选择器来决定表单是否显示边框。为最后一个元素去掉边框。 .nav li:not(:last-child){border:1px solid red;}</li>
+<li><p>更简单的垂直居中方式：align-items: center;display: flex;.container {<br>margin: 0 auto;就这几项。<br>}</p>
+<ol>
+<li>a[href]:not([class]) {<br>color: #008000;<br>text-decoration: underline;<br>}<br>给默认连接添加样式。通过cms系统插入的链接，通常没有class属性，以上样式可以甄别他们，而且不会影响其他样式。</li>
+</ol>
+</li>
+<li>利用负的nth-child来选择元素。使用负的nth-child可以选择1-n个元素。</li>
+<li>.container {   height: 0;   padding-bottom: 20%;   position: relative; }</li>
+<li>.container div {   border: 2px dashed #ddd;    height: 100%;   left: 0;   position: absolute;   top: 0;   width: 100%; }子元素的div将保持宽高为1：5.</li>
+<li><p>.slider {   height: 200px;overflow-y: hidden;width:300px;background-color: red;transition: all 0.3s ease; }<br>.slider:hover {  height: 300px;  overflow-y: scroll;background-color: yellow;}模拟滑块的划动。</p>
+</li>
+<li><p>img {<br>display: block;<br>font-family: Helvetica, Arial, sans-serif;<br>font-weight: 300;<br>height: auto;<br>line-height: 2;<br>position: relative;<br>text-align: center;<br>width: 100%;<br>}<br>img:before {<br>content: “We’re sorry, the image below is broken :(“;<br>display: block;<br>margin-bottom: 10px;<br>}</p>
+</li>
+</ol>
+<p>img:after {<br>  content: “(url: “ attr(src) “)”;<br>  display: block;<br>  font-size: 12px;<br>}图像没显示的时候的处理方法。</p>
+<ol>
+<li>当触发select的下拉列表时，为了避免表单元素在移动浏览器（IOS Safari 等等）上的缩放，加上font-size：</li>
+</ol>
+<p>input[type=”text”],<br>input[type=”number”],<br>select,<br>textarea {<br>  font-size: 16px;<br>}</p>
+<p>###icon字体进化###</p>
+<ol>
+<li>四种字体格式，eot微软，woff,web最佳字体。ttf,mac和微软操作系统最常见的字体。</li>
+<li>svg：由w3c指定的开放的标准的图形格式。</li>
+<li>可以通过在标签里面添加before来插入小图标。那个输入就在content里面，但是为设么这样做也能实现前面的css控制呢？</li>
+<li>node.js优势。高并发，聊天，实时推送。</li>
+<li>doctype标签是一种标准通用标记语言的文档类型声明，她的目的是告诉通用标记语言文档解析器应该用什么样的文档类型定义来解析文档。他是将特定的标记通用语言或者XML文档与文档类型定义联系起来的指令。他出现在文件的第一行。只有确定了一个正确的文档类型，超文本标记语言或者可扩展超文本标记语言中的标记和层叠样式标才能生效，甚至对JS脚本都有影响。</li>
+<li>严格模式是浏览器根据规范去显示页面；混杂模式是以一种向后兼容的方式去显示，决定浏览器如何渲染网站即浏览器使用哪种规范去解析网页。她的触发是根据doctype是否存在和使用的那种dtd来决定。mozilia ,safair还有一种“几乎标准模式”，除了在处理表格上的方式有一点细微的差异之外。其他都不变。</li>
+<li>dtd文档定义类型document type definition 是一套为了进行程序间的数据交换而建立的关于标记符的语法规则。是标准通用标记语言和可扩展语言的一部分</li>
+<li>空元素img ,input,br,hr,</li>
+<li><ol>
+<li>h5不基于sgml，因此不需要对dtd引用，当需要doctype来规范浏览器的行为，让浏览器按照她们的应该的方式运行。</li>
+</ol>
+</li>
+<li>h5基于什么机制实现运行？既然他不基于sgml.沿用了h5的语法，过去的是sgml语法的一个子集，更简洁，更人性化。</li>
+<li>link在页面载入时加载css，而@是在网页完全载入以后加载</li>
+<li>ink,@import url() .link是xhtml标签，除了加载css时间外，还可以定义rss等其他事件，@只能加载css。</li>
+<li><ol>
+<li>link是xhtml标签，没有兼容问题，而@低版本浏览器不支持。</li>
+</ol>
+</li>
+<li>link支持js改变dom去改变样式，而@不支持</li>
+<li>ie:trident 三叉戟</li>
+<li>firfox:gecko 壁虎。</li>
+<li>　<a href="download_pdf.php" download="somefile.pdf">下载PDF文件</a></li>
+<li><ol>
+<li>命名规则：BEM高级别的类。，元素，修饰符代表状态。<br>.site-search{} /<em> 块 </em>/<br>.site-search__field{} /<em> 元素 </em>/<br>.site-search–full{} /<em> 修饰符 </em>/</li>
+</ol>
+</li>
+<li>使用bem的诀窍是，你要知道是什么时候要写成bem格式。因为某些东西确实是位于一个块内的内部，但这并不意味着他就是bem所说的元素。</li>
+<li>遵循单一功能，意味着每一个模块内斗应该有一个单一的功能，并且应该由这个类完全分装起来，单一的原则意味着每一段代码，类，模块都只做一件事。当我们提交css文件时，意味着每隔独立的组建，都应该有自己的 css文件。</li>
+<li>position 和display margin collapse overflow float这些特性叠加后的会怎样？</li>
+<li>1.<br>bfCbox：css布局的对象和基本单位，一个页面就是有很多个box组成的，元素的类型和isplay属性，决定了这个盒子的布局类型。。不同的盒子会参与不同的文档渲染流程，因此，box内的元素会以不同的方式渲染。</li>
+<li>bfc布局规则，内部的box会在垂直方向上，一个接一个的放置。box的垂直方向的距离由margin 决定，属于同一个的bfc的两个相邻的box的margin会发生重叠。</li>
+<li>bfc就是页面上的一个隔离的独立容器，容器的元素不会影响到外面的雨啊怒，反之亦然。</li>
+<li>会生成bfc的元素有这些?根元素， float元素！＝none，position=absolute,fixed，display=inline-block,table-cell,table-caption,flex,inline-flex.over!=visible.每个元素的margin-box左边，与包含块border-box的左边相接触，即使存在浮动也一样。</li>
+<li>m是用来隔开元素和元素之间的距离，padding是用来隔开元素与内容的间隔。margin用于布局分开元素使元素之间互不相干，padding用来元素与内容之间的间隔，让内容和元素之间由一段呼吸距离。</li>
+<li>最根本的区别：是否创造了新的元素：需要在新添加元素加以标示的，就是伪元素，如果在既有元素上添加类名，就是伪类，伪元素表示某个元素的子元素，他们虽然理论上出现，但是实际上并不存在于文档树中。</li>
+<li>伪类用一个冒号表示，伪元素用两个表示加以区分。</li>
+<li>html只能表示12-16的字体，以上的字体锯齿大到没朋友，16以上的都用图片表示</li>
+<li>浮动的历史：包裹特性：bfc块级格式化上下文。</li>
+<li>浮动具有破坏性。会让父级元素塌陷。</li>
+<li>浮动原来的作用是实现文字环绕。</li>
+<li></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;标准盒模型：外盒尺寸：h+p+b+m  内盒：h+p+b&lt;/li&gt;
+&lt;li&gt;ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以才是h+m&lt;/li&gt;
+&lt;li&gt;在网页上显示的时候：实际的占据位置和他的实际大小是不一样的
+    
+    </summary>
+    
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
+    
+      <category term="面试html-css-2" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95html-css-2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css-代码案例</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-css-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-css-代码案例/</id>
+    <published>2017-03-12T05:57:05.000Z</published>
+    <updated>2017-03-12T06:15:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>####做页脚效果：让网页的footer始终位于浏览器串口底部###</p>
+<ol>
+<li><p><code>html, body {
+height: 100%;
+margin: 0;
+}  
+.wrapper {
+min-height: 100%;
+margin-bottom: -50px;
+}
+//这个不就是那那个margin-bottom改变下一个元素的参考位置么？主要是min-height:100%;
+.footer{
+height: 50px;
+background-color: red;
+}</code></p>
+</li>
+<li><p><code>&lt;div class=&quot;wrapper&quot;&gt;
+   content
+ &lt;div class=&quot;push&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;&lt;/footer&gt;</code>主要是必须有push结构</p>
+</li>
+<li><p>方法一的变形：html, body {<br>height: 100%;<br>margin: 0;<br>}<br>.content {<br>min-height: 100%;<br>}<br>.footer {<br>height: 50px;<br>margin-top: -50px<br><code>&lt;div class=&quot;content&quot;&gt;
+ &lt;div class=&quot;content-inside&quot;&gt;
+   content
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;&lt;/footer&gt;</code></p>
+</li>
+</ol>
+<ol>
+<li><code>*{margin: 0;padding: 0;}
+html {
+height: 100%;
+}
+body {
+min-height: 100%;
+display: flex;
+flex-direction: column;
+}
+.content {
+flex: 1;
+}
+.footer{
+background-color: red;
+}</code></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####做页脚效果：让网页的footer始终位于浏览器串口底部###&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;html, body {
+height: 100%;
+margin: 0;
+}  
+.wrapper {
+min-height: 100%;
+margin-bo
+    
+    </summary>
+    
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
+    
+      <category term="css-代码案例" scheme="https://github.com/skoll1/libateer.github.io/tags/css-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/11/best-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/11/best-1-面向对象/</id>
+    <published>2017-03-11T11:55:48.000Z</published>
+    <updated>2017-03-13T04:27:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>对象的情况和数组很相似，只是他的键值类型是自定义的，也就是我们常说的索引方式不再局限于数字了，可以使用一些更加人性化的键值。也就是我们用数组来表示索引型数组，而用对象表示关联性数组</li>
+<li>访问对象的方式/.[]如果我们访问的属性名字是不确定的就必须要用中括号来表示，它允许我们在运行的时候通过相关的变量来实现先关属性的动态属性的存取。</li>
+<li>可以使用一些很奇怪的属性名字，但是遇到保留字的情况要加上‘’这个</li>
+<li>构造函数的方式来创建对象：也就引出了创建对象的方式：工厂的方式，构造函数方式，原型方式，混合的构造函数，原型方式：function Parent(){<br>this.name=”脚本”;<br>this.age=4;<br>};<br>Parent.prototype.lev=function(){<br>return this.name;<br>};;<br>var x =new Parent();<br>alert(x.lev());</li>
+<li>function hero(name){this.name=name};</li>
+<li>var hero=new hero(“hah”);</li>
+<li>hero.name</li>
+<li>实质：创建一个新的对象，使this指向新的对象，</li>
+<li>新对象的prototype指向构造函数的prototypr，返回this，所以创建的实例的实质是获得了一个引用实现原型链的继承。</li>
+<li>全局变量只不过是全局对象的属性罢了。这就是实质window,document</li>
+<li>如果我们定义了一个构造函数又不应new来调用，那么就会返回unefined，如果我们使用###new###来创建对象，那么this就会指向这个该对象。</li>
+<li>insatnceof操作符还可以干这个测试某个属性是不是由某个构造函数的的构造属性。function hero(name){this.name=name};</li>
+<li>var h=new hero(“xixi”);</li>
+<li>var result=h instanceof hero;</li>
+<li>result</li>
+<li>直接使用=号，当我们拷贝某个对象或是将它传递给某个函数时，旺旺都是传递的某个对象的引用。因此我们在拷贝上做任何的改动，都会影响原对象的值。</li>
+<li>内建对象的三种分类：数据封装类函数：，工具类函数。错误对象类函数。</li>
+<li>引用类型不在变量中保存对象，所以本例中的object()实际上并不包含独享的，而是一个指向内存中实际对象所在位置的指针。这是对象和原始值得一个基本差别。</li>
+<li>就像他们复制拷贝的时候的差别b获取值是a值的一份拷贝，虽然，两个变量的值是相等，但是两个变量保存两不同的基本数据类型值。b只是保存了a复制的一个副本。所以，当b的值改变时，a的值依然是10;<br>下面，两个Boolean变量bl和bl1同样是基本数据类型，同样保存两个不同的基本数据据类型值，bl1保存bl复制的一个副本。而对于对象来说：我们声明了一个引用数据类型变量obj1，并把它赋值给了另外一个引用数据类型变量obj2。当我们obj2添加了一个name属性并赋值”我有名字了”。obj1同样拥有了和obj2一样的name属性。说明这两个引用数据类型变量指向同一个堆内存对象。obj1赋值给obj2，实际只是把这个堆内存对象在栈内存的引用地址复制了一份给了obj2，但它们本质上共同指向了同一个堆内存对象。</li>
+<li>两个对象之间的原型关系类似于继承，每个对象都可以把另一个对象作为他的原型，并继承原型的所有属性。对象通过内部属性[prototype]指定他的原型。每个对象都有这个属性，而他可以是null，通过prototype属性连接成的对象称为原型链</li>
+<li>js的值可以在不同的框架之间穿来穿去，当你试图去鉴别一个弱类型的，因为每一个页面都有自己的上下文全局，当把一个数组从一个框架传到另一个框架的时候，instanceOf就无法识别，因为那个数组是来自不同框架之间的Array()，所以就要用Array.isArray()函数了。</li>
+<li>函数就是对象，使他区别于其他对象的一个最重要的特点就是函数存在一个被称为[[call]]的内部属性，他不可以被代码访问到，但是定义代码的执行行为。</li>
+<li>把那些看起来名字超级Nb的东西搞懂真的很有成就感。</li>
+<li>js根据参数的不同类型决定执行的版本就叫做函数重载，但在JS中可以接受任意数量，类型的函数，所以根本不存在重载，但是我们可以根据参数的一些特性来模拟决定函数执行从而模拟其行为。</li>
+<li>当一个属性第一次被添加给一个对象时，Js在对象内调用了一个[put]方法，[put]方法会在对象上创建一个新的节点来保存对象，这个操作不仅指定了初始值，而且也定义了一些属性。注意这个创建的是自有属性，所有对他的操作都必须通过该对象才行。【set】方法是将属性的当前值替换为新值。</li>
+<li>如果想要删除一个属性必须用delete,其他的都是简单的覆盖</li>
+<li>检查对象里面有没有属性的方法；in hasOwnProperty()这个只能检查自有属性，不能检查继承来的;还有一一个就是所有检查的属性必须加上双引号。for(var i in p){console.log(i);}这个也可以。Object.keys(p);返回的是可枚举的属性。</li>
+<li>上面的组合：通过组合hasOwnProperty()方法和in操作符，就可以区分该属性是否存在于原型中。for-in循环与hasOwnProperty()方法输出对象的原型属性。使用in操作符判断某个属性是否存在于对象的实例或原型中。使用for-in循环输出对象所有可枚举的实例属性与原型属性</li>
+<li>实例属性指的是在构造函数方法中定义的属性，属性和方法都是不一样的引用地址例如。。。原型属性指的是不在构造函数中定义的属性，属性和方法都是一样的引用地址，例如function CreateObject(){}<br>CreateObject.prototype.name=’ZHS’;</li>
+<li>对象的访问器属性：包含getter和setter函数。读取访问器属性时，调用getter函数，返回有效的值；在写入访问器属性时，调用setter函数传入新值。它包含了4个特性： </li>
+<li>[[Configurable]]：表示是否能通过delete删除属性从而重新定义属性，能否修改属性的特性，能否把属性修改为访问器属性。 </li>
+<li>[[Enumerable]]：表示能否用for-in循环返回。 </li>
+<li>[[Get]]：读取属性时调用的函数，默认undefined。 </li>
+<li>[[Set]]：写入属性时调用的函数，默认undefined。</li>
+<li>访问器属性甚至包括上面这些都无法直接被定义只能使用函数来修改或访问：var person = {<br> age:100<br>};</li>
+</ol>
+<p>Object.defineProperty(person,”name”,{<br>    configurable:false,能否删除这个属性，能否修改这个属性，能否把这个属性改为访问器属性。<br>    writable:false,<br>    value:”xiaochang”<br>})</p>
+<ol>
+<li>另外需要注意的是当configurable设置为false后无法再将其改为true，且除了writable之外，无法修改其它特性。在configurable为true的情况下可多次调用Object.defineProperty( )修改同一属性。</li>
+<li>访问器属性：包含getter和setter函数。读取访问器属性时，调用getter函数，返回有效的值；在写入访问器属性时，调用setter函数传入新值。它包含了4个特性： </li>
+<li>[[Configurable]]：表示是否能通过delete删除属性从而重新定义属性，能否修改属性的特性，能否把属性修改为访问器属性。 </li>
+<li>[[Enumerable]]：表示能否用for-in循环返回。 </li>
+<li>[[Get]]：读取属性时调用的函数，默认undefined。 </li>
+<li>[[Set]]：写入属性时调用的函数，默认undefined。</li>
+<li>Object.defineProperties(person,{<br> name:{<pre><code>get:function(){
+    return this._name;
+}
+</code></pre> },<br> age:{<pre><code>set:function(newage){
+    this._age = newage;
+}
+</code></pre> },<br> tel:{<pre><code>get:function(){
+    return this._tel;
+},
+set:function(newtel){
+    this._tel= newtel;
+}
+</code></pre> }<br>});</li>
+</ol>
+<p>6.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;对象的情况和数组很相似，只是他的键值类型是自定义的，也就是我们常说的索引方式不再局限于数字了，可以使用一些更加人性化的键值。也就是我们用数组来表示索引型数组，而用对象表示关联性数组&lt;/li&gt;
+&lt;li&gt;访问对象的方式/.[]如果我们访问的属性名字是不确定的就必须要
+    
+    </summary>
+    
+      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>css-基础</title>
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-CSS%E5%9F%BA%E7%A1%80/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-CSS基础/</id>
     <published>2017-03-10T15:30:02.000Z</published>
-    <updated>2017-03-10T16:06:15.000Z</updated>
+    <updated>2017-03-11T10:44:02.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>小东西：淘宝，搭配，比较-游戏-社交-好的一部分-商品评论</li>
@@ -29,6 +575,33 @@
 <li>font-weight:粗细就看这个</li>
 <li>font-stretch:chrome不支持</li>
 <li>@font-face{<br> font-family:’iconfont’;<br> src:url(‘’);<br>}引入字体。</li>
+<li>font-varight:今年仅针对字母：小型的大写字母。</li>
+<li>text-transform:也是和字母有关系，将第一个值变成大写字母，全变成大写，全变成小写。</li>
+<li>white-space:和文字空间有关系的。pre:不会合并文字间的空白，超出边界不换行只会显示一行。nowrap:合并文字间空格，只会显示一行。pre-wrap:不合并空格，但是会发生换行碰到边界。pre-line:会合并空格，也会换行。</li>
+<li>word-space:单词之间的间距,在这个测试里好像他完全是以空格来区分单词的，不论是汉字还是英文。</li>
+<li>letter-space:字符之间的间距</li>
+<li>text-indent:文本缩进。</li>
+<li>word-break:break-all;word-wrap:break-word;想要节省地方，这么写就对了。</li>
+<li>text-align-last:只对最后一行做这个属性设置</li>
+<li>text-justify:类似于flex那种对齐方式，但是没什么卵用，好多浏览器不支持。</li>
+<li>vertical-align:他的百分比是按照line-height计算的。</li>
+<li>vertain—align：起作用的前提是他的元素是inline属性才行。inline-block.table-cell()简单来说就是图片，按钮，文字和单元格。这只是在默认的情况下，当给他设置属性的时候或者使用浮动以后，那就不能显示了。`.test&gt;span{<pre><code>    display: inline-block;width: 210px;vertical-align: middle;
+}
+.test&gt;img{
+    vertical-align: middle;
+    width: 300px;
+    height: auto;
+}`
+</code></pre></li>
+<li>text-size-adjust:auto;文字根据设备大小自动调整</li>
+<li>text-decoration:怎么改下划线加颜色啊。text-decoration-color: #f06d06;这个好像不能显示，只能和color共用一个颜色。</li>
+<li>writing-mode:实现文字的排列</li>
+<li>只要你是内联元素，你就受到vertain-align和line-height的影响。</li>
+<li>行高是字符大小乘百分比。</li>
+<li>定位position:staticabsolute,relative,center,fixed;</li>
+<li>布局：display:inline,block,flex,inline-felx,table</li>
+<li>display:none;彻底消失，原来是位置也腾出来。visibilty:hidden.就是简单的影藏，原来的位置还在。</li>
+<li>margin:相邻的margin会发生合并，我们称之为margin折叠。折叠只会发生在block元素。浮动元素的margin不发生任何折叠。根元素，绝对定位的元素也不发生折叠。</li>
 <li></li>
 </ol>
 ]]></content>
@@ -55,7 +628,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-%E7%BD%91%E7%AB%99%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-网站代码分析/</id>
     <published>2017-03-10T15:22:43.000Z</published>
-    <updated>2017-03-10T15:27:07.000Z</updated>
+    <updated>2017-03-12T06:17:52.000Z</updated>
     
     <content type="html"><![CDATA[<p>###bootstrap###</p>
 <ol>
@@ -131,8 +704,23 @@
 <li>ul+</li>
 <li>table+</li>
 <li>select+</li>
-<li>cc:ie6</li>
+<li>cc:ie6<br>####知乎###</li>
 </ul>
+<ol>
+<li><ol>
+<li>首先就是在html那块还加了一堆class.</li>
+</ol>
+</li>
+<li>在head里面也加了一堆页面内的样式。style.</li>
+<li>Logo一般都是用a装的。<a href="“/“"></a></li>
+<li>可能要转到下一页的都用a标签，</li>
+<li>汉字一般用span装。</li>
+<li>下面可能出现的东西就要用ul ，li，装了，这些都是，然后a里面的汉字用i标签来装。</li>
+<li>图标的东西都要用i</li>
+<li>可以表示为列表的都要用ul li</li>
+<li>A 可以用来表示，出现一个“新动态”，“加载中”。利用这个来加载新的东西。</li>
+<li>Span还可以加小圆点来</li>
+</ol>
 </li>
 </ol>
 ]]></content>
@@ -162,7 +750,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-%E8%87%AA%E9%80%82%E5%BA%94%E9%A1%B5%E9%9D%A2/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-自适应页面/</id>
     <published>2017-03-10T15:18:38.000Z</published>
-    <updated>2017-03-10T15:21:18.000Z</updated>
+    <updated>2017-03-11T11:17:10.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>box-sizing:border-box;</li>
@@ -260,7 +848,13 @@
 <li>真正响应设计方法不仅仅只是根据视口大小改变网页布局。相反，我们应该首先针对小屏幕进行设计，然后足部增大对屏幕的设计和内容、</li>
 <li>他只是一种根据不同设备内容进行完美布局的一种显示机制。相反，如果需要根据不同设备提供特定内容的功能，那就需要一个真正的手机版网站</li>
 <li>www.mediaqueri.es</li>
-<li>媒体查询能够检测那些属性。</li>
+<li>媒体查询能够检测那些属性。视口宽度和屏幕宽度。</li>
+<li>移动设备在任何时候都要想到文字输入的困难。</li>
+<li>在小屏幕中去除那些不必要的杂乱元素，在大屏幕中突出控件和增强式导航。</li>
+<li>要时刻质疑开发过程中是否简化了界面，设计师非常容易陷入增加新设计的误区。</li>
+<li>可以先体验些没有被优化的应用来决定自己的下一步操作。</li>
+<li>真正的响应式设计不是根据视口来改变网页布局，而是我们首先针对小屏幕进行设计，然后逐步增加对大屏幕的设计和内容。</li>
+<li>对于inline元素来说，水平padding产生影响，垂直padding不影响。padding: 41%;<br>display: inline;</li>
 </ol>
 ]]></content>
     
@@ -287,7 +881,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-3-%E6%88%98%E4%BA%89%E7%9A%84%E9%80%BB%E8%BE%91-%E6%99%AE%E9%B2%81%E5%A3%AB%E5%88%B0%E5%BE%B7%E5%9B%BD%E5%B4%9B%E8%B5%B7/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-3-战争的逻辑-普鲁士到德国崛起/</id>
     <published>2017-03-10T14:32:27.000Z</published>
-    <updated>2017-03-10T15:17:52.000Z</updated>
+    <updated>2017-03-11T08:53:49.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>没有什么东西能够够比陆军和海军更加依赖经济前提。一发炮弹是那个时代农民五年的收入<br>2.一旦技术上的进步可以用于军事并且已经用于军事目的，他们便立刻几乎强制的。而且往往是违反指挥官意图而引起作战方式的改变甚至是变革。随着技术武器的出现，将再也不可能出现落后文明对高等文明的征服，也就是说，类似与成吉思汗之类的草莽英雄再也不会回来了。 </li>
@@ -319,7 +913,18 @@
 <li>此前是法国一家独大：一个流传甚广的笑话是这样说的。从此欧洲收了一个女管家，来了一个男主人。</li>
 <li>普法战争的演变：从德国对法国的侵略变成法德两国对欧洲霸权的争夺。</li>
 <li>从此德国和发过结下了世仇：7.5亿白银。阿尔萨斯和洛林。无法化解的仇，所以尽可能的削弱法国。</li>
-<li></li>
+<li>德国：不强大到遭人嫉妒，避免俄法结盟。</li>
+<li>俄–内陆国家，想要获得出海港口–黑海海峡周围的土地（除了这个，也有一点宗教行为）。–英国遏制俄国–印度：东印度公司一开始是香料（后来价格下降）开始鸦片–利益太大，所以印度成为英国的咽喉。 鸦片–纺织–茶叶</li>
+<li>印度的财富滋养了大英帝国：1910年的收入相当于293吨黄金。所以他要控制所有去往英国的航线。</li>
+<li>拿破仑时代结束后，欧洲民族主义开始兴起，沙皇俄国趁机叫嚣“泛斯拉夫主义”，企图利用民族主义鼓动这些南部斯拉夫人民从土耳其的统治下独立出来，成为操纵的傀儡，从而实现间接控制黑海海峡的目的</li>
+<li>欧洲制度规定只有正妻的儿女才有继承权，情妇永远是违法的，所以才会有女国王。</li>
+<li>奥匈帝国：让别人去打仗吧，快乐的奥地利喜欢和别人结婚。可以说是他现在自己早就独自疼得受不了了，根本没有闲工夫去寻找那些吃的东西了。</li>
+<li>结果就是由于俄奥两国在巴尔干半岛的争夺最终引爆了第一次世界大战。</li>
+<li>土耳其的统治极其残暴，在位的苏丹为了防止自己的儿子和兄弟夺权，会把他们关在一个没有窗户的建筑里，很多皇子都是这样度过一辈子的，当老的苏丹死了，他们之中幸运的一个会被选为国王，完全不懂人情事故，没有受过教育，甚至不知道如何和别人交谈的人就当了这个帝国的国王。</li>
+<li>塞尔维亚起义成功–俄国开始以“奥斯曼帝国东正教基督徒的保护着为名”，这样就是可以插手一些国际事务了。</li>
+<li>希腊要起义了。—为了减少俄国早巴尔干半岛的影响。最后俄委员会认为，一旦奥斯曼帝国崩溃，那么欧洲列强各国对土耳其瓜分的狂潮，并将导致分脏不均而引发世界大战。</li>
+<li>同时英国为了减弱俄国的影响力，决定帮助希腊独立—希腊独立以后，这更加鼓舞了巴尔干各民族争取独立的斗志。</li>
+<li>1841年-规定黑韩海峡由国际共同管理，并对各国军舰封闭，这就废除了此前俄国十多年的n</li>
 </ol>
 ]]></content>
     
@@ -340,19 +945,284 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-JS%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-JS代码规范/</id>
     <published>2017-03-09T15:19:23.000Z</published>
-    <updated>2017-03-09T15:21:03.000Z</updated>
+    <updated>2017-03-13T12:01:28.000Z</updated>
     
-    <content type="html"><![CDATA[<ol>
+    <content type="html"><![CDATA[<p>###腾讯代码规范###</p>
+<ol>
+<li>项目名字全部小写，中间用下划线分割。</li>
+<li>有复数形式的时候要采用复数命名法。scripts</li>
+<li>Js文件命名：参照项目名字</li>
+<li>html语法：缩进四个空格。嵌套的节点要缩进。属性上都用双引号，属性名都小写，用中划线做分隔符。不要再自动闭合的变迁结尾处做斜线，不要忽略可选的关闭标签。</li>
+<li>Lang属性；在HTML标签上加上lang属性。这会给语音工具和翻译工具帮助，告诉他们怎么发音和翻译。</li>
+<li>字符编码：通过声明一个明确的字符编码，让浏览器更加轻松，快速的确定适合网页的渲染方式，通常是“UTF-8</li>
+<li>meta变迁还可以指定页面用什么版本的IE来渲染；查，不同doctype在不同的浏览器下出发不同的渲染模式</li>
+<li>引入css和js的时候不需要指明type,因为他们有默认值。查。这些都可以在w3c官方文档上面查到。</li>
+<li>属性顺序：按照特定的顺序保证易读性：class,id,name,data-,/src,for,type,href,value,max-lenght,max,min,pattern/placeholder,title,alt,aria-*,role,reqired,readonly,disabled.</li>
+<li>class是为了高可用重复组件设计的，所以尽量放在前面，id更高具体，所以尽量少用，放在第二位。</li>
+<li>bolean属性表示不需要声明取值的属性，XHTML需要每个属性声明取值，但是html5并不需要；bloean属性的存在表示取值为true，不存在表示取值为false。（sselected）</li>
+<li>在js文件中生成标签会让内容变得更加难查找，更难编辑，性能更差。所以应该尽量避免这种情况的出现</li>
+<li>减少标签的数量：在编写代码的时候，要尽量避免多余的父节点；很多时候，都需要通过迭代和重构来使元素变得更少。</li>
+<li>在遵循html标准和语义的时候，但是不应该以浪费实用性作为代价。</li>
+<li>任何时候都要尽量小的复杂度和尽可能小的标签来解决问题。</li>
+<li>css缩进4个空格。</li>
+<li>以下几种情况下需要空格：属性值钱，选择器’&gt;’,’+’,’~’前后。</li>
+<li>空行：文件最后白留一个空行。属性之间要保留空行。</li>
+<li>换行的规则</li>
+<li>注释的规则：</li>
+<li>引号：最外层要用双引号，url的内容要用引号。属性选择器中的属性值需要引号。<br>li[data-type=”single”] </li>
+<li>类名用小写加中划线分割</li>
+<li><p>id用驼峰式命名<br>相关的属性声明要按照右边的顺序分组处理，各组之间需要有一个空行。<br>declaration-order{<br>display: block;<br>float: right;</p>
+<p>position: absolute;<br>top: 0;<br>right: 0;<br>bottom: 0;<br>left: 0;<br>z-index: 100;</p>
+<p>border: 1px solid #e5e5e5;<br>border-radius: 3px;<br>width: 100px;<br>height: 100px;</p>
+<p>font: normal 13px “Helvetica Neue”, sans-serif;<br>line-height: 1.5;<br>text-align: center;</p>
+<p>color: #333;<br>background-color: #f5f5f5;</p>
+<p>opacity: 1;}<br>感觉上面的没必要啊：用chrome的时候之间分出来了，就是那个再次修改的时候比较好找一点。</p>
+</li>
+<li>颜色16进制用小写，16进制最好简写</li>
+<li>属性简写要你特别熟悉属性的正确顺序，而且大多时候都不要写出全部的内容，所以建议分开写，因为那也废不了多少时间《放屁，给不认识的人看的时候好看就看吧。</li>
+<li>尽量将媒体查询的规则靠近与他们相关的规则，不要将他们一起放到一个独立的样式文件中，那样做只会让人们更加容易忘记他们。</li>
+<li>属性值为0的后面不加任何单位。</li>
+<li>无前缀的属性要写在有前缀的属性后面。不要再同个规则里出现重复的属性，如果重复的属性是连续的就没关系。</li>
+<li>用 border: 0; 代替 border: none;；</li>
+<li>Js</li>
+<li>换行的时候，行末必须有运算符：</li>
+<li>但是在关键字哦的后面，else,catch,finally的后面就不要换行了。</li>
+<li>代码注释和文档注释。。。</li>
+<li>在这个里面最外层统一用单引号。</li>
+<li>用’===’, ‘!==’代替’==’, ‘!=‘；</li>
+<li>for-in里一定要有hasOwnProperty的判断；</li>
+<li>对上下文this的引用只能使用’_this’, ‘that’, ‘self’其中一个来命名</li>
+</ol>
+<p>###百度代码规范###</p>
+<ol>
 <li></li>
+<li>缩进与换行：4个空格为一个缩进层。每行不要超过120个字符；</li>
+<li>class命名必须代表相应的模块或不见得内容或功能，不得以样式信息来命名。</li>
+<li>禁止为了hack创建无样式的class.</li>
+<li>不允许class只是为了让js选择某系元素，class应该具有明确的语义和样式。否则容易导致css的泛滥</li>
+<li><p>ie会混淆name和id，所以最好他们之间不一样。<br>7.</p>
+<!-- good -->
+<input type="text" name="title">
+</li>
+<li><p>上面这个编辑器会自己解决吧。</p>
+</li>
+<li>标签使用必须符合严格的嵌套规则</li>
+<li>块级元素 一般用来搭建网站架构、布局、承载内容……像这些大体力活都属于块级元素的，它包括以下这些标签： </li>
+</ol>
+<p>address、blockquote、center、#dir#、div、dl、dt、dd、fieldset、form、h1~h6、hr、isindex、menu、noframes、noscript、ol、p、pre、table、ul </p>
+<ol>
+<li>内嵌元素 一般用在网站内容之中的某些细节或部位，用以“强调、区分样式、上标、下标、锚点”等等，下面这些标签都属于内嵌元素： </li>
+</ol>
+<p>a、abbr、acronym、b、bdo、big、br、cite、code、dfn、em、font、i、img、input、kbd、label、q、s、samp、select、small、span、strike、strong、sub、sup、textarea、tt、u、var </p>
+<ol>
+<li></li>
+<li>display: inline; /<em> 转成内嵌元素 </em>/<br>14.<br><div><h1></h1><p></p></div> —— 对<br><a href="”#”"><span></span></a> —— 对 </li>
+<li><span><div></div></span> —— 错 </li>
+<li><ol>
+<li>有几个特殊的块级元素只能包含内嵌元素，不能再包含块级元素，这几个特殊的标签是：<br>h1、h2、h3、h4、h5、h6、p、dt </li>
+</ol>
+</li>
+<li>li 内可以包含 div 标签 —— 这一条其实不必单独列出来的，但是网上许多人对此有些疑惑，就在这里略加说明</li>
+<li>li 和 div 标签都是装载内容的容器，地位平等，没有级别之分（例如：h1、h2 这样森严的等级制度^_^），要知道，li 标签连它的父级 ul 或者是 ol 都可以容纳的，为什么有人会觉得 li 偏偏容纳不下一个 div 呢？别把 li 看得那么小气嘛，别看 li 长得挺瘦小，其实 li 的胸襟很大滴…… </li>
+<li>p - 段落</li>
+<li>h1,h2,h3,h4,h5,h6 - 层级标题</li>
+<li>strong,em - 强调</li>
+<li>ins - 插入</li>
+<li>del - 删除</li>
+<li>abbr - 缩写</li>
+<li>code - 代码标识</li>
+<li>cite - 引述来源作品的标题</li>
+<li>q - 引用</li>
+<li>blockquote - 一段或长篇引用</li>
+<li>ul - 无序列表</li>
+<li>ol - 有序列表</li>
+<li>dl,dt,dd - 定义列表</li>
+<li>虽然列的都是常用的。但是没必要记那么多啊，最多就是自己给默认了几个css样式，如果对语义化和seo有差距的话那就另当别论了</li>
+<li>布尔类型的属性，不要加属性值。</li>
+<li>自定义属性的写法data- 使用前缀有助于区分自定义属性和标准定义的属性。<br>35.<br><meta http-equiv="X-UA-Compatible" content="IE=Edge"><br>启用IE Edge<br>36.<br>引入 CSS 时必须指明 rel=”stylesheet”</li>
+</ol>
+<p>不需要的是type属性这个是默认的<br>37.<br>添加 width 和 height 属性，以避免页面抖动。</p>
+<p>[建议] 有下载需求的图片采用 img 标签实现，无下载需求的图片采用 CSS 背景图实现。</p>
+<p>强制] 有文本标题的控件必须使用 label 标签将其与其标题相关联。</p>
+<label><input type="checkbox" name="confirm" value="on"> 我已确认上述条款</label>
+
+<p><label for="username">用户名：</label> <input type="textbox" name="username" id="username"><br>具体选择形式是这个。。</p>
+<p>使用 button 元素时必须指明 type 属性值。</p>
+<p>解释：</p>
+<p>button 元素的默认 type 为 submit，如果被置于 form 元素中，点击后将导致表单提交。为显示区分其作用方便理解，必须给出 type 属性。</p>
+<p>真的默认是提交我去了了。。。</p>
+<ol>
+<li>负责主要功能的按钮应该放在相对靠前，以提高访问性。</li>
+<li>当使用js进行提交表单的时候，如果条件允许，使用原生的提交功能，当js出错的时候，照样可以提交</li>
+<li>在媒体格式的时候，音频要是mp3,Wav,ogg.视屏要是MP4，webm,ogg.</li>
+<li>Css</li>
+<li>Css文件使用无bom得utf-8格式<br>6.<br>.post,<br>.page,<br>.comment {<br> line-height: 1.5;<br>}<br>main &gt; nav {<br> padding: 10px;<br>}</li>
+</ol>
+<p>label + input {<br>    margin-left: 5px;<br>}</p>
+<p>input:checked ~ button {<br>    background-color: #69C;<br>}<br>article[character=”juliet”] {<br>    voice-family: “Vivien Leigh”, victoria, female;<br>}</p>
+<p>#error,<br>不得为id,class选择器添加类型选择器进行限定。<br>选择器的嵌套层级应该不大于3级，位置靠后的限定条件应该尽可能的精确。<br>并以 Formatting Model（布局方式、位置） &gt; Box Model（尺寸） &gt; Typographic（文本相关） &gt; Visual（视觉效果） 的顺序书写，以提高代码的可读性</p>
+<pre><code>* Formatting Model 相关属性包括：position / top / right / bottom / left / float / display / overflow 等
+* Box Model 相关属性包括：border / margin / padding / width / height 等
+* Typographic 相关属性包括：font / line-height / text-align / word-wrap 等
+* Visual 相关属性包括：background / color / transition / list-style 等
+</code></pre><p>将 z-index 进行分层，对文档流外绝对定位元素的视觉层级关系进行管理。</p>
+<p>如多个由用户输入触发的 Dialog，在该层级内使用相同的 z-index 或递增 z-index。</p>
+<p>建议每层包含100个 z-index 来容纳足够的元素，如果每层元素较多，可以调整这个数值。</p>
+<p>在第三方环境下，期望显示在最上层的元素，通过标签内联和 !important，将 z-index 指定为 2147483647</p>
+<p>RGB颜色值必须使用十六进制记号形式 #rrggbb</p>
+<p>[强制] font-family 属性中的字体族名称应使用字体的英文 Family Name，其中如有空格，须放置在引号中。</p>
+<p>font-family 按「西文字体在前、中文字体在后」、「效果佳 (质量高/更能满足需求) 的字体在前、效果一般的字体在后」的顺序编写，最后必须指定一个通用字体族( serif / sans-serif )。</p>
+<p>font-family: “Helvetica Neue”, Arial, “Hiragino Sans GB”, “WenQuanYi Micro Hei”, “Microsoft YaHei”, sans-serif;<br>但目前受字体本身质量和浏览器的限制，实际上支持 400 和 700 两档，分别等价于关键词 normal 和 bold。<br>将 line-height 设置为数值，浏览器会基于当前元素设置的 font-size 进行再次计算。在不同字号的文本段落组合中，能达到较为舒适的行间间隔效果，避免在每个设置了 font-size 都需要设置 line-height。</p>
+<p>当 line-height 用于控制垂直居中时，还是应该设置成与容器高度一致。</p>
+<p>尽可能在浏览器能高效实现的属性上添加过渡和动画。</p>
+<pre><code>* transform: translate(npx, npx);
+* transform: scale(n);
+* transform: rotate(ndeg);
+* opacity: 0..1;
+</code></pre><p>.box {<br>    transition: transform 1s;<br>}<br>.box:hover {<br>    transform: translate(20px); /<em> move right for 20px </em>/<br>}<br>Media Query 不得单独编排，必须与相关的规则一起定义。</p>
+<p>.box {<br>    -webkit-box-sizing: border-box;<br>       -moz-box-sizing: border-box;<br>            box-sizing: border-box;<br>}</p>
+<p>Js</p>
+<ol>
+<li>Js文件使用无BOM的UTF-8编码</li>
+<li><ol>
+<li>所有看到的东西都是通过引擎绘制出来的，更新频率取决于开发者指定的FPS，帧数越高，视觉上感觉越流畅，60是满值。在实际运行情况中，性能还取决于JS解析器的效率，制定的FPS帧数可能在低性能解释器中得不到体现，所以这不是开发者所能决定的，说一只能做的是尽可能的优化代码，关注每帧执行逻辑代码带来的CPU消耗，好需要注意每帧调用回吐指令的数量以及CPu的纹理提交速度</li>
+</ol>
+</li>
+<li>基准测试：实时监测当前性能。FPS越高越好。Sprite：渲染节点数量：越低越好</li>
+<li>内存优化：对象池：涉及到不断重复使用的对象。在初始化应用的程序期间创建一定的数量的对象并将其存储在一个池中。对一个对象完成操作后，将该对象放回到池中，在需要新对象时可i对其进行检索</li>
+<li>h5内嵌框架标签元素，iframe<iframe src="http://www.divcss5.com/" width="400" height="200" scrolling="yes">使用框架不利于网页搜索的优化。</iframe></li>
+<li>闭合标签就是标签又开始，有结束</li>
+<li>h5可以支持很多标签不闭合</li>
+<li>无内容元素：是一种不能包含任何内容的特殊的元素，例如:br,hr,img,link,meta,area,base,col,command,embed,keygen,param,source,track,war,渊源：sgml时期有一种标签叫无尾标签，当一个标签内只有简单的文字的时候，就可以使用无尾标签无须闭合这个标签了。</li>
+<li>接下来升级为无标签元素，<br>这样写起来自然，当h5的时候，他们是这样说的：HTML5 的语法完全兼容 HTML4 和 XHTML1，但是不兼容 SGML 中那些晦涩的 HTML4 特性。比如无尾标签（&lt;em/content/）。</li>
+<li>自闭合标签到底要不要加／号，</li>
+<li>创建按钮的四种方法<input type="button"> 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。</li>
+<li><input type="submit"> 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。<button> 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容问题。其他标签，例如 a, img, span, div，然后用图片把它伪装成一个按钮.如果只是歌单纯的按钮，触发一些动画动作，那么button,当要把画面数据提交给服务器的submit。</button></li>
+<li>button和input:button.在button内部，您可以放置内容，比如文本或图像。这是该元素与实用input元素不同的之处。button与button之间的所有内容都是按钮内容，其中包括可接受的正文内容，文本或者多媒体内容。需要注意的是要始终给她加上type属性，IE的默认类型是button而其他的浏览器着submit。</li>
+<li>web安全色216种，</li>
+<li>img上title和alt  title是在鼠标悬停上显示的内容，alt是在某种情况无法显示图片的情况下出现的信息。</li>
+<li>网页字体用偶数不用奇数</li>
+<li>网页元素</li>
+<li>meta：位于文档的头部，定义了与文档相关联的元信息，这些元对象是以名称的形式成对定义的。一个页面可以定义多个meta标签，每个标签分别通过对应的name（关联到http头部）和content（把属性关联到一个名称）属性定义键值，来定义不同的原信息。</li>
+<li>base指定所有页面中所有链接的基础路径。如果没有base的话，那么页面所有的相对路径将生成绝对路径作为默认的基础路径。</li>
+<li>style的type 指定样式类型，浏览器支持的样式只有css一种，所以这个属性只有css一种，media属性置顶使用的媒体，表明文档在什么时候用什么元素定义的样式。</li>
+<li>media属性详解：运算符 and,not ,or,</li>
+<li>link:link和style 怎么结合起来用啊？link内部也有一些属性，media.</li>
+<li>给网站添加logo。&lt;link rel=“shortcut icon” href=“” type=“image/x-icon”&gt;</li>
+<li>预先获取资源：等同于让浏览器在空闲时间或预读取一些资源文档，不造成资源浪费。</li>
+<li>link rel=“prefetch” href=“页面地址” 怎样控制什么时候开始。。</li>
+<li>这是什么书？真是菜啊。。</li>
+<li>异步执行脚本。方法：回调函数，事件监听，观察者模式，promise对象。</li>
+<li>meta定义页面关键<meta name="“keywords”" content="“”">设置页面描述：<meta name="“description”" content="“输入内容"">都是为了搜索引擎，只是输入的字数限制不同。<meta name="“author”" content="“"">设置作者信息，<meta name="“robots”" content="“可选值”">：可以限制搜索网站方式，也就是把自己藏起来，</li>
+<li>语言和文字:<meta http-equiv="“content-language”" content="“Zh-CN”/"></li>
+<li>定时跳转页面：&lt;meta http-equiv=“Refresh” content=“10,url=http:www.baidu.com”&gt;也可以刷新网页</li>
+<li>设置网页缓存过期的时间。</li>
+<li>禁止从缓存中调用。</li>
+<li>删除过期的cookie.</li>
+<li>网页过渡效果：什么都可以，我去长见识了</li>
+<li>标记文字</li>
+<li>强调em.外文或科技术语i.重要的文字:strong.表示不正确和较正s.</li>
+<li>为文字加下划线u.小号字体small.添上标sub.下标sup.</li>
+<li>表示缩写abbr.定义术语<dfn title="“sdfsdf”">jlkjlklkjl</dfn>;</li>
+<li>引用其他处的内容<q cite="“http://baidu.com”">sdkls<p></p>;</q></li>
+<li>cite引用其他作品的标题。</li>
+<li><ruby>漠&lt;&gt;</ruby></li>
+<li>显示图像</li>
+<li>图像预先加载</li>
+<li>图像区域映射 <img><map>&lt;area shape=“circle coords=“0,100,200,30,9”&gt;</map></li>
+<li>使用base64:url格式的图片。data取的数据的协定名称。就是代码表示一张图片，但是不能大于32k.高清图片不能显示，不可以裁成小段么？</li>
+<li>生成超链接</li>
+<li>指向外部的</li>
+<li>使用相对url，相对路径和。绝对路径。</li>
+<li>生成页面⚓️点</li>
+<li>生成图像链接，电子邮件链接mailto</li>
+<li>设定浏览环境——self当前页面打开，_blank创建新页面打开。</li>
+<li>组织文字内容</li>
+<li>pre：可以定义预格式化的文本。被包围在pre中的元素会保留空格和换行符。而文本也会呈现为等宽字体。pre标签的一个常见的应用就是来显示计算机的代码可以显示非格式化的内容。</li>
+<li>应用他处内容block quote 他们之间的所有文本都会被从常规的文本中分离出来，经常会在左右两边缩进，而且有时会用斜体，也就是说，块引用有自己的空间。</li>
+<li>dialog h5中用于定义对话框或窗口</li>
+<li>划分文档结构：标题的使用是十分常见的，页面标题，模块标题，块区标题，各式各样的标题都可以使用h1-h6来实现。</li>
+<li>hgroup 给标题分组隐藏起来，那就可以出现多个了。</li>
+<li>section:对内容进行块划分，代码层次结构简单。在一个页面里面可以使用多个footer，既可以做页面的整体页脚，也可以做为一个内容区块的结尾。</li>
+<li>语义化写代码article大段纯文字   附注栏：aside. </li>
+<li>adress在页面输出联系人信息。</li>
+<li>details summary 配合起来可以提供一个显示和隐藏文字的小工具。</li>
+<li>使用下拉列表：label for=“sd”我最爱的球队 input type=“text” name=“team” id=“team_list”<pre><code>1. datalist id=“team_list&quot;
+2. option edg
+                        1. option rng但是这个怎么自动生成啊，这只能玩现成的？
+</code></pre><ol>
+<li><ol>
+<li>使用局部变量。只要使用超过一次，最好都设置为局部变量。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>高效的数据读取，4字面量值，变量，数组元素，对象属性。真正的差异在于从数组或对象中读取数据。存取这些数据结构中的某个值，需要通过索引或属性值来查询数据存储的位置。</li>
+<li>在数据存储的过程中，将函数使用超过一次的对象属性或数组元素存储为局部变量是一种好方法。</li>
+<li>流控制：在每个环节上选择浅淡的语句能够极大的提高脚本的运行速度。</li>
+<li>// 条件判断</li>
+<li>if(value==9){</li>
+<li>return 9;</li>
+<li>}else if(value==8){</li>
+<li>return 8</li>
+<li>}</li>
+<li>// 把最常用到的条件摆到前面，而不是按照顺序一个一个的来排练。 </li>
+<li>if(value&lt;6){</li>
+<li>if(value&lt;3){</li>
+<li>if(value==0){</li>
+<li>return 0;</li>
+<li>}else if(value==1){</li>
+<li>return 1;</li>
+<li>}</li>
+<li>}</li>
+<li>}</li>
+<li>//这样式将条件拆分为几个分支，确保执行任意一次都不会超过4次条件判断。</li>
+<li>// 当有大量的条件判断时，推荐使用switch而不是if而且可以参照第一种用法。</li>
+<li>// 数组查询方法，超过10个条件需要判断，</li>
+<li>var result=[result0,result2,1,2,3,,4,]</li>
+<li>return return[value];</li>
+<li>// 循环问题</li>
+<li>// 反复比较计数变量和数组的长度。</li>
+<li>// 保存var length=arr.length;</li>
+<li>var values=[1,2,3,4,4];</li>
+<li>var length=values.length;</li>
+<li>for(var i=length;i–){</li>
+<li>process(values[i]);</li>
+<li>}</li>
+<li>// 结束条件与0做比较，大大减少时间的浪费。</li>
+<li>// 处理大量数组的展开循环方法</li>
+<li>var item=Math.floor(values.length/8);</li>
+<li>var leftover=values.length%8;</li>
+<li>var i=0;</li>
+<li>if(leftover&gt;0){</li>
+<li>do{process(values[i++]);</li>
+<li>}while(–leftover&gt;0);</li>
+<li>}</li>
+<li>do{</li>
+<li>process(values[i++]);</li>
+<li>process(values[i++]);<br>}while(–item&gt;0);<br>// 字符串优化<br>// 频繁的在后台创建和销毁字符串是很费时间的，加法是在字符在1000以内所有浏览器都能在1毫秒之内完成，此时优化已经没有意义了<br>// 裁剪字符串；<br>function trim(text){<br>return text.replace(/^\s+|\s+$/g,””);<br>}<br>// 提花你开头或结尾的空白元素。<br>function trim(text){<br>text=text.raplace(/^\s+/,””);<br>for(var i=text.length-1;i&gt;=0;i–){<br>if(/\s/.text.(text.charAt(i))){<pre><code>text=text.substring(0,i+1);
+break;
+</code></pre>}<br>return text;<br>}<br>}<br>// 大量最快。<br>// js是单线程语言，那意味着一段时间呗只能执行一个操作，这意味着在执行js时所有的用户交互都会被打断，所以可能会出现页面冻结<br>// 脚本失控的原因，过多的dom交互，什么是dom交互.<br>// 过多的循环，过多的递归。<br>// 解决办法：使用定时器挂起。<br>window.onload=function(){<br>setTimeout(function(){<br>// 被延迟的脚本1<br>setTimeout(function(){<pre><code>// 被延迟的脚本2
+</code></pre>}，100)<br>}，100)<br>}<br>// 超越gzip的压缩<br>// 有些头文件的请求会被修改，主要是web代理和pc安全软件，通过移除accept-encoding头的技术来窃听。<br>// 设计目标：最小化未压缩的文件的尺寸。使用事件委托：当有多个元素需要执行相同的事件时，可以把这个事件的处理程序绑定到<br>// 她的父级元素上面，但这个元素在字元素出发的时候，会冒泡到父元素上面。2使用相对url3移除空白。4移除属性的引号<br>// 避免行内样式，5为JS设置别名var $=document.getElementById;<br>// 直接检测是否支持Gzip。来为她设置这个属性。</li>
+</ol>
+<p>// 图像优化：<br>// 使用图片优化技术2:选择合适的格式,jpeg保存照片，GIF保存动画，其他所有动画都用png来保存，但是尽量使用png8。<br>// 对于超过10KB的图像，采用渐进jpeg编码。使用csssprite.不要在页面内对图片大小缩放。<br>划分主域：htttp瀑布图。</p>
+<ol>
+<li>最大链接限制的是url上的主机名，而不是解析出来的IP地址。只要为新域建立一条cname纪录。仅仅是以一个域名的别名，即使域名是来自一个服务器，那么浏览器依旧会给每个主机打开最大链接数。</li>
+<li>css选择符，避免使用通配原则，不要限定id 选择符，不要限定类选择符，让规则越具体越好，不要使用后代选择符，依靠继承。</li>
+<li>避免使用的选择符：决定优化的部分是在哪些可能匹配大量元素的关键选择符上面。</li>
+<li>css选择符</li>
+<li>性能工具：数据包嗅探器，性能分析器：YSlow                                   </li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;ol&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
+      &lt;p&gt;###腾讯代码规范###&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;项目名字全部小写，中间用下划线分割。&lt;/li&gt;
+&lt;li&gt;有复数形式的时候要采用复数命名法。scripts&lt;/li&gt;
+&lt;li&gt;Js文件命名：参照项目名字&lt;/li&gt;
+&lt;li&gt;html语法：缩进四个空格。嵌套的节点要缩进。属性上
     
     </summary>
     
@@ -524,11 +1394,11 @@
   </entry>
   
   <entry>
-    <title>weui</title>
+    <title>weui-移动开发</title>
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-weui/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-weui/</id>
     <published>2017-03-09T13:19:26.000Z</published>
-    <updated>2017-03-09T13:20:03.000Z</updated>
+    <updated>2017-03-11T11:20:16.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。</li>
@@ -882,212 +1752,6 @@
     
       <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>牛客面试</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-%E9%9D%A2%E8%AF%95-html/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-面试-html/</id>
-    <published>2017-03-08T15:52:28.000Z</published>
-    <updated>2017-03-09T13:21:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>meta标签的组成：meta标签共有两个属性，他们非别是http-equiv属性和name属性，不同的属性有不同的参数，这些不同的参数值实现了网页不同的功能。</li>
-<li>name主要用于描述网页，与之对应的属性值为content,content的内容主要是便于搜索引擎机器人查找信息和分类信息。</li>
-<li>Robots:告诉机器人那些页面需要索引，哪些不需要。。all:文件将被检索，而且页面上的链接可以被查询,none：文件不被查询，链接也不能被查询,index:文件将被检索,follow:页面上的链接可以被查询,nofollow：文件将被检索，但是页面上的链接不可以被查询.noindex:文件不能被检索，但是链接可以被查询。</li>
-<li>Generator:代表说明网站采用什么软件制作。</li>
-<li>Copyright:代表网站的版权信息。</li>
-<li>Revisit-after:7days:表示网站重访问的天数。</li>
-<li>Http-equiv:expires:期限：用于设置网页的到期时间，一旦网页过期，必须到服务器上重新传输。必须使用GMT的时间格式。</li>
-<li>Pragma:禁止浏览器从本地计算机的缓存中访问页面内容。：no-cache.</li>
-<li>Refresh:”2;URL=<a href="http://baidu.com&quot;自动刷新并且指向新页面。这个的意思是停留两秒自动刷新新的URL网址。" target="_blank" rel="external">http://baidu.com&quot;自动刷新并且指向新页面。这个的意思是停留两秒自动刷新新的URL网址。</a></li>
-<li>Set-Cookie:如果网页过期，那么存盘的cookie将被删除。cookie value=<em>*</em>,expires=</li>
-<li>Window-target:显示窗口的设定，强制页面在当前页面以独立页面显示：用来防止别人在框架里调用自己的页面。</li>
-<li>Content-type:显示字符集的设定：设定页面使用的字符集。</li>
-<li>Content-langue:显示语言的设定。</li>
-<li>Cache-control:指定请求和响应遵循的缓存机制。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;meta标签的组成：meta标签共有两个属性，他们非别是http-equiv属性和name属性，不同的属性有不同的参数，这些不同的参数值实现了网页不同的功能。&lt;/li&gt;
-&lt;li&gt;name主要用于描述网页，与之对应的属性值为content,content的内容主要
-    
-    </summary>
-    
-    
-      <category term="面试-html" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95-html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原始值包装对象</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-原始值包装对象/</id>
-    <published>2017-03-08T13:38:14.000Z</published>
-    <updated>2017-03-08T13:38:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1：布尔值，数字和字符串这三种原始值都有对应的构造函数：Boolean,Number,String().他们的实例包含原始值，作为构造函数，他们创建的对象和他们包装的原始值有很大的不同。作为函数，他们会将值转换为相应的原始值，注意，避免包装对象是一种最佳实践，毕竟没有什么事是对象能做而原始值不能的。</p>
-<p>2：包装值是对象。注意他比较大小的时候，不能比较大小。</p>
-<p>3：当需要对一个原始值增加属性的时候，首先要对原始值包装并且给包装后的对象增加属性，当您使用值得时候就要先对他去包装。</p>
-<p>4：去包装是调用valueOf（）。将包装对象转为原始值是用Blloean (new Blloean(true));值得注意的是转换为原始值得时候只能正确提出数字和字符串，而布尔值不能。</p>
-<p>5：原始值会从包装器中借调方法，只是在严格模式和宽松模式中发生不同的处理方法。</p>
-<p>6：强制类型转换：它是指从一种类型隐式的转换为另外一种类型。强制类型会出现BUG,所以在这一方面的时候要注意，可以先把将变量转换为合适的类型。</p>
-<p>7：Boolean()转换。undefined,null,false,NAN,0,’’,除了这些，别的都是true.</p>
-<p>8:Number（），好像是类似于一般的字符串解释,undefined-NAN,null-0,false-0,true-1,字符串会被解析，对象会先被转为原始值，然后在转为数字。</p>
-<p>9：String（），这个就是所有原始值转换为字符串。</p>
-<p>10：Object()这个还是？我去。。。将一个东西转为对象。。。’abc’ instanceof String;  false; Object(‘abc’) instanceof String-true. typeOf Object(‘abc’)-Object;Object(null),object(undefined)–{}.空数组都是。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1：布尔值，数字和字符串这三种原始值都有对应的构造函数：Boolean,Number,String().他们的实例包含原始值，作为构造函数，他们创建的对象和他们包装的原始值有很大的不同。作为函数，他们会将值转换为相应的原始值，注意，避免包装对象是一种最佳实践，毕竟没有什么事
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>字符串方法</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-字符串方法/</id>
-    <published>2017-03-08T13:36:43.000Z</published>
-    <updated>2017-03-08T13:37:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1 . 字符串是由Js字符组成的不可变序列.<br>2 . 在JSon中必须用双引号。其他的不管。<br>3 . 转换为字符串的方法。<strong>String（）</strong><br>4 . 在展示数组对象元素的时候。用这个方法，JSON.stringify()<br>5 . 字符串拼接方法。  “+” 号。想要集中在一个的时候就用+=。<br>6 . 凭借字符串数组。把所有的字符串都加到一个数组里面，然后调用join（）拼接起来  .<br>7 . 字符串的原型方法：charAt(number)。  ‘a’.charCodeAt(). var n=String.fromeCharCode(97);互逆的函数。<br>8 . 提取子字符串的方法 String.substring(s,e);<br>9 .换字符串的方法（好像没有这个方法）：<strong><strong>注意和数组的方法区别</strong></strong> split（） 切割方法。solit(“”,num) 如果第一个参数是空字符串，那么元字符间每个都会被分割成数组返回。<br>10 . 字符串的变换：trim()这些都是他的构造函数。就是原值。<br>11 .concat()为什么后来两种芳法都行了,不管是象征的，还是具体的字符串都行了。<code>var str=&quot;hello&quot;;str.concat(&#39;liba&#39;);var str3=str.concat(&quot;sadf&quot;,1);var str3=str2.concat(str,1);</code><br>12 . 字符串检索：str.indexOf(‘r’,4); 要找的东西，开始的位置。没有找到会返回负值的。<br>13 . 还有一些就是能和正则匹配的字符串用法。等看正则的时候在看吧。<br>14 .</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1 . 字符串是由Js字符组成的不可变序列.&lt;br&gt;2 . 在JSon中必须用双引号。其他的不管。&lt;br&gt;3 . 转换为字符串的方法。&lt;strong&gt;String（）&lt;/strong&gt;&lt;br&gt;4 . 在展示数组对象元素的时候。用这个方法，JSON.stringify()&lt;b
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>正则要死了。。。</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-%E6%AD%A3%E5%88%99/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-1-正则/</id>
-    <published>2017-03-08T13:35:09.000Z</published>
-    <updated>2017-03-09T06:20:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1：先列出一些看不懂的：特殊字符。 \ ^$.<em>+?()[]|所有列出的字符都有特殊含义。如果想使用这些符号在正则表达式里面，那就必须要转义用/.<br>2:数字 \d ==[0-9]..\D==[^0-9].匹配任意的非数字。<br>3：字母数字字符：\w匹配任何的拉丁数字和下划线[a-zA-Z0-9]\w:和前面匹配的相反。<br>4：\s匹配空白字符（空格，制表符，换行符，回车符，翻页符合所有的Unicode）\S匹配所有的非空白字符。<br>5：$匹配输入字符串结束的位置。<br>6：^匹配输入字符串开始的位置。<br>7：</em>匹配前面的东西出现零次或多次。=={0，}<br>8：+匹配前面出现最少一次。=={1,}<br>9:?匹配前面出现了一次或零次=={0，1}<br>10：{n}n是正整数，匹配确定的n次。<br>11：{n,m}最少匹配n次，最多m次<br>12：{n,}匹配最少n次。<br>13：?当该字符紧跟在其他任何一个限制字符的后面，匹配的是非贪婪的，他会尽可能少的匹配搜索到的字符串。而默认的贪婪模式则会尽可能多的匹配所搜索到的字符。<br>14：. 匹配除\n以外的任何单字符。要匹配出包括包括\n在内的字符，请使用[.\n]的形式。<br>15：x|y匹配x或y。z|food   (z|f)ood.<br>16：[xyz]字符合集，匹配所包含的任何一个字符。<br>17：[^xyz];<br>18: \b匹配一个单词边界。也就是指单词和空格键的位置。er\b 匹配never 不匹配verb.<br>19: \B匹配非单词边界。<br>20：如果想要动态的拼装正则表达式，那就要使用构造函数。<br>21：正则表达式函数的实例属性如下：<br>   1：标识：g/全局 i/忽略大小写 m/多行匹配 。<br>   2: .test()方法：查找是否匹配。参数是要匹配的字符串。<br>   3：.search()：发挥发现匹配的位置索引。他的参数是正则表达式<br>   4：.exec()捕获分组。首先要看的是他的形式。var reg=/aa/;reg.exec(str);<br>      这个函数通过提供的字符串进行一次匹配检测，获取字符串的第一个与正则表达式的内容，并将匹配的内容与子匹配的结果返回存放在数组中。<br>        .match()捕获分组或返回所有匹配的子字符串。 var reg=/an/ str.match(reg);<br>5：先说一个概念：正则的子组表达式。子组通过圆括号分割界定，并且可以嵌套。主要有两个作用：将可选分支局部化。将子组设为捕获子组。当整个模式匹配后。目标字符串中的部分将会通过exex()的ovector参数回传给调用者。如果字符串 ”the red king” 使用模式((red|white) (king|queen)) 进行匹配， 模式匹配到的结果是 array(“red king”， ”red king”, “red”, “king”) 的形式， 其中第 0 个元素是整个模式匹配的结果，后面的三个元素依次为三个子组匹配的结果。 它们的下表分别为 1， 2， 3。如果字符串 ”the white queen” 匹配模式 ((?:red|white) (king|queen))，匹配到的结果会是 array(“white queen”、“white queen”、“white queen”)，的和 king|queen 这两个子组。<br>6：对比：1、当正则表达式无子表达式，并且定义为非全局匹配时，exec和match执行的结果是一样，均返回第一个匹配的字符串内容<br>              2.当正则表达式无子表达式，并且定义为全局匹配时，exec和match执行，做存在多处匹配内容，则match返回的是多个元素数组<br>3.还有其他的不了解了。<br>7：.replace（search,repace）找到seearch，(正则表达式；注意用g符号不然只会匹配一次正则表达式)替换为replace.1：当他为字符串的时候，会替换为字符串，唯一例外的就是字符美元符号。他会启动所谓的替换指令。2：当这个参数为函数的时候，他会对匹配到的字符串进行处理，该函数具有以下签名。<br>8：关于g的一些注意事项：当表达式设置了g，那么有些方法必须多次调用才能返回所有结果，这时可能会有问题。test()，exec().方法。<br>9：空的正则可以匹配一切。/.^/则是什么都不匹配。<br>10：.匹配除了行结束符以外的一切字符。使用[\s\S]可以匹配一切字符。<br>一些常见的正则表达式：<br>  1：匹配汉字：[\u4e00-\u9fa5]<br>  2：[\w!#$%&amp;’<em>+/=?^_`{|}~-]+(?:.[\w!#$%&amp;’</em>+/=?^<em>`{|}~-]+)<em>@(?:[\w](?:[\w-]</em>[\w])?.)+<a href="?:[\w-]*[\w]">\w</a>? email \w[-\w.+]<em>@([A-Za-z0-9][-A-Za-z0-9]+.)+[A-Za-z]{2,14}email<br>  /^[a-z]([a-z0-9]</em>[-</em>]?[a-z0-9]+)<em>@([a-z0-9]</em>[-_]?[a-z0-9]+)+[.][a-z]{2,3}([.][a-z]{2})?$/I email “^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)<em>$<br>3：用户名：^[a-zA-Z]\w{5,15}$<br>4：电话：”^(\d{3,4}-)\d{7,8}$<br>5：手机：^1[3|4|5|7|8][0-9]\d{8}$<br>6:身份证：\d{14}[[0-9],0-9xX]<br>7:^[0-9]</em>$只能数字</p>
-<ol>
-<li>replace() .search()敏感词过滤，小说采集器。</li>
-<li>1:构造函数方法：Dtae().now()以毫秒返回当前时间。==new Date().getTime();<br>2:Date().parse()将里面的日期转换位毫秒。<br>3：日期返回有这么多的道道：返回字符串。<br>4：data().toTimeSting();toLocalTimeString(),h.toLocaleDateString();2017/3/9<br>5:h.toJSON():将日期返回json字符串。”2017-03-09T04:06:10.173Z<br>6:h.toISOString();：创建一个最完整的时间。”2017-03-09T04:06:10.173Z<br>7：h.vauleOf()：日期对象可以转换为数字，这样在两个时间之间比出大小。<br>8：new Date(0):返回最一开始的时间。<br>9：设置未来的时间。1. var future=new Date();<pre><code>future.setDate(future.getDate()+10);
-</code></pre>10:Math为众多的数学函数提供了命名空间。<br>11：Math.E.还有那些对数有什么用啊。。<br>12：Math.abs()绝对值。Mtah.ciel()上最大。Math.floor()下最大。Math.round()四舍五入。<br>13：Math.pow(x,y);x的y次幂。Math.sqrt()返回根号。<br>14:Math.round() 0-1的随机数。<br>15：返回特定范围的整数的函数。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1：先列出一些看不懂的：特殊字符。 \ ^$.&lt;em&gt;+?()[]|所有列出的字符都有特殊含义。如果想使用这些符号在正则表达式里面，那就必须要转义用/.&lt;br&gt;2:数字 \d ==[0-9]..\D==[^0-9].匹配任意的非数字。&lt;br&gt;3：字母数字字符：\w匹配任何的
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>农村金融改革</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-3-%E5%A4%A7%E9%95%BF%E5%B8%83/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-3-大长布/</id>
-    <published>2017-03-08T07:09:31.000Z</published>
-    <updated>2017-03-08T07:11:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>中国农村金融发展研究</p>
-<p>1 农村金融的重要性</p>
-<p>自从1978年改革开放后，我们的国家发生了翻天覆地的变化，其中最显著的经济方面，而且他的速度是超过任何人想象的。如今我们的国家是世界第二大经济体，甚至将来很有可能超过美国，成为全球第一大经济体。当我们成为这么大的经济体量的时候，我们又该向世界传达一些我们中国人改革经济的什么措施呢？总有一些特质是我们中国人传了几千年的甩也甩不掉的那个东西是什么？当然对于目前我们的经济发展趋势来看，分为两派。一派认为中国和印度等其他第三世界国家的崛起将是本世纪的头等大事，他们的发展带来的周边国家的交流和合作带来的火花是不可估量的。而另一派则持悲观态度，认为不论是中国的体制，还是特殊的国情，包括那么多的人口，都将可能成为中国经济崩溃的最后一根稻草。反而正是因为这两种观点，所以对未来中国经济的研究才显得更加迷人。在看观国内经济，虽然资本在城市间流动的相对比较频繁，形成了所谓“北上广“这样的城市群，而且城市的经济占比较大。但是鉴于我国的特殊国情，根据第六次人口普查，我国最少还有一半的人生活在农村，这一半人的生活情况和农村金融息息相关，而另一半城市人口他们每天的衣食住行也和农村金融有很大关系。所以不管是对当前中国经济的研究，用来确定下一步的发展状况，还是对未来的中国经济发展甚至改革来说，农村金融都是一个绕不过的话题。研究农村金融的发展，可以更好地了解当前的经济发展情况，政府利用其中的发展规律，可以更好地服务地方农村，制定出真正实用的政策，就像当前提倡的”精准扶贫”政策一样，只有先了解情况才能做到“精准”，研究农村金融，就是给农村金融看病，我们必须像园丁一样小心翼翼的呵护他成长起来。农村金融只有健康发展，才能真正改变农村经济，实现农业现代化，实现农村生活现代化。只有解决了我国农民的现代化问题，我们的国家才真正的称得上现代化的国家。</p>
-<p>2：农村金融的发展历程<br>提到农村金融发展的历史，我把这个过程大体分为建国之前和建国后。<br>古代我国经济体量小，博弈环境比较简单，所以我们把古代经济也都看作是农村金融现象进行分析，因为只有从根上了解古代的经济发展规律，才能看清楚今天我们中国人的经济特质是什么，才能解决我国当前农村金融的面对的本质问题。春秋战国时期的管仲的变法可以说的上是中国历史上第一次的经济体制改革，通过有计划的发展经济，国家控制两个重要的生产资料，“官盐铁”，然后把产业向中下游转移，向民间开放资本从而使齐国第一个登上了历史的舞台，之后是商鞅，他执行的是命令性计划经济，也使秦国走向了历史的舞台。等到汉代中国真正统一以后，中央集权下一共发生了四次比较大的变革，当然每一次改革带来的结果都不尽相同，汉武时期的繁荣，王莽带来的战乱，安史之乱时期的刘晏，宋代王安石的变法的最后挣扎。直到明清时期500年的沉寂，我国农村金融都处于长期停滞的状态，直到1840年的鸦片战争。到了近现代时期，也发生了四次大的变法运动，李鸿章的洋务运动，失败了，民国时期的统制经济。到新中国成立后还有两次，这个主要讲。1978-1993年，中央和有产者变小，地方政府和无产者变大，这一时期，国有企业，外资和乡镇企业是经济发展的主要动力。1991-2003年长达12年的时间里朱镕基改革了经济状况，在经济规模扩大的前提上，对产业结构进行调整。对经济蛋糕重新调整分配，中央权力大规模回归。时间直到现在，我国农村金融的发展历程就是在这样大的框架来讨论和研究的。从一开始的分田包产到户到现在60余年的并存改革，从一无所有到现在以各种形式的农村银行等经融机构为主，以国家补贴，农业保险等金融机构为辅。形成了涵盖农民生活各个层次，各个情况下的金融活动体系。保证了农村经济的活力和繁荣。在计划经济为主的那个年代，由于其特殊的经济活动要求，在这一阶段农村金融走过一段艰辛的成长时期。甚至在改革开放之前根本不存在农村金融体系，那个时候的农村银行只是国家资源配置工具的一部分。由于他的建立目的十分不清晰，所以他所能发挥的作用就极其有限。这个时期的农村银行根本没有成为服务“三农的工具”。在随着改革大潮的起伏中，我们最终选择了社会主义市场经济，而农村金融这艘小船也是随着大浪起伏，服务于不同时期国家经济建设全局的需求。具体体现为在87年之前，在改革初期，首先改的是农村经济，提出了农村信用社的合作金融的性质。在87年之后，改革的重点从农村转向城市，新的计划导致农村经济的压力不断增大，在经历亚洲金融的冲击下，为了确保国家的经济安全，这些经融机构都从农村撤出，都只剩下一个空壳子。所有的这些措施对我我国推进现代化的脚步发挥了极大的作用，但是是真正对于农村金融来说本质上是无关痛痒的。现在很明显现在到了工业反哺农业的时代，农村金融改革的下一步应该是正真回归农村本身，他应该真正体现农村金融的需求。<br>    在改革开放前，农村信用社构成了主要的农村金融机构。这一时期，农村主要发展的就是信用合作社。在马克思主义的领导下，这种合作金融是农民自主的资金入股，不以盈利为目的，主要是解决农民的资金需求为第一前提。但是在人民公社化运动的冲击下，政府推行了信用社升级运动，原来的自发集资变成了集体所有，最后升级成立了国家所有，成为国家的金融组织，成为人民银行的一部分。现在这个银行已经偏离了他原先的成立目的，彻底成为了社会主义的砖瓦。在改革开放后，又开始对这一制度的恢复，希望将原来的初衷实现，就是将本乡闲散的资金集中起来，解决村民的经济困难，但是由于缺乏管理，因为害怕出现金融风险而被取缔。这个时代的金融建设是从国家层面上出发的，自上而下的强制变迁，在没有农民参与的情况下，他们被动的接受了这次浪潮的冲击，从历史上来看，农村任何一项制度的创新，都必须和农民紧紧的联系在一起，农民参与度也许是农村金融改革的下一个需要注意的地方。总的分析来看，我国农村金融的改革本质是在市场经济逐渐确立的过程中，以农村金融机构改革为主要内容的改革。这种方式虽然可以很快的建立起农村的金融体系，但是在市场经济的条件下，没有建立起与之相对应的扶持政策，资本没有流向农村，农村 金融改革没有钱来，那改革就是一纸空文。全是政绩工程，真正落实到农民身上的好处屈指可数。而农村银行改革变成了商业化改革，官办性质越来越浓重。直到现在，农业发展银行仍然是我国唯一的农业政策性质的银行。</p>
-<p>3：面对的问题：<br>谈到农村金融面对的问题，我觉得是和他的发展息息相关的。正是因为面对各种各样的复杂的环境，所以他才会生出不同的问题。下面我主要谈一下这几个问题。1：由于以前的特殊国策，导致农村金融建设始终是服务以国家经济建设的。从一开始的人民公社化，到大跃进。在农村金融改革制度的设计的时候从来没有思考过农村正真面对的经济问题。2：由于第一个问题，引出了第二个问题，农村金融制度的建设不是遵循自然规律发生的经济活动，反而是一场自上而下的建设运动，很少有发生一些响应底层呼声的改革。农民根本就没有参与这个活动，特别是我国国土面积那么广大，古人云“十里不同风，百里不通俗”，各个地区的经济，文化差异那么大，无论制定什么政策都应该在充分了解当地的情况之下在做决定，同时还要发现各地的金融创新。而以前很大一部分都是一些不参与这个经济活动的人来制定一些他人要执行的金融措施。很容易出现想当然的状况。3：还是由于第一个问题：在建立金融机构时候，没有不断完善相应的政策体系。在建设农村金融机构的时候，政府没有指定相应的金融政策，发生了事情的时候都是一团乱麻。4：改革面对的新问题：农村的产权问题将成为改革的新瓶颈。现代社会人们对产权的重视也将会转移到农村问题上，包括农村土地问题，房屋，各种不动产。对于农民来说这是他根生立命的基本，而对于现代金融来说，他是不可缺少的实现现代化的资源。现代金融是建立在信用制度上面的，而产权是信用制度的核心，如何处理农村各种产权的关系将是下一步改革的关键钥匙。目前土地产权的归属问题不清晰，土地使用关系不稳定，很大一部分挫伤了农民对土地的感情。其次是土地实行的平均分配导致的小农经济，土地资源分散不集中，不利于农业的现代化发展，农民所有地的产权模糊。导致农民持有的资产没有办法进行抵押投资，得不到确认，土地资源如果不来播种就没法换成别的生产资料，农民想要摆脱土地的话，没办法将这个资源变现，换成新的其他经济资源来进行其他的生产投资。5：还有就是城乡差距不断扩大，必然导致农村和城市生活的差距也不断拉大，长期这样不但农村金融没办法正常发展，也会为社会埋下不稳定的因素。6：农村金融监管不到位，检查力度不到位，往往走的是形式主义，“面子工程”，还有就是金融设备不是很到位，就比如银行或者是ATM，往往只是普及到大一些的县城就没有了，而对于再往下的农村，根本没有相关的金融机构，不仅硬件有问题，软条件也有问题，农村金融体系也不完善，没有相关的法律法规来约束他的发展，一旦发生差错，往往没有解决的方法，都是干瞪眼。经过这么多年的发展，农村金融这么多年的改革，目前我国的农村金融体系仍然是总体上服务于城市发展，工业发展这一战略的。而当前我国面临的新的经济形势来看，金融部门必须实现财富的公平分配，必须实现城乡均衡的发展战略，构建服务于城乡统筹发展的新的农村尽让发展体系。和城市相比，农村的金融收到的管制较小，但是却没有体现出很强的竞争力，我国农村金融还有很大的需求，但是现在的很难满足需求，按照一般来说越是贫困的地方，越是需要这个东西，但是我们却恰恰相反，越是不发达的地方越是没有这个金融机构的出现。下面我将主要介绍对于农村金融改革进一步的改革的政策建议。</p>
-<p>农村金融改革政策建议：针对以上农村金融在发展上遇到的问题，我将对这几方面提出自己的警容改革政策建议。<br>    按照“十三五”一号文件的发布，农村金融的发展要以形成城乡经济一体化发展的格局为要求，加强农业的基础建设，努力建设社会主义新农村。以建设社会主义新农村为一个中心为农村金融改革下一步的重点。<br>    具体政策和措施如下：<br>    1：狭义的农村改革指的是农村信用社改革。农村信用社改革包括两个方面，一个是具体的金融设施要进一步普及和完善，比如设立新的信用社，在偏远地区和欠发达的地区，由于具体条件的限制，要多设立服务处和指导人员来辅导农民来进行经济活动，而在一些相对发达的地区，就要多设立相关的ATM机器，来更加方便的服务农村金融活动。另一方面是对信用社的相关制度制度进行改革。建国以来我国农村信用社经历了人民公社，生产大队，农业银行的多次改革。在农业银行恢复后，农村信用社成为了他的下设机构。虽然也就进行过一些改革，但是农村信用社的经营还是自上而下的命令式出发，1996年之后，国务院出台了新的政策，农村信用社正式与中国农业银行脱离了，成为了中国人民银行的下设机构。目前信用社改革的重点在于产权和管理全方面的升级。信用社应该回到最初的商业化的进行，让市场来自己调节他的行为，其次，把管理权应该交给当地的政府，这样可以做到因地制宜，面对当地的特殊国情，特殊环境来及时的调整政策和条例，这样便于出现农村金融改革的新创新甚至是突破，改革就是应该大步的迈开手脚，错了可以改么。比如在产权方面，在比较发达的地区就可以实行股份制银行，在欠发达的地区可以选着合作银行模式来促进当地农业经济的发展和解决问题。在更不发达的地区，可以继续实行原来的体制，通过市场的竞争，和统筹规划把那些不符合条件的银行网点进行重组。而在人员管理的方面，应该分权设立机构，让他们之间相互制约，责任分明。最后就是对这方面的监管力度了，有的时候其实人们犯错，很大一部分都是环境的失误，只要我们能够很好地控制好环境就，就可以很少的避免金融犯罪，比如建立更好的监管力度，让那些想要犯罪的人闻风丧胆，就监管方面我觉得有以下几点可以写的，首先就是完善相关的法律制度，做到有法可依，有法必依。落实监管机构的职能。然后就是确立多种样的监管方式，实现监管的全覆盖。现在方式较为单一，很容易就可以逃脱，掩埋过去。还有就是提高农村金融监管人员的职业道德素质，让他们了解职业操守，和法律。对于借款人这方面来说来说，银行为了资金安全，也应该像城市一样，建立信用社监管体制，避免出现不良贷款记录，危害其他存款人员的财产安全，现在不仅是贷款难对于农民来说，对于银行来说，农村金融成为一个获取资金的地方，资金大多数都流出了农村，很少回流，资金大量流入城市，没有钱，农村金融就无从谈起。<br>    2：以前农村金融发展都是以国家工业发展为前提来改革的，农村金融发展其实就是农民生活情况的改善，只要农民生活条件变好，那么农村金融问题也就迎刃而解了。所以针对当前农村金融面对的现状，下一步应该到了工业反哺农业的时候了，利用财政税收，货币信贷，金融监管等措施，使金融资源向“三农”倾斜，确保农村金融的健康发展。所以广义的农村金融改革包括以下几个方面。<br>        1：国家的优惠农村金融政策，应该继续完善农村政策性的金融服务，联合中国农业发展银行这一政策性银行，为农村金融改革提供足够的资金储备和血液。国家对农村金融机构，应该留足储备资金，不断支持和改善农户贷款的政策。<br>        2：建立农村金融资金回流制度，在国家层面上引导储蓄资金回流，对邮政储蓄资金的去向进行限制和约束，实现专款专用。<br>        3：利用农业发展银行提供的政调教，各级村干部应该充分了解发展银行这一政策银行的作用，结合自身需求去了解相应的政策，去寻求相应的政策优惠。<br>        4：取消民间金融的限制，由于农村金融的监管力度相比城市来说比较小，应该更加有竞争力才是，所以应该为民间金融创早更好的发展条件，各级政府因该积极支持民间金融的发展，认识到他们面对的苦难，允许农村农民间金融组织的合法化。<br>        5：围绕建设现代化农业这一目的，吸引资本导向农村，加快发展现代化农业发展，通过农业投资，不加可以立马增加农民增收的方式，而且一旦基础的农业设施建设好，农业可以长期快速发展，相当于一次投资，长久回报。<br>        6：围绕促进农民增收，加大惠农力度，光靠国家给银行提供资金来满足农村金融的需求不是长远之计，只有切实增加农民的经济收入，让他们把钱投到这个里面，才可以形成一个良性的发展源泉，才是百年大计。<br>        7：加强新型城镇化的发展，以工业促进农业的发展，以城市带动乡村的发展，提升乡村消费结构的升级。为下一步发展农业，新农村建设留下大量的空间。<br>        8：科技是第一生产力，应该加大科技向农业的大方面转移，实现新一轮的农业科技革命，为农业升级注入新的科技活力。<br>        9：在环境资源进一步限制的情况下，比如土地“18亿亩”的红线，如何加快转变农业<br>的发展方式十一个刻不容缓的难题，所以应该在这一方面多做努力。大力发展新型农业形式，借鉴国外发达国家农业转型的模式，研究他们遇到的问题来改造自己的农业。<br>        10：推进农村一二三产业的融合发展，以促进农民收入增长为目的，通过延长农业产业链，来提升农业附加值。大力发展特色养殖业，农产品的加工业，挖掘生态休闲旅游，文化教育价值，扶持一批具有历史，地域，民族特色的特色尽管旅游村镇，打造形式多样，各式各样的乡村旅游休闲产品，让农民有更多的收入来源，提升他们收入的稳定性。<br>        11：加强对乡镇农村的中小微企业，特别是带有“村特色”的产品发展企业的金融服务力度，整合各类扶贫资源，开辟统一的扶贫资金渠道，让他们流向最应该的地方。<br>        12：完善农业保险制度，建立保险资产的体系，对当前农村现状来说，农业可能是唯一的收入来源，一旦发生自然灾害，可能就会面临颗粒无收的情况，所以应该推进农业保险制度，提高保险的覆盖面，增加保险的瓶中，提高农民的保险意识和深度，改善政策性保护资金的使用率。<br>    13：大力推进农业中介服务体系的建立，从国家层面上不断增强农产品价格保护制度，从而不断减小市场风险。从引导农产品生产，储蓄。来调节市场需求，避免出现较大的波动。<br>    14：开展农村信用体系的建立，相对于城市的信用体系的建立来说，农村在这一方面还有很多的不足的地方，所以应该健全贷款和保险制度，通过建全信用档案，加快农村信用体系的建立，为以后相关的其他政策推行打下一个相好的现代化基础。<br>    15：农村金融也应该实行商业机制，对于那些出现问题的金融机构，应该设立相关的市场推出机制，这样才能更好的促进农村金融的健康持续发展。</p>
-<pre><code>在将来很大的一大段时间内，农村问题仍然是我们面临的很大的问题，虽然最近几年中央对农村金融还在不断的时间和探索，但是和当初提出的农村金融改革结果还有很大的差距。在讨论农村金融问题的时候，我们应该紧紧扎根农村问题，倾听农民的意见，认识到他们真正的困难，还要借鉴国外的成功经验，立足农村，放眼世界，才能在农村金融改革的都上越走越远，农民才会真正富裕起来，实现国家的现代化。
-</code></pre><p>*参考文献：吴晓波.历代经济改革得失。吴晓波。浙江大学出版社 2013 10-20。<br>电子文献：1：王雪磊.郭兴平.张亮-农村金融研究  2012 <a href="http://f.wanfangdata.com.cn/view/建国以来农村金融的发展历程及其评述.aspx?ID=Periodical_ncjryj201207014&amp;transaction=%7b%22ExtraData%22%3a%5b%5d%2c%22IsCache%22%3afalse%2c%22Transaction%22%3a%7b%22DateTime%22%3a%22%5c%2fDate(1488116164006%2b0800)%5c%2f%22%2c%22Id%22%3a%22a24c3824-9802-4cc4-8fe0-a7260163f9b4%22%2c%22Memo%22%3anull%2c%22ProductDetail%22%3a%22Periodical_ncjryj201207014%22%2c%22SessionId%22%3a%22f96e5b2f-c63b-4bd0-a5b9-9424300b0380%22%2c%22Signature%22%3a%22AWGayFPR7xz60uKb1nRLw8xIIEa%2bFKlvTTLPp1LlICGImtdwit%5c%2fsXuDP1RxX%2bvBc%22%2c%22TransferIn%22%3a%7b%22AccountType%22%3a%22Income%22%2c%22Key%22%3a%22PeriodicalFulltext%22%7d%2c%22TransferOut%22%3a%7b%22AccountType%22%3a%22GTimeLimit%22%2c%22Key%22%3a%22haindx%22%7d%2c%22Turnover%22%3a3.00000%2c%22User%22%3anull%2c%22UserIP%22%3a%22150.255.28.188%22%7d%2c%22TransferOutAccountsStatus%22%3a%5b%5d%7d" target="_blank" rel="external">http://f.wanfangdata.com.cn/view/建国以来农村金融的发展历程及其评述.aspx?ID=Periodical_ncjryj201207014&amp;transaction=%7b%22ExtraData%22%3a%5b%5d%2c%22IsCache%22%3afalse%2c%22Transaction%22%3a%7b%22DateTime%22%3a%22%5c%2fDate(1488116164006%2b0800)%5c%2f%22%2c%22Id%22%3a%22a24c3824-9802-4cc4-8fe0-a7260163f9b4%22%2c%22Memo%22%3anull%2c%22ProductDetail%22%3a%22Periodical_ncjryj201207014%22%2c%22SessionId%22%3a%22f96e5b2f-c63b-4bd0-a5b9-9424300b0380%22%2c%22Signature%22%3a%22AWGayFPR7xz60uKb1nRLw8xIIEa%2bFKlvTTLPp1LlICGImtdwit%5c%2fsXuDP1RxX%2bvBc%22%2c%22TransferIn%22%3a%7b%22AccountType%22%3a%22Income%22%2c%22Key%22%3a%22PeriodicalFulltext%22%7d%2c%22TransferOut%22%3a%7b%22AccountType%22%3a%22GTimeLimit%22%2c%22Key%22%3a%22haindx%22%7d%2c%22Turnover%22%3a3.00000%2c%22User%22%3anull%2c%22UserIP%22%3a%22150.255.28.188%22%7d%2c%22TransferOutAccountsStatus%22%3a%5b%5d%7d</a><br>2：农村金融体制改革 百度词条 <a href="http://baike.baidu.com/link?url=Hc6YHIc8-Mcz_46r0vGJ1P2WzwwVxc6kgOQ9hDwZdy5GqxyZEbuF2I-6TsLZd-2Hofq9mc7i-XoaWccVUyrk3TfVmetrUkOVYzlz_qeZ3rxgh63ibXp-eKfiSVtSDy8RgvX02UWUYj21ZCjDSJKoEopSbOmCRNywEdryyVlzJdl2qaJZu3aBqP_5XdwPSqqf8S8IzI3wNDVCu9r-N5CTtBUkN1sUhIgBYFjwpc_n3mF0K_YeLzwOyZ-geytra2rRxQS8CpOhQLbwPtzrzkzj4shRfTEOcZng0vdCx3JIqCu" target="_blank" rel="external">http://baike.baidu.com/link?url=Hc6YHIc8-Mcz_46r0vGJ1P2WzwwVxc6kgOQ9hDwZdy5GqxyZEbuF2I-6TsLZd-2Hofq9mc7i-XoaWccVUyrk3TfVmetrUkOVYzlz_qeZ3rxgh63ibXp-eKfiSVtSDy8RgvX02UWUYj21ZCjDSJKoEopSbOmCRNywEdryyVlzJdl2qaJZu3aBqP_5XdwPSqqf8S8IzI3wNDVCu9r-N5CTtBUkN1sUhIgBYFjwpc_n3mF0K_YeLzwOyZ-geytra2rRxQS8CpOhQLbwPtzrzkzj4shRfTEOcZng0vdCx3JIqCu</a><br>3：“十三五”中央一号文件。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;中国农村金融发展研究&lt;/p&gt;
-&lt;p&gt;1 农村金融的重要性&lt;/p&gt;
-&lt;p&gt;自从1978年改革开放后，我们的国家发生了翻天覆地的变化，其中最显著的经济方面，而且他的速度是超过任何人想象的。如今我们的国家是世界第二大经济体，甚至将来很有可能超过美国，成为全球第一大经济体。当我们成
-    
-    </summary>
-    
-    
-      <category term="自己写的大长布" scheme="https://github.com/skoll1/libateer.github.io/tags/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E5%A4%A7%E9%95%BF%E5%B8%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自己写的大长布</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-3-%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E5%A4%A7%E9%95%BF%E5%B8%83/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-3-自己写的大长布/</id>
-    <published>2017-03-08T07:00:00.000Z</published>
-    <updated>2017-03-08T07:10:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, ligula suspendisse nulla pretium, rhoncus tempor placerat fermentum, enim integer ad vestibulum volutpat. Nisl rhoncus turpis est, vel elit, congue wisi enim nunc ultricies sit, magna tincidunt. Maecenas aliquam maecenas ligula nostra, accumsan taciti. Sociis mauris in integer, a dolor netus non dui aliquet, sagittis felis sodales, dolor sociis mauris, vel eu libero cras. Interdum at. Eget habitasse elementum est, ipsum purus pede porttitor class, ut adipiscing, aliquet sed auctor, imperdiet arcu per diam dapibus libero duis. Enim eros in vel, volutpat nec pellentesque leo, temporibus scelerisque nec.<br>Ac dolor ac adipiscing amet bibendum nullam, massa lacus molestie ut libero nec, diam et, pharetra sodales eget, feugiat ullamcorper id tempor eget id vitae. Mauris pretium eget aliquet, lectus tincidunt. Porttitor mollis imperdiet libero senectus pulvinar. Etiam molestie mauris ligula eget laoreet, vehicula eleifend. Repellat orci eget erat et, sem cum, ultricies sollicitudin amet eleifend dolor nullam erat, malesuada est leo ac. Varius natoque turpis elementum est. Duis montes, tellus lobortis lacus amet arcu et. In vitae vel, wisi at, id praesent bibendum libero faucibus porta.  “校园合伙人”</p>
-<p>创业大赛计划书</p>
-<p>项目名称：寻找大学生的力量（找到创新的发动机）</p>
-<p>参赛人：李巴特儿</p>
-<p>所在学校：海南大学</p>
-<p>项目简介：我是一名在校的大二学生，在经历了大一的生活后，遇到很多困难或困惑的事情，有了不少想法和体会。我觉得我的这个创业想法不仅可以完美的解决大学生活遇到的各种困难，如果坚持下去，对我们每一个人走出校园的生活都是大有裨益的。</p>
-<p>我的创意是：以发掘大学生自身潜力，培养大学生良好习惯，传播大学生正能量，分享美好大学生活为目的，用一种游戏的方式建立一个大学生社交网站。<br>网站具体概况：</p>
-<p>网站主要目标客户：所有在校大学生。以大学生为主要群体的好处是可以决定网站将要分享的知识和包含的内容。而且当所有人都是大学生的时候，他们自然而然的就成为了一个群体，他们有自己的思考方式，他们可以站到自己的立场上面思考问题，可以有效保护大学生这一弱势群体。可以有效净化网络环境，可以建立属于大学生的独特个性的思想文化阵地，寻找真正能够使大学生取得进步的信息，可以发展积极向上的网络文化，这个网站将像筛子一样过滤网上不健康，或者可能是骗子信息的东西。符合国家13五计划，在此基础上发展的新型主流媒体。</p>
-<p>如果我是在校一个大学生，我可以在上面享受到这样的服务。首先关于课程方面的：网站将会按所学专业设置标签，相当于网站把全国的大学都集合在了一起，每一个标签所包含的专业都是全国所有专业的学生，这样可以做到知识共享，比如一些优秀的教学资源，一些共同遇到的问题可以共同讨论，整合成为一个体系。还能够以兴趣爱好为基础建立标签，我的目标是当我们有什么问题，爱好，想法时。我们在第一时间会来到这个网站上面来寻找，和别人讨论自己的想法。我要把所有人的视野放到全国的大学生，而不是仅仅同宿舍，或者同学校。（等将来建立了留学生交流区的时候，视野将扩展到国外，我们可以跟随留学的同学去看国外，留学的同学也可以随时就看到国内的学生的最新状况。）你可以马上找到全国所有感兴趣的人，找到朋友。每天都会选择时是热点来让全部人讨论，锻炼自己的思维。总之就是培养大视野，大环境的意识。可以让每一个大学生都可以平等的找到他们想要的任何信息消除不平等的信息壁垒。</p>
-<p>在网站的方面：之前所提到的以游戏的方式建立社交网站。我们把每一个登录网站的学生都当成玩游戏的游戏者，只不过是平常游戏我们能得到的是装备，等级之类的对我们生活的完全没用的东西。在这场游戏中，玩家从平时的生活实践中得到的是诸如“坚持”“勇敢”“爱心”之类的称号奖励，他们通过继续坚持这种行为来加强标签。比如一个人坚持每天跑步一小时，我们就认为他是个坚持的人，他做事持之以恒。这种方式的想要的到的效果是“重估价值”，让人们可以从自己做的每一件事情都尝试着去学到些什么。养成思考的好习惯，网站可以根据得到的数据来给你推荐自己可能想要交的朋友（男朋友，女朋友）。在这个网站上面衡量一个人价值的东西不是财富或是相貌，而是实实在在你这个“人”。你可以勇敢，可以幽默，可以有一颗坚持的心，你都可以得到喝彩，你都可以给别人力量，你都可以成为别人的榜样。随着网络时代的到来，我们不可能脱离网络世界去生活，每天我们都自愿或追逐着接受网络大潮的洗礼或冲击。除了非洲撒哈拉沙漠以南的地区，世界上绝大多数的人都可以获得几乎无限的信息资料。然而，若没有一种超越少数精英而且始终存在的共同文化，那么，人们选择或遇到的具体问题信息和思想就取决于各种各样的趣味，倾向和利益。岁月流逝，我们每一个人都会对这个快快的文化的同时代人的世界缺乏共同认识，更不必说看待先辈的世界了。仿佛一种到处是水，但是却没有一滴水可以喝的感觉。市场的提供了民众需要的东西，但他不可能给予他们真正需要的东西。我们变的越来越没有耐心了，再也没法耐下性子来看大段的文字了，因为有太多的信息需药我们来过目了。“重估价值”取自一本书的名字，我们希望这个网站可以真正让人们重估自己平时行为的正真价值，而不是虚度光阴。我希望在这个虚拟世界中游戏者们通过自己的一步步挖掘，来找到中国大学生真正需要的心灵家园。每一个人分享的都是自己平时的感悟，而不是自己今天吃了什么，买了个什么衣服，也就是找到真正的价值。每一个人都可以分享自己看的书的好看的一段，写下自己的感悟，来让人么也学习。我们来发掘当代大学生究竟需要什么？而不是依靠那些我们可能需要仰望的人来告诉我们该怎么做！知识分子似乎过于频繁的表明“不知道他们在谈论什么了，尤其在经济学领域和军事技术领域”。而关于他们所说的责任。一群迥异而著名的知识分子，无论左派还是右派，都极其不负责任的漠然的倾向于向鼓励在同自己相隔遥远的安全距离之外的地方使用暴力。错误的观念最终会流血，但在每种情况下流的都是别人的血，这就是我们某些思想家对一切事情随心所欲，说三到四的原因。我们应该有自己的想法。也就是说我们应该有一个完全由我们自己构建的世界。每个人都会清楚的知道自己的进步和脚步，自己的一点一滴的对生活的体会，都会记录在这个上面，相当于每隔一段时间自己都可以看到的总结，据我了解，唯一有这个功能的就是考试，但是现在他能起到的作用也是有所限制的。既然是游戏，就必然会有竞争，这个游戏的竞争者不仅仅是每一个人，我们也会按学校为一个团体来比赛，按学校里每一个人的表现来换取相应的积分，来凑成学校的总积分来排名，不仅让我们看到差距，也让我们每一个人知道，获得尊重的是实践知识，而不是所谓的权威。我们也知道差距到底在哪？到那个时候，每一个学校的网站都变成这个网站的一个子网页， 每个学校的每个学生的每天表现状态都决定着这个学校当天的排名，你将是学校排名的贡献者。从这个角度可以吸引一部分未上大学的高中生，可以让他们切实的体会每一所大学的氛围环境，让他们提前了解自己喜欢的学校，不在让大学选择留下遗憾。我们还会设置各种各样的排行榜来让大家学习和了解。比如一段精彩的话，一次兼职自己了解到的事等等，通过分享自己的生活经历来分享一段故事，等到每一年，这个网站会挑选出最能代表大学生思想和价值观的东西编成一本书，作为年鉴和记录，每一个人的每一句话，都可能出现在这本书上。你将来在某个悠闲的下午在这个网站上会回味自己曾经为了理想的付出的努力，那一份执拗和坚持。<br>对社会的作用：通过对网站提供的关于大学生的各种大数据的分析，可以准确的了解当今大学生的所思所想所感，紧握当前大学生的脉络，在制定有关大学生的各种规则时能够有所参考，再遇到有关大学生的问题时可以到这个网站上来提取数据，这是对政府的作用。而对于当今的企业来说，可以作为企业实践社会责任和道德营销的地点，第一点，作为现今很流行的企业定制＋学校培养的模式我觉得可以借鉴，学生可以很早的了解到自己需要的是什么，企业需要的是什么。企业也可以很早的有意识的向大学生传输自己的企业文化，让大学生在学校里就可以提早学习一些社会上的本领。可以让企业提早发现人才，培养人才。对于生活在V时代的大学生来说，对于网络化的世界来说，对于新时代的人力资源总监来说。仅仅看到你的简历是不可能了解一个人的，你还需要看他的微博。但是现在我们提供了一个更好的地方来展示自己，就像应聘一个程序员最好有自己的GIT HUP账户一样，我们这个网站将起到这样的作用。这个网站上你的信息将会可能有和你的学位证书有一样同等的地位。假如你是一位主考官，你对一个人的简历很满意，但是网上有你的不良记录。同样在这个网站上，他会看到你的兴趣，你自己看了什么书，大学四年学了什么东西，甚至你坚持跑步了四年，甚至仅仅是一些小事，在我们的标签和他的认识重合之后。他认为你是一个做事认真，踏实肯学习的人，也许学历就可能没有那么重要的地位了。总之就最后的梦想是为每一个人在网站上面建立一个得到别人认可的标准或是记录自己每一次进步的日记。</p>
-<p>对学校的作用：这个网站完全可以作为平时教学工作的补充，通过这个网站，学校自身不仅仅可以整合自己的优秀教学资源，而且可以更加客观的评价学生，更加具体的了解学生自身的情况，挖掘学生的潜力，现在什么都提倡智慧。现在可以在学校里实行智慧校园，比如老师上课点名可以用到。学生在这种方式的鼓励下不在是被动的学习，而是他们主动的去寻找，积极寻找学校里每一个可以学到东西的地方。</p>
-<p>对海南本地的作用：众所周知，天涯论坛曾经是中国人思想盆碰撞火花的加速器，也让海南这个地方有了一点不一样的地方，就像西藏对某些人的意义一样，但是现在这个标签还没有得到强化，这个网站所起的作用将会和天涯社区的作用相得益彰，从曲线的方面来强化海南的独特名片，在互联网文化大省上面彻底坐实牢固的地位，依托“国际旅游岛”战略，海南不能仅仅发展硬件上的实力，更要进一步发展软实力，让人们来这个地方得到的不仅仅是身体上的放松，通过在这个网站上面的交流，得到的更是心灵上的旅行，这才是长久发展的计划，光靠景色是吸引不了人们的，关键是的有自己的特色。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Lorem ipsum dolor sit amet, ligula suspendisse nulla pretium, rhoncus tempor placerat fermentum, enim integer ad vestibulum volutpat. Nis
-    
-    </summary>
-    
-    
-      <category term="自己写的大长布" scheme="https://github.com/skoll1/libateer.github.io/tags/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E5%A4%A7%E9%95%BF%E5%B8%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的书-2</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/08/best-2-%E6%88%91%E7%9A%84%E4%B9%A6-2/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/08/best-2-我的书-2/</id>
-    <published>2017-03-08T05:48:48.000Z</published>
-    <updated>2017-03-08T06:43:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>我相信太阳已经升起，不仅仅是因为我亲眼看到了太阳，是因为接着她的光芒，我看明白了所有其他的事物。</li>
-<li>侦探小说迎合了我们内心的一种需要。即人类哪种想从看似彼此无关的各种事情中发现意义的渴望。尽管这些事情纷繁复杂，但在他们之中存在诸多的线索，这些线索如同事件背后的一件记号来帮助我们找到那些神秘现象的答案而所有的线索只有在更加强大的背景中才能发现。</li>
-<li>对于世界上所观察到的每一件事，我们都希望看到背后的意义何在，对于我们看到的迥然不同的事实。是否有衣服更为宏大的图景能将它们联系在一起？</li>
-<li>如流星般的事实，从天而降，然而，这些事实确未受过质疑而且零散无关，他们就像需要编织的美丽灌汤的缕缕细线，真想的解释需要讲这些连接起来，各种信息时刻冲击。</li>
-<li>人一旦迷醉于自身的软弱，便会一味软弱下去，会在众人的目光下倒在街头，倒在地上，倒在比地面更低的地方。——米兰·昆德拉《不能承受的生命之轻》</li>
-<li>当政府发行了过大的钞票，从而诱发了大量的通货膨胀，但是各种物价的上升并不是齐头并进的，总有一些东西是要先涨价的，而且，及时没有通货膨胀，东西也是要涨价的。</li>
-<li>事件只要想明白了。抓紧事件办就不难。</li>
-<li>位卑未敢忘国忧</li>
-<li>中国的土地上发生了这么深刻的变化，为什么总有人把建设的轰鸣鸣声当成国家大厦的蹦嗒声，这非常奇怪，但是也是非常正常的，这就是中国，在改革开放的道路上，思想剧烈挣扎的中国。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;我相信太阳已经升起，不仅仅是因为我亲眼看到了太阳，是因为接着她的光芒，我看明白了所有其他的事物。&lt;/li&gt;
-&lt;li&gt;侦探小说迎合了我们内心的一种需要。即人类哪种想从看似彼此无关的各种事情中发现意义的渴望。尽管这些事情纷繁复杂，但在他们之中存在诸多的线索，这些线索
-    
-    </summary>
-    
-      <category term="Read" scheme="https://github.com/skoll1/libateer.github.io/categories/Read/"/>
-    
-    
-      <category term="一句话的事" scheme="https://github.com/skoll1/libateer.github.io/tags/%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%9A%84%E4%BA%8B/"/>
     
   </entry>
   
