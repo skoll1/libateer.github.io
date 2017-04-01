@@ -5,7 +5,7 @@
   <link href="/libateer.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/skoll1/libateer.github.io/"/>
-  <updated>2017-03-26T15:28:44.000Z</updated>
+  <updated>2017-03-30T17:01:49.000Z</updated>
   <id>https://github.com/skoll1/libateer.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/25/best-1-%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/25/best-1-互联网协议/</id>
     <published>2017-03-25T13:00:43.000Z</published>
-    <updated>2017-03-26T15:28:44.000Z</updated>
+    <updated>2017-03-30T17:01:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>###https为什么安全###<br>他是http和ssl/tls的组合<br>密码学中的密码是一套算法，这套算法用于对消息加密和解密，从明文到密文的过程就是加密，密文反过生成明文称之为解密，加密算法和解密算法结合在一起叫做密码算法。</p>
 <ol>
@@ -238,6 +238,7 @@ xmlHttp.setRequestHeader(&quot;Cache-Control&quot;,&quot;no-cache&quot;);
 <li>代理服务器缓存，网关缓存。</li>
 <li>如何控制缓存和不缓存？</li>
 <li>meta标签使用很简单，但是效果一般，如果你的网站托管到ISP或者主机托管商那里，并且他们没有赋予你任何设置http头信息的能力，那你就要注意了。</li>
+<li></li>
 </ol>
 ]]></content>
     
@@ -440,7 +441,7 @@ height: 50px;
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E9%9D%A2%E8%AF%95html-css-1/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-面试html-css-1/</id>
     <published>2017-03-13T12:37:07.000Z</published>
-    <updated>2017-03-25T12:56:19.000Z</updated>
+    <updated>2017-04-01T17:30:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>###隐藏元素###</p>
 <ol>
@@ -600,6 +601,9 @@ input::-webkit-input-placeholder{
 <ol>
 <li>iframe使用的场景：ajax上传文件，加载别的网站的内容（广告），在上传图片时，不用flash实现刷新，跨域访问的时候可以使用。</li>
 <li>在html中有三种结构特征：树结构，层次结构，框结构。iframe属于框结构的一种。每个iframe都是一个独立的沙箱，他们拥有自己的window以及dom.</li>
+<li>html语义化：围绕几个主要的标签，像是标题，列表，强调等等，根据内容的结构化，选择合适的标签，便于开发者阅读和写出更优雅的代码的同时为了让浏览器和爬虫更加好的解析。2：为什么要语义化，在没有css的时候，页面也是可以呈现出好的页面结构，裸奔时更加的好看，用户体验：例如title,alt用来解释名词和图片信息。为了seo的优化，更好的和搜索引擎建立好的沟通，有助于爬虫抓取更多的有效信息，爬虫依赖标签上下文来确定上下文和各个关键字的权重，方便其他设备解析（如屏幕阅读器，盲人阅读，移动设备）以及意义的方式来渲染你网页；便于团队的开发和维护，</li>
+<li>flex可以实现多列布局，每一列的高度都是当前内容最高的一行</li>
+<li>如何实现多个高宽不等的无缝瀑布流布局？使用flex可以么？</li>
 </ol>
 ]]></content>
     
