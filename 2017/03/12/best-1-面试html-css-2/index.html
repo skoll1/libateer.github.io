@@ -71,7 +71,7 @@
 <link href="/libateer.github.io/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面试html-css-2," />
+  <meta name="keywords" content="面试," />
 
 
 
@@ -103,7 +103,7 @@ ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以�
 在网页上显示的时候：实际的占据位置和他的实际大小是不一样的，因为margin是看不到的。
 在选择的时候，我们要用IE的标准盒子模型。在doctype中声明。如果不这样，那就会按照自己的默认方式去解析。
 所以box-sizing:如">
-<meta property="og:updated_time" content="2017-03-13T12:18:25.000Z">
+<meta property="og:updated_time" content="2017-03-23T13:09:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试html-css-2">
 <meta name="twitter:description" content="标准盒模型：外盒尺寸：h+p+b+m  内盒：h+p+b
@@ -330,28 +330,6 @@ ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以�
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/libateer.github.io/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -457,6 +435,44 @@ ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以�
 <li>浮动的历史：包裹特性：bfc块级格式化上下文。</li>
 <li>浮动具有破坏性。会让父级元素塌陷。</li>
 <li>浮动原来的作用是实现文字环绕。</li>
+<li>匿名函数的优势：将匿名函数当做参数传递给其他函数，这样接收函数就能够利用我们传递的函数完成许多事情，2：利用匿名函数执行一些一次性的任务。</li>
+<li>(function (count){<br>if(count&lt;5){<br>console.log(count);<br>arguments.callee(++count)<br>};<br>})(1);</li>
+<li>window是js在浏览器的全局对象。window的全局方法与浏览器相关的属性。</li>
+<li>页面导航方式：window.href=””location.href=””.location.assign=””</li>
+<li>document.documentElement是整个html的根节点。</li>
+<li>利用childrNodes，parentNode。这些我们可以实现结构结构之间的自有导航。并处理相关的文件操作，但是空白处也会成为一个文本节点，这就会让我们操作dom有一点不方便。</li>
+<li>p.previousSibling :p.nextSibling;</li>
+<li>document.title;document.domain(当前载入页面的域名访问);document.referrer.</li>
+<li>置换元素：浏览器根据元素的标签和属性，来决定元素的具体显示内容。img,input,select,textarea,</li>
+<li>元素的重绘：元素的外观发生改变，且在没有改变布局的情况下发生，如改变Outline,visibility,background,color,不会影响到dom结构渲染。</li>
+<li>reflow：影响到dom的结构渲染，同时会发生重绘，他会改变他本身和所有父辈元素，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多效果越明显。</li>
+<li><tr><br>    <td>123</td><td>456</td><td>789</td>  //横着来数据排列<br></tr></li>
+<li><dl><br><dt>sdf</dt><br><dd>123</dd><br><dd>456</dd></dl>  //竖着来排列</li>
+<li><code>&lt;input type=&quot;text&quot; list=&quot;brow&quot;&gt;
+&lt;datalist id=&quot;brow&quot;&gt;
+&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;12&lt;/option&gt;
+&lt;option value=&quot;3&quot;&gt;123&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;1234&lt;/option&gt;
+&lt;/datalist&gt;</code></li>
+<li><keygen name="security">是否在提交表单时添加钥匙。</li>
+<li>output输出结果，也是html五的新属性。</li>
+<li>onchange()改变失去焦距触发，blur()只要失去焦距就会触发。</li>
+<li>域名必须携带“http”协议.这个是真的。</li>
+<li>h1是最大的标题，通常我们看到的内容，都是放在body里面的。</li>
+<li>em起强调的作用。</li>
+<li>sup下标，sub上标。</li>
+<li>pre代码格式化，最后显示出来的跟源码中的样式一样，所见即所得。</li>
+<li>根据标题所在不同层级选取不同的h1,h2,h3，title标签用来描述网页最上层的标题。应该讲h1作为主标题，其次是h2,然后是h3。</li>
+<li>target=”_self”,target=”_blank”,target=”_top”,target=”_parent”;</li>
+<li>dl&gt;dt&gt;dd是用来定义列表的。</li>
+<li>div标签可以用来定义文档中的分区或节。来作为分区工具。</li>
+<li>css样式添加的方式 在css文件中@import url(css/style.css) 行内加样式，style标签嵌入，link引入样式。</li>
+<li>html负责网页的结构。</li>
+</ol>
+<p>###表单验证码实现###</p>
+<ol>
+<li>服务器端生成验证码之后一方面通过图片将验证码返回给客户端，同时在服务器端保存文本的验证码，有服务器端验证输入内容是否正确。</li>
 <li></li>
 </ol>
 
@@ -482,7 +498,7 @@ ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以�
       
         <div class="post-tags">
           
-            <a href="/libateer.github.io/tags/面试html-css-2/" rel="tag"># 面试html-css-2</a>
+            <a href="/libateer.github.io/tags/面试/" rel="tag"># 面试</a>
           
         </div>
       
@@ -574,7 +590,7 @@ ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以�
           
             <div class="site-state-item site-state-posts">
               <a href="/libateer.github.io/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -596,7 +612,7 @@ ie:外盒h+mie 盒子模型的 content 部分包含了 border 和 pading,所以�
             
             <div class="site-state-item site-state-tags">
               <a href="/libateer.github.io/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

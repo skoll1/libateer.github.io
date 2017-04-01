@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/libateer.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/libateer.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/libateer.github.io/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/libateer.github.io/atom.xml" title="李巴特儿de小屋子" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/libateer.github.io/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1：闭包：一个函数外加上该函数所创建时所建立的作用域。闭包的名字来源于闭包“关闭”一个函数中自由变量的访问的权利。我们所说的变量是自由的，是指该变量定义在函数外部的，而非函数内部。这个不懂。。。。如果一个函数访问了它的外部变量，那么它就是一个闭包。2：function create(start){return function(step){start+=step;return start;}};v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="https://github.com/skoll1/libateer.github.io/2017/03/07/闭包/index.html">
+<meta property="og:site_name" content="李巴特儿de小屋子">
+<meta property="og:description" content="1：闭包：一个函数外加上该函数所创建时所建立的作用域。闭包的名字来源于闭包“关闭”一个函数中自由变量的访问的权利。我们所说的变量是自由的，是指该变量定义在函数外部的，而非函数内部。这个不懂。。。。如果一个函数访问了它的外部变量，那么它就是一个闭包。2：function create(start){return function(step){start+=step;return start;}};v">
+<meta property="og:updated_time" content="2017-03-21T14:10:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="1：闭包：一个函数外加上该函数所创建时所建立的作用域。闭包的名字来源于闭包“关闭”一个函数中自由变量的访问的权利。我们所说的变量是自由的，是指该变量定义在函数外部的，而非函数内部。这个不懂。。。。如果一个函数访问了它的外部变量，那么它就是一个闭包。2：function create(start){return function(step){start+=step;return start;}};v">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/libateer.github.io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/skoll1/libateer.github.io/2017/03/07/闭包/"/>
+
+
+
+
+
+  <title> 闭包 | 李巴特儿de小屋子 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/libateer.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李巴特儿de小屋子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">...触之不动...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/libateer.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/libateer.github.io/categories/Code" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github"></i> <br />
+            
+            程序笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-person">
+          <a href="/libateer.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-edit"></i> <br />
+            
+            个人日记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/libateer.github.io/categories/Read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            读书笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/libateer.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://github.com/skoll1/libateer.github.io/libateer.github.io/2017/03/07/闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李巴特儿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/libateer.github.io/images/libateer.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李巴特儿de小屋子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                闭包
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T17:53:19+08:00">
+                2017-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/libateer.github.io/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/libateer.github.io/2017/03/07/闭包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/闭包/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1：闭包：一个函数外加上该函数所创建时所建立的作用域。闭包的名字来源于闭包“关闭”一个函数中自由变量的访问的权利。我们所说的变量是自由的，是指该变量定义在函数外部的，而非函数内部。这个不懂。。。。如果一个函数访问了它的外部变量，那么它就是一个闭包。<br>2：function create(start){return function(step){start+=step;return start;}};var inc=create(5)(1);<br>3：闭包是一个代码执行完成后离开作用域环境依然存在的例子。这个懂。。<br>4：for(var i=0;i&lt;5;i++){ (function(){return function(){return i;}result.push(i)}())};不成功的闭包。<br>5:var result=[];<br>        for(var i=0;i&lt;5;i++){<br>            (function(){<br>                var func=function(){<br>                    return i;<br>                };<br>                result.push(func)<br>            }());<br>        }二改，还是出来的函数。返回的数组<br>6：var result=[];<br>        for(var i=0;i&lt;5;i++){<br>            (function(){<br>                var pos=i;<br>                var func=function(){<br>                    return pos;<br>                };<br>                result.push(func)<br>            }());<br>        }三改，<br>7：函数变量可以保存在函数的作用域内，因此看起来就好像是函数将变量包起来了。包含变量的函数就是闭包。—有权访问另一个函数作用域内变量的函数就是闭包。<br>8：函数声明和函数表达式。给一个函数加上括号就把他从一个声明变成了表达式。可以直接调用。<br>9：闭包的三个条件：访问所在的作用域，函数嵌套，在所在作用域外被调用。<br>10：初级阶段：function f(value){var b=value;return function(){return b;}};f(‘libateer’)();<br>11：高级一点：var n;function f(){var b=1123;n=function(){return b;}};n();<br>12: 在高级一点：function show(first,last){var name=”hello”;function make(){return name+first+””+last}return make()};show(“lilei”,”wanggua”);<br>13：在高级一点：(function (first,last){var name=”hello”;function make(){return name+first+””+last}return make()})(str,str);<br>14:for(var i=0;i&lt;7;i++){(function (first,last){var name=”hello”;function make(){return name+first+””+last}return make()})(i-100,i+100);}和上面那个差不多了吧。。<br>15:在在高级一点：function hello(){var name=999;return {get:function(){return name;},set:function(id){name=id;}}}var f1=hello();f1.set(‘lailai’);f1.get();<br>16:找到那个怎么搞的了？function f(){var a=[];for(var i=0;i&lt;4;i++){a[i]=function(){return i;}}return a;};var a=f();和原来出的一样现在f()函数出来的还是函数，所以要这样a<a href="">1</a>;我要取到他的函数，在把这个函数表达出来。但是现在他的值还是4.是最后的，所以要在那里吧那个替换了。var pos=i；来个这个东西。<br>17:闭包的经常用法：var db = (function() {<br>// 创建一个隐藏的object, 这个object持有一些数据<br>// 从外部是不能访问这个object的<br>var data = {};<br>// 创建一个函数, 这个函数提供一些访问data的数据的方法<br>return function(key, val) {<br>    if (val === undefined) { return data[key] } // get<br>    else { return data[key] = val } // set<br>    }<br>// 我们可以调用这个匿名方法<br>// 返回这个内部函数，它是一个闭包<br>})();</p>
+<p>db(‘x’); // 返回 undefined<br>db(‘x’, 1); // 设置data[‘x’]为1<br>db(‘x’); // 返回 1<br>// 我们不可能访问data这个object本身<br>// 但是我们可以设置它的成员<br>17：函数的参数和变量不会被垃圾回收机制所回收，因为他是一只被另一个函数所引用的。<br>18：闭包的好处：希望一个变量长期的驻扎到里面，避免全局变量的污染。<br>19：回到初级：function aaa(){var a=1;return function(){a++;console.log(a)}};var b=aaa()不论是这种形式，还是下面的function aaa(){var a=1;var a=function(){a++;console.log(a)};return a;};一开始都要这样：先把原函数取出来。<br>20：var a=(function(){var a=1;return function(){a++;console.log(a)}})();有那么点意思了，a();执行时变成了这样。、<br>21：用法：模块化代码，私有成员方法的存在。<br>22:var a=(function(){<br>            var a=1;<br>            function a1(){<br>                a++;<br>                console.log(a);<br>            }<br>            function a2(){<br>                a+=3;<br>                console.log(a+100);<br>            }<br>            return {<br>                a1:a1,<br>                a2:a2<br>            }<br>        })()我让他私有了。。a.a1();<br>23：又来了：window.onload=function(){<br>            var Oli=document.getElementsByTagName(‘li’);<br>            for(var i=0;i&lt;Oli.length;i++){<br>                var pos=i;<br>                Oli[i].onclick=(function(){<br>                    console.log(pos);<br>                })(pos);<br>            }–改造以后for(var i=0;i&lt;Oli.length;i++){</p>
+<pre><code>        Oli[i].onclick=(function(i){
+            return function(){console.log(i)}
+        })(i);
+}可以不给上面括号的加参数，但是不能不给下面的传参数。但是这个是自执行函数，不点击都会出结果。
+</code></pre><p>24：(function(i){<br>                    Oli[i].onclick=function(){<br>                        console.log(i);<br>                    }<br>                })(i)为什么变成这个就是两个都要加I而且他还不会是自执行的函数。<br>15：闭包注意：IE下的内存泄漏：<br>16:函数表达式的形式：var a=function(){console.log(a)};(function(){console.log(a)})() 函数表达式可以直接加一个（）执行。<br>25：函数声明会被欲解析出来，如果我们想要在一些语句中实现不用的函数，一定要用函数表达式。匿名函数表达式和具名函数表达式。<br>26：<code>function f1(){var a=1;return f2()}
+function f2(){return a;}</code>我们可以通过添加，删除操作实现变量的重复添加，完全不影响函数的独立运行。</p>
+<ol>
+<li>var a=[];<br>var i;<br>for(i=0;i&lt;5;i++){<br>a[i]=(function(i){<br>  return function(){<pre><code>return i;
+</code></pre>  }<br>})(i)<br>} 不行这个模型。</li>
+<li>闭包的作用：所有的一切都可以通过一个匿名的函数自调来实现，我们在其中定义了全局函数set.get()可以保证局部函数变量的不可直接访问性。</li>
+<li><p><code>var get;
+var set;
+(function(){
+var secret;
+get=function(){
+return secret;
+};
+set=function(value){
+secret=value;
+};
+})()</code>get();set(“laji”);get();</p>
+</li>
+<li><p>竟然没发现这个东西。我们在定义函数的时候，默认的会有一个prototype属性，但是用new生成的函数就没有这个。</p>
+</li>
+<li><p>`function a(c){<br>this.b = c;<br>this.d =function(){</p>
+<pre><code>alert(this.b);
+</code></pre><p>}<br>}`a的prototype包含两个值，一个是constrocuor,一个是<em>proto</em>;第一个事构造这个例子的函数。</p>
+</li>
+<li><p>第二个是原型链的概念，每个对象都会在其内部初始化一个属性，就是<em>proto</em>，当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就去<em>proto</em>里面找，这个里面又有这个，就这样一直找下去。</p>
+</li>
+<li><code>function Foo(){};
+var f1 = new Foo;
+console.log(f1.__proto__ === Foo.prototype);//true</code></li>
+<li>Object.prototype的原型对象是null</li>
+<li>原型的作用现在来了第二个：给对象扩展功能。</li>
+<li>Array.prototype.isArray=function(value){for(var i=0,len=this.length;i&lt;len;i++){if(value===this[i]){return true;}}return flase;}扩展内建对象。</li>
+<li>在扩建之前先检查有没有现成的方法。if（！Array.prototype.isArray）{}</li>
+<li>当我们重写某个对象的prototype时，重置相应的constroctor属性是一个好习惯。</li>
+<li>继承，代码的重用。</li>
+<li>第一种继承方式：原型链继承。</li>
+<li>继承第一阶段 </li>
+<li><p><code>function shap(){
+this.name=&quot;shape&quot;;
+this.say=function(){
+return this.name;
+}
+}
+function two(){
+this.name=&#39;2D&#39;
+};
+function thres(side,height){
+this.name=&quot;3D&quot;;
+this.side=side;
+this.height=height;
+this.get=function(){
+return this.height*this.width;
+}
+}
+two.prototype=new shap();
+thres.property=new two();
+thres.prototype=new two();
+thres.prototype.constructor=thres;
+two.prototype.constructor=two;
+var my=new thres(10,33);
+my.constructor;
+my instanceof two
+my instanceof shap</code><br>以上是第一阶段的继承，实现了功能了。</p>
+</li>
+<li><p>将共享的属性迁移到原型中去。</p>
+</li>
+<li>出于效率的考虑，我们可以尽可能的把一些可以冲用的属性和方法添加到原型中去，如果这样的话，我们仅仅依靠原型就可以实现继承了。</li>
+<li><p>`function shap(){}</p>
+<pre><code>shap.prototype.name=&quot;shape&quot;;
+shap.prototype.say=function(){
+  return this.name;
+</code></pre><p>}</p>
+<p>function two(){};</p>
+<pre><code>two.prototype=shap.prototype;
+two.prototype.constructor=two;
+two.prototype.name=&quot;2D&quot;;
+</code></pre></li>
+</ol>
+<pre><code>function thres(side,height){
+  this.side=side;
+  this.height=height;
+</code></pre><p>}</p>
+<pre><code> 扩展对象必须在完成继承关系的构建。
+thres.prototype=two.prototype;
+thres.prototype.constructor=thres;
+thres.prototype.name=&quot;3d&quot;;
+thres.prototype.get=function(){
+  return this.height*this.side;
+</code></pre><p>}`这个是修正一点的了。<br>坏处是什么？一旦对子元素原型改变，那么父原型也会遭殃。通过实现临时构造器来实现继承。</p>
+<ol>
+<li>额外代码</li>
+<li>`// function foo(){<br>//   var a=2;<br>//   function bar(){<br>//     console.log(a)<br>//   };<br>//   return bar;<br>// }<br>// var ok=foo();<br>// ok()</li>
+</ol>
+<p>// 2.<br>// function foo(){<br>//   var a=2;<br>//   function bar(){<br>//     console.log(a)<br>//   };<br>//   bar()<br>// }<br>// foo()</p>
+<p>// 3.<br>// function foo(){<br>//   var a=2;<br>//   function bar(){<br>//     console.log(a);<br>//   }<br>//   baz(bar);</p>
+<p>// }<br>// function baz(fn){<br>//   fn()<br>// }</p>
+<p>// 4.<br>// for(var i=1;i&lt;=5;i++){<br>//   setTimeout(function times(){<br>//     console.log(i);<br>//   },i*1000);<br>// }</p>
+<p>// for(var i=0;i&lt;=5;i++){<br>//   (function(i){<br>//     setTimeout(function(){<br>//       console.log(i);<br>//     },i*1000)<br>//   })(i);<br>//   // 每次迭代都会创建一个新的作用域<br>// }</p>
+<p>// 5.<br>// for(let i=1;i&lt;=5;i++){<br>//   setTimeout(function(){<br>//     console.log(i);<br>//   },1000);<br>// }</p>
+<p>// 6.闭包创建的模块化函数代码在里面就给他穿上了衣服<br>var foo=(function Cool(){<br>  var something=”cool”;<br>  var another=[1,2,3];<br>  function doO(){<br>    console.log(something);<br>  }<br>  function doT(){<br>    console.log(another.join(“ ! “));<br>  }<br>  return {<br>    doO:doO,<br>    doT:doT<br>  };<br>})();<br>// 这个里面也可以添加参数来设置公共api<br>`</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/07/best-1-4/" rel="next" title="函数">
+                <i class="fa fa-chevron-left"></i> 函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/libateer.github.io/2017/03/07/best-1-6/" rel="prev" title="数字">
+                数字 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/07/闭包/"
+           data-title="闭包" data-url="https://github.com/skoll1/libateer.github.io/libateer.github.io/2017/03/07/闭包/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/libateer.github.io/images/libateer.jpg"
+               alt="李巴特儿" />
+          <p class="site-author-name" itemprop="name">李巴特儿</p>
+           
+              <p class="site-description motion-element" itemprop="description">每天写一点。。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/libateer.github.io/">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/libateer.github.io/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/libateer.github.io/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/libateer.github.io/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李巴特儿</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/libateer.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/libateer.github.io/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/libateer.github.io/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/libateer.github.io/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://libateer.duoshuo.com"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/libateer.github.io/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/libateer.github.io/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

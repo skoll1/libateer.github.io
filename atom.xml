@@ -5,7 +5,7 @@
   <link href="/libateer.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/skoll1/libateer.github.io/"/>
-  <updated>2017-03-13T12:38:55.000Z</updated>
+  <updated>2017-03-26T15:28:44.000Z</updated>
   <id>https://github.com/skoll1/libateer.github.io/</id>
   
   <author>
@@ -16,18 +16,606 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>面试html-css-1</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E9%9D%A2%E8%AF%95html-css-1/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-面试html-css-1/</id>
-    <published>2017-03-13T12:37:07.000Z</published>
-    <updated>2017-03-13T12:38:55.000Z</updated>
+    <title>互联网协议</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/25/best-1-%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/25/best-1-互联网协议/</id>
+    <published>2017-03-25T13:00:43.000Z</published>
+    <updated>2017-03-26T15:28:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>###https为什么安全###<br>他是http和ssl/tls的组合<br>密码学中的密码是一套算法，这套算法用于对消息加密和解密，从明文到密文的过程就是加密，密文反过生成明文称之为解密，加密算法和解密算法结合在一起叫做密码算法。</p>
+<ol>
+<li>密匙：是在使用密码算法的过程中输入的一段参数，同一个明文在相同的密码算法和不同的密匙计算下回产生不同的密文。密匙才是决定密文是否安全的重要参数，密匙越长，破解的难度越大。根据密匙的使用方法，密码可分为对称加密和公匙加密。</li>
+<li>对称密码：加密和解密的使用相同的密匙。关键问题：如何安全的传送密匙。</li>
+<li>公匙加密：发送者用加密密匙进行加密，接受者用解密密匙解密。加密密匙是公开的，任何人都可以获取。解密密匙只能自己使用。收的人自己创建锁和钥匙，把箱子给他，把东西放到这个里面，然后发送回来。</li>
+<li>消息摘要：消息摘要函数是一种用于判断数据完整性的算法，也称为散列函数或哈希函数，函数返回值叫做散列值，散列值又称为消息摘要或是指纹。这种算法是一个不可逆的算法，因此你没法通过消息摘要反推出消息是什么。所以他也称为单项散列函数，下载软件时如何确定是官方提供的完整版呢，如果中间有人在里面嵌入了病毒，你也不得而知。所以我们可以使用散列函数对消息运算，生成散列值，通常软件提供方会同时提供软件的下载地址和散列的散列值，用户下载后在本地用相同的散列值算法甲酸出散列值，与官方提供的散列值对比，如果相同的，说明软件时完整的，否则就是被别人修改过的。</li>
+<li>消息认证：可以解决同事替代消息和消息摘要的情况。</li>
+<li>消息认证码是一种可以确保消息完整性并进行认证的技术。消息认证码是一种可以理解为一种与密匙相关的单项散列函数。<br>7.<br>公钥证书</li>
+</ol>
+<p>公钥密码在数字签名技术里面扮演举足轻重的角色，但是如何保证公钥是合法的呢，如果是遭到中间人攻击，掉包怎么办？这个时候公钥就应该交给一个第三方权威机构来管理，这个机构就是认证机构（Certification Authority）CA，CA 把用户的姓名、组织、邮箱地址等个人信息收集起来，还有此人的公钥，并由 CA 提供数字签名生成公钥证书（Public-Key Certificate）PKC，简称证书。</p>
+<ol>
+<li>Bob 生成密钥对，私钥自己保管，公钥交给认证机构 Trent。</li>
+<li>Trent 经过一系列严格的检查确认公钥是 Bob 本人的</li>
+<li>Trent 事先也生成自己的一套密钥对，用自己的私钥对 Bob 的公钥进行数字签名并生成数字证书。证书中包含了 Bob 的公钥。公钥在这里是不需要加密的，因为任何人获取 Bob 的公钥都没事，只要确定是 Bob 的公钥就行。</li>
+<li>Alice 获取 Trent 提供的证书。</li>
+<li>Alice 用 Trent 提供的公钥对证书进行签名验证，签名验证成功就表示证书中的公钥是 Bob 的。</li>
+<li>于是 Alice 就可以用 Bob 提供的公钥对消息加密后发送给 Bob。</li>
+<li>Bob 收到密文后，用与之配对的私钥进行解密。</li>
+</ol>
+<p>###互联网协议入门###</p>
+<ol>
+<li>互联网的实现，分为好几层，每一层都有特定的功能，互联网的核心，就是一系列协议，总称为互联网协议。她们对电脑如何连接和组网作出了详细的规定。</li>
+<li>第一层：实体层，把电脑连接在一起的物理手段。它主要规定了网络的一些电气特性，作用时负责传送0和1的电信号。</li>
+<li>链接层：单纯的0和1没有任何意义，必须规定解读方式：多少个信号算一组，确定了0和1的分组。</li>
+<li>以太网协议：早期的时候，每家公司都有自己的电信号分组方式。逐渐的，一种叫以太网的协议占据了主导地位。</li>
+<li>一组信号构成一个数据包，叫做“帧”，每一帧包含两个部分，标头和数据。标头：发送者，接受者，数据类型。数据：数据包的具体内容。</li>
+<li>标头和数据的大小都是有规定的，如果大于他所规定的范围，必须切割分成多个字段进行。</li>
+<li>mac地址：就是网卡的地址，数据包的发送地址和接受地址。</li>
+<li>广播：定义地址只是第一步，以太网采取了一种很原始的方法，他不是把数据包准确的发送给接收方，而是向本网络的所有计算机都发送，让每台计算机都自己判断，是否接受。</li>
+<li>网络层：从上面的情况来看，必须找到一种方法，能够区分哪些MAC地址属于同个子网络，这样才能广播。网络层的诞生就是为了解决这个问题，它引进一套新的地址，使我们能够区分不同的计算机是否属于一个子网络。这套协议就叫做“网络地址”，简称“网址”。从逻辑上，我们先处理网络地址，在处理MAC地址。</li>
+<li>IP协议的两个作用：一个是为每一个计算机分配IP地址，另一个是确定是哪些地址在同一个网络下。</li>
+<li>arr协议，我们可以得到同一个子网络内的主机的MAC地址，从IP地址转换来，这样就可以把数据包发送到另一个主机之内了。</li>
+<li>传输层：有了MAC地址我们就可以在互联网上任意两台电脑上建立通信。接下来的问题是一台计算机上的不同应用都需要用到网络，那么怎么区别发来的一个数据包属于那部分要用的信息呢。</li>
+<li>我们需要一个参数来表示数据包属于哪个程序使用。这个参数叫做端口，他其实是每一个使用网卡的程序的编号。每个数据包发送到主机的特定端口，所以不同的程序能去到自己所需的数据。</li>
+<li>传输层的功能是：建立端口到端口的通信。相比之下，“网络层”的功能是建立在“主机到主机”通信，只要确定主机和端口，我们就能实现程序之间的交流。</li>
+<li>TCP和UDP协议都是为了实现这个目标，只不过TCP协议有确认机制，每一个发出的数据都是要确认，如果一个数据包发出得不到确认，就有必要重新发送一遍了。</li>
+<li>应用层：收到数据后的行为。解读实现规定好的格式的数据，TCP协议可以解读EMAIL，WWW，ftp.这是最高的一层直接面对用户。她的数据就放在TCP数据包的“数据部分”。</li>
+<li>数据传输的场景：同一个子域，对方的MAC地址，对方的IP地址。非统一个子网络，网管的MAC地址，对方的Ip地址。</li>
+<li>动态IP地址：计算机开机时，会自动分配到一个IP地址，不用人为设置，DHCP协议：每一个子网络中，都有一台计算机负责管理本网络的所有IP地址，新加入的计算机加入网络，必须向“DHCP服务器发送一个“DHCP请求”数据包，申请IP地址和相关的网络参数。</li>
+<li>上网的人确定四个参数才能用：本机的Ip，子网掩码，网关的IP地址，dns的IP地址。</li>
+<li>dns</li>
+</ol>
+<p>###异步通信开发###</p>
+<ol>
+<li>http专门用来负责超文本的传输，也就是所谓的web信息传输（网页，图像，不同类型的文件）</li>
+<li>http主要由两部分组成：请求和响应。</li>
+<li>Keep-Alive功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接Keep-Alive: timeout=5, max=100</li>
+<li>HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>HTTP是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。</li>
+<li>客户端请求结构 请求行，请求头部，空行，和请求数据<br>GET /hello.txt HTTP/1.1<br>User-Agent: curl/7.16.3 libcurl/7.16.3 OpenSSL/0.9.7l zlib/1.2.3<br>Host: www.example.com<br>Accept-Language: en, mi</li>
+<li>GET /pagead/js/adsbygoogle.js?_=1472721354924 HTTP/1.1<br>Host: pagead2.googlesyndication.com<br>User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0<br>Accept: <em>/</em><br>Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3<br>Accept-Encoding: gzip, deflate<br>Referer: <a href="http://domestic.firefox.sina.com/16/0901/01/R0GJL8D7VI5SUOKN.html" target="_blank" rel="external">http://domestic.firefox.sina.com/16/0901/01/R0GJL8D7VI5SUOKN.html</a><br>Connection: keep-alive</li>
+<li>Referer头域允许客户端指定请求uri的源资源地址，这可以允许服务器生成回退链表，可用来登陆、优化cache等。他也允许废除的或错误的连接由 于维护的目的被追踪。如果请求的uri没有自己的uri地址，Referer不能被发送。如果指定的是部分uri地址，则此地址应该是一个相对地址</li>
+<li>服务器响应消息 状态行 消息报头 空行 响应正文</li>
+<li>HTTP/1.1 200 OK<br>Date: Mon, 27 Jul 2009 12:28:53 GMT<br>Server: Apache Server响应头包含处理请求的原始服务器的软件信息。此域能包含多个产品标识和注释，产品标识一般按照重要性排序。<br>Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT 实体头指定服务器上保存内容的最后修订时间<br>ETag: “34aa387-d-1568eb00”<br>Accept-Ranges: bytes<br>Content-Length: 51<br>Vary: Accept-Encoding<br>Content-Type: text/plain Content-Type实体头用于向接收方指示实体的介质类型，指定HEAD方法送到接收方的实体介质类型，或GET方法发送的请求介质类型 Content-Range实体头 </li>
+<li>Content-Range实体头用于指定整个实体中的一部分的插入位置，他也指示了整个实体的长度。在服务器向客户返回一个部分响应，它必须描述响应覆盖的范围和整个实体长度。一般格式： </li>
+</ol>
+<p>Content-Range:bytes-unitSPfirst-byte-pos-last-byte-pos/entity-legth </p>
+<p>例如，传送头500个字节次字段的形式：Content-Range:bytes0- 499/1234如果一个http消息包含此节（例如，对范围请求的响应或对一系列范围的重叠请求），Content-Range表示传送的范围， Content-Length表示实际传送的字节数。</p>
+<ol>
+<li>Content-Encoding 文档的编码（Encode）方法。只有在解码之后才可以得到Content-Type头指定的内容类型。利用gzip压缩文档能够显著地减少HTML文档 的下载时间。Java的GZIPOutputStream可以很方便地进行gzip压缩，但只有Unix上的Netscape和Windows上的IE 4、IE 5才支持它。因此，Servlet应该通过查看Accept-Encoding头（即request.getHeader(“Accept- Encoding”)）检查浏览器是否支持gzip，为支持gzip的浏览器返回经gzip压缩的HTML页面，为其他浏览器返回普通页面。</li>
+<li>Allow 服务器支持哪些请求方法（如GET、POST等）</li>
+<li>Content-Length 表示内容长度。只有当浏览器使用持久HTTP连接时才需要这个数据。如果你想要利用持久连接的优势，可以把输出文档写入 ByteArrayOutputStream，完成后查看其大小，然后把该值放入Content-Length头，最后通过 byteArrayStream.writeTo(response.getOutputStream()发送内容。</li>
+<li>Content-Type，内容类型，一般是指网页中存在的Content-Type，用于定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件，这就是经常看到一些Asp网页点击的结果却是下载到的一个文件或一张图片的原因。</li>
+<li>http状态码分类：1 服务器收到信息，需要请求者继续执行操作。 2 成功 操作被成功接受处理 3 重定向 需要进一步的操作完成请求 4客户端错误 请求包含语法错误或无法完成请求 5 服务器错误 服务器在处理请求的过程中发生了错误。</li>
+<li>交互的核心是有一个信息处理机制，这个处理机制就是回调函数。该函数时被在服务器端调用的，并负责处理服务端信息相应的信息。 </li>
+<li>既然可以通过影藏框架实现动态加载服务器的请求页面，呢为什么不能用js代码开始实现这个功能呢，js标签能够动态的加载外部的js脚本，js脚本文件不仅仅可以被执行，而且可以传输数据，所以我们不妨在访问服务器端的时候使用js文件来附加传递信息。当客户在远程加载脚本文件的时候，这些附加在js脚本文件的响应信息也一并被加载到客户端中，实现异步交互的效果。</li>
+</ol>
+<p>###图解http协议###</p>
+<ol>
+<li>http是无状态的协议。超文本传输协议（超文本转移协议），适用于从万维网服务器传输超文本到本地浏览器的传送协议。</li>
+<li>http是基于tcp/ip通信协议来传递数据的。由网络层的IP协议和传输层的TCP协议组成，TCP负责发现传输的问题，一有问题就发出信号，要求重新传输，直到所有数据安全正确地传输到目的地。而IP是给因特网的每一台联网设备规定一个地址</li>
+<li>无连接：限制每次连接只能处理一个请求，服务器处理完就立刻放手，断开连接。</li>
+<li>http:媒体独立的，只要客户端和服务器知道如何处理数据内容，任何类型的数据都可以通过http发送。客户端以及服务器端通过使用适合的MIME-type内容类型。</li>
+<li>无状态：协议对事件处理没有记忆能力，缺少状态意味着如果后续处理需要前面的信息，则他必须重传，这样可能导致每次连接传送的数据量增大。另一方面，当服务器不需要之前的信息的时候就变得很快了。</li>
+<li>http使用统一的资源标识符来URL来传输数据和建立连接。。</li>
+<li>现在使用的网络（包括互联网）是在TCP/IP协议族的基础上运作的，而http属于他的内部一个子集。</li>
+<li>tcp/IP是互联网相关的各类协议族的总称（协议中存在各式各样的内容：包括电缆的规格，ip地址的选定方法，寻找异地用户的方法，双方建立通信的顺序，以及web页面显示需要处理的步骤）</li>
+<li>TCP/IP协议族最重要的一点就是分层（应用层，传输层，网络层，数据链路层）</li>
+<li>应用层（ftp&lt;文件传输&gt;,http,dns&lt;域名管理&gt;）–传输层（连接俩台计算机之间的数据传输Tcp&lt;传输控制协议&gt;udp&lt;用户数据报协议&gt;）–网络层（处理在网络上流动的数据包，在众多的选项内选一条传输路线）–数据链路层（处理连接网络的硬件部分，包括控制操作系统，硬件的设备驱动，nic,硬件上的范畴基本上都在链路层的作用范围之内）–物理层</li>
+<li>利用tcp/ip协议族进行网络通信时，会通过分层顺序与对方进行通信，发送端从应用层往下走，接收端则从应用层往上走。</li>
+<li>浏览器现在客户端发出想看某个页面的http请求，接着为了传输方便，在传输层把从应用层收到的数据进行分割，并且会在各个报文上边打上标记序号以及端口号转发给网络层。在网络层（iP）,增加作为通信目的地点的MAC地址发给链路层。这样一来，发往网络的通信请求就准备齐全了。</li>
+<li>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接受端在层与层之间传输数据时，每经过一层时会把对应的首部去掉。这种把数据信息包装起来的做法称为封装。（http数据-TCP首部-IP首部—-以太网首部）</li>
+<li>负责传输的IP协议：位于网络层层。所有使用网络的系统都会用到IP协议，IP协议的作用是把各种数据包传送给对方，利用IP地址和MAC地址定位实现。IP地址指明了节点被分配的地址，MAC指的是网卡所属的固定地址，IP地址和mac地址来配对，IP地址可以互相变化，但是MAC地址基本上不会改变。</li>
+<li>ip间的通信依赖mac地址，通常的同心都是进过多台计算机和网络设备中转才能连接到对方。而在进行中转时，就会利用到另一台计算机的mac地址来搜索下一个中转目标。</li>
+<li>在到达通信目标前的中转过程中，那些计算机和路由设备只能获悉很粗略的传输路线。这种机制就是路由选择，就像快递公司一样。无论那台计算机，哪台网络设备，他都无法掌握互联网中的细节。</li>
+<li>确保可靠性的TCP协议：位于传输层，提供可靠地字节流服务。将大块的数据分割成以报文段为单位的数据包进行管理。而可靠地传输服务就是指能够把数据准确可靠地传给对方。tcp协议能够确认数据是否最终送达到对方。</li>
+<li>为了确保无误的将数据送到目标处，tcp采取了三次握手的策略。TCP把数据包发送出去之后，tcp不会不对数据的去向不管，他一定会确认是否成功送达。握手的过程使用了TCP的标志（flag）-SYN-ACK。</li>
+<li>发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，在返回一个带有SYN,ACK的数据包表示确认信息。然后发送端在回传一个带ACK标志的数据包，代表握手结束。若是在握手的某个阶段发生中断，tcp协议就会再次以相同的顺序发送相同的数据包。</li>
+<li>除了三次握手，tcp协议还有其他各种手段来确保通信的可靠性。</li>
+<li>dns位于应用层的协议。他提供域名到IP地址之间的解析服务。dns协议提供通过域名查找IP地址，或者逆向从IP地址反查域名的服务。</li>
+<li>用户通常使用主机名字或域名来访问对方的计算机，而不是直接通过ip地址来访问，对于人来说我们一般输入字母比较容易记住，但是对于电脑来说一长串数组就好多了。</li>
+<li>他们之间的关系：仔细想一遍</li>
+<li>url，uri：与uri（统一资源标识符）相比，我们更加熟悉url(统一资源定位符)。</li>
+<li>uri就是由某个协议方案表示的资源定位表示符。协议方案就是指访问资源时所使用的协议类型名称。采用http协议时，协议方案就是http.除此之外，还有ftp,mailto,telnet,file等。</li>
+<li>uri用字符串表示识别某一互联网资源，而url表示资源的地点（互联网上所处的位置）url是uri的子集，一部分。</li>
+<li><a href="http://(协议方案名)user:pass(登录信息)@www.baidu.com（服务器地址）:80(服务器端口号)dir/index.html?(带层次的文件路径)uid=1(c查询字符串)#ch1(片段标识符)。--完整的绝对uri格式" target="_blank" rel="external">http://(协议方案名)user:pass(登录信息)@www.baidu.com（服务器地址）:80(服务器端口号)dir/index.html?(带层次的文件路径)uid=1(c查询字符串)#ch1(片段标识符)。--完整的绝对uri格式</a></li>
+<li>rfc是一些用来指定http协议技术标准的文档，通常，应用程序会遵照由rfc确定的标准实现。可以说，rfc是互联网那个设计的文档。要是不按照这个文档设计，那么就会可能导致无法通信。</li>
+<li>http协议：</li>
+<li>在应用http协议时，必定一端担任客户端角色，另一端担任服务器端角色。请求必定由客户端发出，返回一定有服务器端返回。首先是从客户端开始通信的，服务器端在没有收到请求之前是不会发送相应的。</li>
+<li>http虽然是无状态的协议，但是为了实现期望的保持状态的功能，于是引入了cookie技术，有了cookie在用http协议通信，就可以管理状态了。</li>
+<li>get方法用来请求访问一杯url识别的资源。指定的资源经服务器解析后返回响应内容。也就是说，如果请求的资源是文本，那就保持原样返回；如果是像cgl那样的程序，就返回经过执行的输出结果。</li>
+<li>post的主要目的不是用来获取响应的主体内容，而是发送信息。</li>
+<li>put。delete方法分别是上传和删除信息的两个操作，但是他们都不带验证机制，所以一般的web网站也不会使用delete方法。当配合web应用程序的验证机制，或者遵守rest标准时还是有可能会开放使用的。</li>
+<li>options:询问支持的方法。-（返回服务器的支持的方法get,head,post,optioins）</li>
+<li>trace:让服务器将之前的请求通信换回给客户端的方法。客户端通过这个方法可以知道发出去的请求是怎样被加工的。想要连接到原服务器目标可能会通过一系列的代理中转，trace方法就是用来确认连接过程中的一系列操作的。（容易引发xst跨站追踪）攻击，通常不会用到。</li>
+<li>connect:这个方法要求在于代理服务器通信时建立隧道，实现用隧道协议进行tcp通信。主要使用ssl,tls协议把通信内容加密后经网络隧道传输。</li>
+<li>head方法用来接收信息的头部</li>
+<li>http协议的初始版本中，美进行一次http通信就要断开一次TCP连接。但是现在的网页如果需要传输大量的图片的话，就会浪费无谓的TCP连接和断开，增加通信的开销。</li>
+<li>持久连接：只要任意一端没有明确的提出断开连接：那么就保持TCP持久连接状态。（http keep-alive http connection reuse）建立一次TCP连接后进行多次的请求和响应的交互。</li>
+<li>持久连接使得多数请求以管线化方式成为可能，从前发送请求需要等待并接收到响应，才能发下一个请求。管线化技术出现后，不用等待响应也可以直接发送下一个请求。当请求一个包含10张图片的htmlweb页面，与挨个连接相比，用持久连接可以让请求更快的结束。而管线化技术择比持久链接还要快。请求越多，时间差就越明显。</li>
+<li>cookie通过在请求和响应报文中写入cookie信息来控制客户端的状态。</li>
+<li>cookie会根据从服务器端发送的响应报文内的一个set-cookie的首部字段信息，通知客户端保存cookie。当下次客户端再往服务器端发送信息的时候，客户端会自动在请求包头上加上自己的cookie值后发送出去。服务器端发现刻画单发送过来的cookie后。回去检查是从哪一个客户端发送过来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。</li>
+<li>http通信包括从客户端发往服务器端的请求以及从服务器端返回客户端的响应。</li>
+</ol>
+<p>###http报文内的http信息###</p>
+<ol>
+<li>请求报文=报文首部+报文主体（不是必须）</li>
+<li>请求报文首部=请求行（请求方法，请求url和http版本）+请求首部字段+通用首部子端+实体首部字段+其他（cookie）</li>
+<li>响应报文首部=状态行（响应结果的状态码，原因短语和http版本）+响应首部字段+通用首部字段+实体首部字段+其他</li>
+<li>首部字段：表示请求和响应的各种条件和属性的各类首部。</li>
+<li>报文是http通信中的基本单位，由8位组字节流组成，通过http通信传输。</li>
+<li>实体：作为请求或响应的有效荷载数据被传输，其内容由实体首部和实体主体组成。</li>
+<li>通常：报文主体等于实体主体。只有当传输中进行编码操作的时候，实体主体的内容发生变化，才导致他和报文主体产生差异。（当对内容编码的时候，可以有效地提升传输的速率，通过在传输的时候编码，能够有效地处理大量的访问请求。）</li>
+<li>常用的内容编码：Gzip,compress,deflate.</li>
+<li>在传输大量内容的数据时，通过把数据分割成多块，能够让浏览器逐步显示页面。这种把实体主体分块的功能称为分块传输编码，分块传输编码会将实体主题分成多个部分。每一块都用16进制来标记块的大小，二十题主体最后的一块使用“0（CR+LF）”来标记。</li>
+<li>mime:多用途因特网邮件扩展机制，它允许邮件处理文本，图片，视频等多个不同类型的数据。</li>
+<li>为了解决下载过程中遇到网络中断的情况，为了避免重新下载，需要一种可恢复的机制，可以从之前下载中断的地方恢复下载。要实现该功能需要制定下载的实体范围。指定范围发送的请求叫做范围请求。rage bytes 5001/10000</li>
+<li>针对范围请求，响应会返回状态码为206的响应报文，另外对于多重范围的范围请求，响应会在首部字段content-type标明multipart/byteranges。如果服务器无法响应范围请求，则会返回状态码200 ok和完整的实体内容。</li>
+<li>内容协商机制：同一个网站可能存在多分相同的内容的页面，当浏览器默认语言为英文或中文，访问相同的URL的web页面时，则会显示对应的英语版本或中文版的web页面。</li>
+<li>内容协商机制会以响应资源的语言，字符集，编码方式等作为判断的基准。包含在请求报文中的某些首部字段就是判断的基准。accept,accept-charset,accept-encoding,accept-language,content-language;</li>
+<li>内容协商机制有以下几种情况：服务器驱动协商，已浏览器为标准，可能不会得到准确的信息。客户端驱动协商（脚本实现PC端或移动端）;透明协商：两个结合。</li>
+</ol>
+<p>###http首部报文###</p>
+<ol>
+<li>若http首部字段重复了会怎样？有的会使用第一个，有的会使用第二个。</li>
+<li>通用首部字段：cache-control:控制缓存的行为</li>
+<li>connection:逐跳首部，连接的管理。</li>
+<li>data创建报文的日期时间。</li>
+<li>pragma:报文指令。</li>
+<li>trailer:报文末端的首部一览。</li>
+<li>transfer_Encoding:指定报文主题的传输编码方式</li>
+<li>upgrade:升级为其他协议</li>
+<li>via；代理服务器的相关信息。</li>
+<li>warning:错误统治。</li>
+<li></li>
+</ol>
+<p>###返回结果的http状态码###</p>
+<ol>
+<li>状态码如200 OK 三位数字和原因短语组成。</li>
+<li>1**信息状态码 请求正在处理</li>
+<li>2**成功状态码 成功</li>
+<li>3**重定向状态码 需要进行附加操作以完成请求</li>
+<li>4** 客户端错误状态码 服务器无法处理请求</li>
+<li>5** 服务器错误状态码  服务器处理请求出错</li>
+<li>常用的状态码 200 成功  204处理成功，但是不给你更新页面，没有资源可以返回  206 只是进行了范围请求，成功了。</li>
+<li>301 永久性重定向：请求的资源早已经被分配了新的url，以后应该使用资源现在的url&gt;也就是说，重新保存地址url.  302 临时性重定向 该状态表示请求的资源一杯分配了新的URL,希望用户能够使用新的url访问。  303 在302的基础上，请求方试必须为get  <em>当301，301，303响应状态码返回时，几乎所有的浏览器都会把post改成get，并且删除报文内的主体，并且之后请求会自动再次发送</em>  304：该状态码表示客户端发送附带条件的请求时，服务器允许请求访问资源，但是没有满足条件的情况。和重定向没有关系。</li>
+<li>400 请求报文内存在语法错误。服务器无法理解这个请求，但是浏览器会像200 OK 一样对待该状态码。 401 该状态码表示发送的请求需要有通过http认证的认证信息。另外若之前已经进行过一次请求，那么第二次返回就表示认证失败。</li>
+<li>403 请求的资源没有权限，被服务器拒绝了。  404 服务器上没有请求的资源（也可以在服务器拒绝请求且不想说明理由的时候使用）</li>
+<li>500 服务器端在执行请求的时发生了错误（都发生了错误了怎么还会返回信息呢？）  503该状态码表示服务器正在处于超载负荷停机维护，现在无法处理请求。<br>12.状态码和状况不一致，不少返回的状态码响应都是错误的，但是与用户是觉察不到这点的。</li>
+</ol>
+<p>###与http协作的web服务器###</p>
+<ol>
+<li>一台web服务器可以搭建多个独立域名的web服务器，也可以作为通信路径上的中转服务器提升传输效率。</li>
+<li>http/1.1允许一台http服务器搭建多个web站点。比如提供web托管的供应商，可以用一台服务器为多位客户服务，也可以让每位用户持有的域名运行各自不同的网站，这是因为用了虚拟主机的功能。由于寄存在一个服务器下，当解析之后会有相同的Ip地址，所以在发送http请求时，必须在host首部内完整指定主机名或者域名的URL;</li>
+<li>在http通信的时候，还有一些用与数据转发的应用程序，例如代理，网关，隧道。他们可以配合服务器工作。</li>
+<li>代理：有转发功能的应用程序，接受由客户端发送的请求并转发给服务器，同时也接受服务器发回的响应并转发给客户端。(通过设置组织内部的代理服务器可以做到针对特定URL的访问控制)</li>
+<li>网关：网关是转发其他服务器通信数据的服务器，接受客户发过来的请求，他就像自己拥有资源的服务器一样对请求处理。有事客户端都不会差距自己通信的目标是一个网关。网关可以使通信线路上的服务器提供非http协议服务。利用网管能提高通信的安全性，因为可以在客户端与网关之间的通信路线上加密以确保连接的安全，比如，网关可以连接数据库，使用sql语言查询数据。</li>
+<li>隧道：在两个相聚很远的客户端和服务器端之间进行中转，并保持双方通信连接的应用程序。隧道的目的是确保客户端能与服务器进行安全的通信。</li>
+<li>使用代理的原因：利用缓存技术，减少网络带宽的流量，组织内部针对特定的网站的访问控制，以获取访问日志为主要目的。</li>
+<li>代理的分类：缓存代理》预想将资源的副本缓存保存在代理服务器上。当代理再次收到相同资源的请求的时，就可以不从源服务器那里获取资源获取资源，而是将之前的缓存的资源作为响应返回。</li>
+<li>透明代理：转发请求或响应时，不对报文做任何的加工的代理类型被称为透明代理。反之，对报文内容进行加工的代理被称为非透明代理。</li>
+<li>服务器端缓存，浏览器缓存：缓存是在本地磁盘内保存的资源副本，利用缓存能减少对源服务器的访问，因此也就节省了通信流量和通信时间。（怎么控制那些是可以缓存的，那些是不可以缓的，下一次请求怎么知道）</li>
+</ol>
+<p>###浏览器缓存清除###</p>
+<ol>
+<li><meta http-equiv="pragma" content="no-cache"><br> <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">  <meta http-equiv="expires" content="0"></li>
+<li>form表单的临时缓存： <body onload="javascript:document.yourFormName.reset()"></body></li>
+<li><p>ajax 请求 $.ajax({<br>  url:’www.haorooms.com’,<br>  dataType:’json’,<br>  data:{},<br>  beforeSend :function(xmlHttp){ </p>
+<pre><code>xmlHttp.setRequestHeader(&quot;If-Modified-Since&quot;,&quot;0&quot;); 
+xmlHttp.setRequestHeader(&quot;Cache-Control&quot;,&quot;no-cache&quot;);
+</code></pre><p>  },<br>  success:function(response){</p>
+<pre><code>//操作
+</code></pre><p>  }<br>  async:false<br>});</p>
+<ol>
+<li><p>$.ajax({<br>url:’www.haorooms.com’,<br>dataType:’json’,<br>data:{},<br>cache:false,<br>ifModified :true ,</p>
+<p>success:function(response){<br>   //操作<br>}<br>async:false<br>});</p>
+</li>
+<li>方法四：用随机时间，和随机数一样。在 URL 参数后加上 ?timestamp=+ new Date().getTime();</li>
+</ol>
+</li>
+</ol>
+<p>###浏览器的9中缓存机制###<br>2.浏览器缓存的种类：缓存协商（last-modified），彻底缓存(cache-control)</p>
+<ol>
+<li>http缓存是基于http协议的浏览器文件缓存机制。针对文件的重复请求的情况下，浏览器可以根据协议头判断从服务器端请求文件还是本地读取文件，chrome下的frames就是表示的浏览器的http文件级缓存。</li>
+<li>协商缓存就是还要去页面问一下页面有没有更新，如果更新了，那么就返回新内容，如果没有，返回304直接使用胡村内容。</li>
+<li>彻底缓存是在缓存失效之前不再需要和服务器发生交互，常用的是：Expires，expires是一个绝对时间，由服务器产生：这里容易出现的问题是服务器的时间可能和客户端的时间不一样，那么就用到了cache-control这是一个相对于浏览器的时间。</li>
+<li>浏览器缓存的机制：针对重复请求的情况：判断pxpires：如果未过期，直接读取http文件，不发http请求，否则进入下一步。判断是否含有taag，有则带上if-none-mtahc发送请求，未修改返回304，修改返回200，否则进入下一步，判断是否含有last-modified,有则带上if-modified-since发送请求，无效返回200，有效返回304，否则直接向服务器请求。</li>
+<li>last-modified:标志这个响应资源的最后修改时间。web服务器在响应请求时，告诉浏览器最后的修改时间/if-modified-since：当资源过期的时候，发现资源具有last-modified声明，则再次向web服务器请求上带上头if-Modified-since，表示请求时间，web服务器收到请求后发现这个东西，泽宇被请求资源的最后修改时间进行对比，如果最后时间较新，说明资源被改过，则响应整片资源内容，</li>
+<li>etag:web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。他的值是根据文件的索引，大小，最后修改时间hash得到的。</li>
+<li>if-none-match:当资源过期的时候，发现资源有etag声明</li>
+<li>Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</li>
+<li>2：websql只有在比较新的chrome上实现：不是h5的一部分，将数据以数据库的形式存在客户端，根据需求去读取。web sql更方便检索，允许sql语句查询，让浏览器实现小型数据库的功能，三个核心方法：openDatabase : 这个方法使用现有数据库或创建新数据库创建数据库对象。transaction : 这个方法允许我们根据情况控制事务提交或回滚。executeSql : 这个方法用于执行真实的SQL查询</li>
+<li>3： indexedDB是一个为了能够在客户端存储可观数量的结构化数据，并且可以在这些数据上使用索引进行高性能检索的api。这个是为了存储大量结构化的数据而准备的。</li>
+<li>4：cookie:一般网站为了辨别用户身份，进行session跟踪而存储在本地终端上的数据。不同域名之间的cookie是独立的，如果需要设置共享可以再服务器端设置cookie的path和domain来实现共享。</li>
+<li>5：localStorage:是html5的一种新的本地缓存方案，目前用的比较多，一般用来存储ajax返回的数据，加快下次页面打开的渲染速度，有大小限制，不适合放过多的数据，如果数据太大会删除最先的数据。</li>
+<li>6： sessionStorage:浏览器关闭会全部删除，一般项目中不用。</li>
+<li>application cache：将大部分的图片资源，js,css等静态资源放在manifest文件配置中。当页面打开时通过manifest文件来读取本地文件或是请求服务器文件。离线访问需要依靠这个来实现。</li>
+<li>7：cacheStorage是在ServuceWorker的规范中定义的。cacheStorage可以保存每个serverworker申明的cache对象，</li>
+<li>8：falsh缓存。</li>
+<li>浏览器缓存类型：强缓存，不会向服务器发送请求，至鸡肉从缓存中读取资源。</li>
+<li>协商缓存：向浏览器发送请求，服务器会根据这个请求的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并且带上新的参数统治浏览器从缓存中读取资源。</li>
+<li>用户对浏览器缓存的控制：地址栏的访问，链接的跳转是正常用户的行为，将会触发浏览器的缓存机制,F5刷新会设置max-age=0,效果强缓存判断，会进行协商缓存判断；ctrl+f5:跳过强缓存和协商缓存，直接从服务器拉去资源。</li>
+<li>web缓存游走于服务器和客户端之间。这个服务器可能是源服务器，数量可能是一个或多个，这个客户端也可能是一个或多个。web缓存就在服务器端和客户端之间搞监控，监控请求，并且把请求输出的内容另存一分。然后，如果下一个请求是相同的url，则直接请求保存的副本，而不是在次麻烦源服务器。</li>
+<li>代理服务器缓存，网关缓存。</li>
+<li>如何控制缓存和不缓存？</li>
+<li>meta标签使用很简单，但是效果一般，如果你的网站托管到ISP或者主机托管商那里，并且他们没有赋予你任何设置http头信息的能力，那你就要注意了。</li>
+</ol>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;###https为什么安全###&lt;br&gt;他是http和ssl/tls的组合&lt;br&gt;密码学中的密码是一套算法，这套算法用于对消息加密和解密，从明文到密文的过程就是加密，密文反过生成明文称之为解密，加密算法和解密算法结合在一起叫做密码算法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;密匙：是在
     
     </summary>
     
     
-      <category term="面试html-css-1" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95html-css-1/"/>
+      <category term="互联网协议" scheme="https://github.com/skoll1/libateer.github.io/tags/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>this</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/22/best-1-this%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/22/best-1-this你所不知道/</id>
+    <published>2017-03-22T11:21:28.000Z</published>
+    <updated>2017-03-22T12:16:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>this指向自身：错误1</li>
+<li>this指向函数的自己的作用域 错误2</li>
+<li>this的机制：他不是在编写时就绑定的，而是在运行的时候那么会定的，他的上下文是取决于函数调用时的各种条件，this的绑定和函数声明的位置没有任何关系，只是取决于函数的调用方式。当一个函数被创建的时候，会自动生成一个活动记录，这个记录会包含这个函数在哪里被调用，函数的调用方法，传入的参数等信息。this就是其中记录的一个属性，会在函数的执行过程中用到。</li>
+<li>this的调用位置：调用位置就是函数在这个代码中被调用的位置，绝不是声明的位置，寻找调用位置就是在找“函数被调用的位置”，在实际环境中，最重要的就是分析函数的调用栈：就是为了执行你这个函数我之前执行的所有函数都是栈，找到这个以后，调用位置就是正在执行的函数的前一个函数。</li>
+<li></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;this指向自身：错误1&lt;/li&gt;
+&lt;li&gt;this指向函数的自己的作用域 错误2&lt;/li&gt;
+&lt;li&gt;this的机制：他不是在编写时就绑定的，而是在运行的时候那么会定的，他的上下文是取决于函数调用时的各种条件，this的绑定和函数声明的位置没有任何关系，只是取决
+    
+    </summary>
+    
+    
+      <category term="this你所不知道" scheme="https://github.com/skoll1/libateer.github.io/tags/this%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你所不知道的js</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/21/best-1-%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84js/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/21/best-1-你所不知道的js/</id>
+    <published>2017-03-21T06:37:15.000Z</published>
+    <updated>2017-03-21T08:06:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>需要一套设计良好的规则来存储变量，并且可以之后很方便的找到这些变量，这套规则叫做作用域。</li>
+<li>任何的js代码在执行之前都必须要进行编译，通常就在执行前，因此，js编译器首先会对代码进行编译，然后做好执行他的准备。</li>
+<li>变量的赋值会经过两个操作，首先编译器会在当前作用域中声明一个变量，然后运行的时引擎就会早作用域中查找该变量，如果找到就会对他赋值。</li>
+<li>lhs,rhs可以理解为赋值目标是谁（查找的目的是为变量赋值），以及谁是赋值操作的源头（目的是获取变量的值）。</li>
+<li>函数作用域的意思是可以属于这个函数的全部变量都可以在整个函数的范围内使用以及复用，事实上嵌套的作用域中也是可以使用的。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;需要一套设计良好的规则来存储变量，并且可以之后很方便的找到这些变量，这套规则叫做作用域。&lt;/li&gt;
+&lt;li&gt;任何的js代码在执行之前都必须要进行编译，通常就在执行前，因此，js编译器首先会对代码进行编译，然后做好执行他的准备。&lt;/li&gt;
+&lt;li&gt;变量的赋值会经过
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>天天一点点-面试</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/17/best-1-%E5%A4%A9%E5%A4%A9%E4%B8%80%E7%82%B9%E7%82%B9-%E9%9D%A2%E8%AF%95-1/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/17/best-1-天天一点点-面试-1/</id>
+    <published>2017-03-17T06:03:35.000Z</published>
+    <updated>2017-03-19T15:01:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>###html###</p>
+<ol>
+<li>form–method get post</li>
+<li>display:block;w80;overflower:hidden;text-wrap:nowrap;text-overflow:ellipsis;</li>
+<li>dom文档的加载顺序-解析html结构-加载外部样式和脚本-解析和执行脚本-dom构建完成(domcontentLoaded)-加载外部图片-window.onload-</li>
+<li>domready是指整个文档熏染好了，domonload是指加载图形。</li>
+<li>-ms-是ie的浏览器前缀。</li>
+<li>background-color:是不可以继承的样式。</li>
+<li>xml只能有一个根节点，但是可以嵌套，他的解析方法分为dom,sax.</li>
+<li>form是块级元素，会自动换行。但是label也不是什么inline-block元素。</li>
+<li>行内块级元素有select，img,input,button,object</li>
+<li>css常用选择器：标签，id，类选择器。</li>
+<li>blob是对大数据块的不透明引用或者句柄。名字来源于SQl数据库，表示“二进制大对象”。在js中，他表示二进制数据。mime是描述消息内容类型的因特网标准。</li>
+<li>mime消息是能包含文本，图像，音频，视频以及其他应用程序专用的数据。</li>
+<li><p>如何垂直居中一个浮动元素 `width: 200px;</p>
+<pre><code>height: 200px;
+background-color: #6699FF;
+
+margin:auto;
+position: absolute;  /*  父元素需要相对定位,子元素绝对定位 */
+left: 0;
+top: 0;
+right: 0;
+bottom: 0;`
+</code></pre><ol>
+<li>元素的type属性可以取值为：image,checkbox,select,button,file,password,number,text,reset,</li>
+<li>放在body部分的元素会在页面加载的时候被执行。在html-head部分的js会在被调用的时候才会被执行。</li>
+<li>head中必不可少的标签是title。</li>
+<li>mark自动给元素加背景，还是黄色的。</li>
+<li>标签的权重是1，累的权重是10，id的权重是100，内联样式的权重是1000</li>
+<li>所有的link同时加载么？给html添加相同属性不同属性值的的css样式,后面的css文件样式会覆盖前面的css文件样式.但是他们的覆盖还是按照权重选择来的。先加载玩的优先解析。</li>
+<li>加载图片的情况：首先是img标签，只要设置了src都会加载。</li>
+<li>图片背景：可见的情况下加载。</li>
+<li>js的情况：只要写了src都会加载的。</li>
+<li><p>`span{</p>
+<pre><code>float: left;
+width:auto;
+height: 100%;
+</code></pre><p>}<br>i{</p>
+<pre><code>position: absolute;
+float: left;
+width: 100px;
+height: 50px;
+</code></pre><p>}`i设置了绝对定位，脱离文档流，所以父级宽度会塌陷，为0；</p>
+</li>
+<li><p>css注释/**/，html注释<!--  -->，js注释还不一样么// ？真的不一样。。。。</p>
+</li>
+<li>web worker是运行在后台的js，不会影响页面的性能。</li>
+<li>svg标签是用来制作可升缩的矢量图来画图或是文本。</li>
+<li><p>innerHTML—<span style="haha"></span></p>
+<pre><code>&lt;i&gt;hello&lt;/i&gt;
+</code></pre><p>连这个都会显示。。</p>
+</li>
+<li><p>自定style方式 resource-style-item</p>
+</li>
+<li>它只是HTML、CSS和客户端脚本的一种集成，即一个页面中包括html+css+javascript（或其它客户端脚本），其中css和客户端脚本是直接在页面上写而不是链接上相关文件。DHTML不是一种技术、标准或规范，只是一种将目前已有的网页技术、语言标准整合运用，制作出能在下载后仍然能实时变换页面元素效果的网页设计概念</li>
+</ol>
+<p>###window###对象</p>
+<ol>
+<li>百分比中的matgin-top，padding-top都是相对于最近的父元素的宽度来说的。</li>
+<li>select中的text才是选项，value是option里面的标签内的value.</li>
+<li>发送表单的时候：当表单中包含文件上传控件的时候，属性规定在发送到服务器之前应该如何对表单数据进行编码，需要将enctype设置为application/x-www-form-urlencodeed.在发送前编码所有字符，multipart/form-data不对字符编码，在使用包含文件上传控件的表单时，必须使用改值，text/plain空格转换为“+”号，但不对特殊字符编码。</li>
+<li>label只有两个属性。form,for。当点击<label for="cb_add_favorite">时，光标焦点会定位到id=”cb_add_favorite”为的输入框上。</label></li>
+<li>对于MVC来说，模型变更后，只有控制器才能驱动视图变更或重新渲染视图。</li>
+</ol>
+</li>
+</ol>
+<p>###bfc###</p>
+<ol>
+<li>表单提交方式method，路径的属性为action.</li>
+<li>span[class=”aa bbb”]&gt;a;</li>
+<li><td> 标签定义 HTML 表格中的标准单元格。</td></li>
+<li><th> 元素中的文本通常呈现为粗体并且居中</th></li>
+<li><td> 元素中的文本通常是普通的左对齐文本</td></li>
+<li>html的文档就是超文本标记语言。</li>
+<li></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###html###&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;form–method get post&lt;/li&gt;
+&lt;li&gt;display:block;w80;overflower:hidden;text-wrap:nowrap;text-overflow:ellipsis;&lt;/li&gt;
+&lt;
+    
+    </summary>
+    
+    
+      <category term="天天一点点-面试" scheme="https://github.com/skoll1/libateer.github.io/tags/%E5%A4%A9%E5%A4%A9%E4%B8%80%E7%82%B9%E7%82%B9-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天天一点点-1</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/17/best-1-%E5%A4%A9%E5%A4%A9%E4%B8%80%E7%82%B9%E7%82%B9-1/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/17/best-1-天天一点点-1/</id>
+    <published>2017-03-17T05:35:35.000Z</published>
+    <updated>2017-03-17T06:03:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1. </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1. &lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="天天一点点-微信知识" scheme="https://github.com/skoll1/libateer.github.io/tags/%E5%A4%A9%E5%A4%A9%E4%B8%80%E7%82%B9%E7%82%B9-%E5%BE%AE%E4%BF%A1%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试html-css-1</title>
+    <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E9%9D%A2%E8%AF%95html-css-1/"/>
+    <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-面试html-css-1/</id>
+    <published>2017-03-13T12:37:07.000Z</published>
+    <updated>2017-03-25T12:56:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>###隐藏元素###</p>
+<ol>
+<li>overflow:hidden(占据空间，无法点击)</li>
+<li>opacity:0(占据空间，可以点击)</li>
+<li>visibility:hidden(占据空间，无法点击)</li>
+<li>display:none(经典的隐藏元素，彻底的隐藏元素)</li>
+<li>position:absolute;left:-9999px;(不占据空间,无法点击)position:relative;left:-9999px;占据空间，无法点击</li>
+<li>clip-path()裁剪。</li>
+<li>z-index:-10000；</li>
+<li>transform:scale(0,0)|translate(-10000px,-10000px)</li>
+</ol>
+<p>###clip-path()###</p>
+<ol>
+<li>clip-path:polygon(0 100%,64% 50%,70%,0)三角形</li>
+<li>clip-path: circle(61% at 47% -24px);○</li>
+<li>clip-path: ellipse(50% 23% at 50% 55%);椭圆，模拟眼镜眨</li>
+<li>clip-path: inset(25% 0 25% 0 round 0 25% 0 25%);  </li>
+<li><code>inset(&lt;top&gt; &lt;right&gt; &lt;bottom&gt; &lt;left&gt; round &lt;top-radius&gt; &lt;right-radius&gt; &lt;bottom-radius&gt; &lt;left-radius&gt;)</code></li>
+<li>polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);定义任意形状</li>
+<li>主要是他每一个属性之间会互相影响的。</li>
+</ol>
+<p>###flex布局###</p>
+<ol>
+<li>父元素里面可以加的东西；flex,/inline-flex/后一个好像不起作用;flex之间是可以嵌套的。</li>
+<li>父容器属性：flex-direction:子容器的排列方向。row:row-reverse,水平  column:column-reverse,竖直</li>
+<li>flex-wrap:子容器的换行效果。nowrap wrap wrap-reverse;显示的前提是父元素给了大小，并且子元素用的是固定大小，但是超出了父元素的宽度。</li>
+<li>justify-content:子容器水平对齐方式.flex-start flex-end center space-between space-round; 有的好像是只能搭配固定属性才能显示出效果。</li>
+<li>align-items:子容器的垂直对齐方式 flex-start flex-end center baseline stretch</li>
+<li>align-content:多行子项的整体垂直对齐方式。flex-start flex-end center space-between space-round;</li>
+<li>flex和固定宽度元素之间的结合 width:100px;flex:2;flex:1;</li>
+<li>子元素属性：order:定义它们的排列顺序。</li>
+<li>flex-grow:子项宽度不足父元素宽度的时候，子项的拉升比例</li>
+<li>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖父容器的align-items属性。默认值为auto，表示继承父容器的align-items属性，如果没有父容器，则等同于stretch。</li>
+<li>遇到的坑：</li>
+</ol>
+<p>###not###-</p>
+<ol>
+<li>li:not(:last-child):not(:last-child) 两个效果都是一样：都是在加样式的忽略最后一个。</li>
+<li>他的用法实例：li:not([alt=”li”])</li>
+<li>p:not(.abc){<br>color:#f00;<br>}否定尾类为class=”abc”的p元素。</li>
+<li>li:nth-child(2n){<pre><code>    color:yellow;
+}
+</code></pre></li>
+<li>nth-child  nth-type-of 的区别:nth-of-type更彪悍些，前一个会出错的。</li>
+<li>input{<pre><code>    color:red;
+}填完以后的样子
+input::-webkit-input-placeholder{
+    color:green;
+    font-size: 20px;
+}填之前的样子。
+</code></pre></li>
+<li>怎么设置选择以后的元素。</li>
+<li>绝对单位长度：cm,mm,px,pt,pc,px;</li>
+<li>相对单位长度：rem:相对于根元素。em:现对于当前文本对象。vm:相对于视口宽度。vh：相对于视口高度。vmax：相对于视口宽度或高度重较大的那个。</li>
+<li>color:transparent.透明。</li>
+<li>url()里面不加引号，这是历史遗留问题。</li>
+<li>list-style-type:toggle(disk,box):可以循环使用这些值。</li>
+<li>语义化标签：header,content,footer,nav,slider,column栏目，loginbar,logo,banner,scroll,tag,main,hot,news,download,subnav,search,friendlink,copyright,list，文章列表。msg:提示信息，joinus,guide,title,service,vote,partner合作伙伴。</li>
+<li>事假命名空间：jquery可以实现，别的可以实现么？</li>
+</ol>
+<p>###css组件构架设计思想###</p>
+<ol>
+<li>附加和重写   同名的样式，后面的会覆盖前面的。</li>
+<li>整个css组件，分成8个大的类型的样式，根据每个组件的特性，来组建这些类型的特性，从而达到丰富多彩的配置效果。</li>
+<li>基础样式-颜色，尺寸，状态，特殊样式，并列元素，嵌套子元素样式，动画样式</li>
+<li>Web1.0是一家实体商店，房子就在那里，你随时都可以来：台式电脑使得人们只能在固定的地点连入网络Web2.0是一家移动商店，随时随地跟着你等待你的即时召唤；移动设备使得人们随时随地可以连入网络Web3.0则是商店和你是一体的，你自己就可以娱乐自己。人机交互意味着“人”和“科技”的距离进一步缩短，甚至可以说“科技”逐渐演变成为“人”的组成部分之一。</li>
+<li>body{<br> line-height:1.4;<br> color:#333;<br> font-family:arial;<br> font-size: 12px;<br> background:white;<br>}<br>input,textarea,select{<br> font-size:12px;<br> font-size:100%;<br> font-family:arial;<br> font-family:inherit;<br>}<br>body,h1,h2,h3,h4,h5,h6,p,ul,ol,form{<br> margin:0;<br>}<br>h4,h5,h6{<br> font-size:1em;<br>}<br>ul,ol{<br> padding-left:0;<br> list-style-type:none;<br>}<br>/<em>image with no-border</em>/<br>a img{border:0;}<br>img{border:0;}简单的css重置样式，不要盲目的随波直流</li>
+<li>通用样式库 css样式库 网站通用小图标样式</li>
+<li><a href="mailto:842323422@qq.com" target="_blank" rel="external">点击</a>转到相关的邮箱</li>
+<li>什么时候css元素需要用width,height,之类的东西规定大小，什么时候让他自己定义。</li>
+<li>position:fixed;r0;l0;t0;b0;当一个东西固定的时候，需要在body里面加上padding-top:</li>
+<li>为移动设备添加js文件：$(function(){if(window.screen.width&lt;600){$.getScript(“<a href="http://&quot;)}}" target="_blank" rel="external">http://&quot;)}}</a>)</li>
+<li>怎么才能让css模块化，不能让他们互相渲染。</li>
+<li>任何网站布局都是先整体后局部。</li>
+<li>可以用flex代替百分比布局么？</li>
+<li>还有就是一些小的杂七杂八的样式了；为元素表单控件的样式</li>
+<li>csstransform是不会对周围元素产生任何影响的。</li>
+<li>scale()加负数的时候，会让他来回翻转的。<br>###CSS兼容问题###</li>
+<li>margin加倍：这是IE6的bug;</li>
+<li>浮动ie产生的双倍边距。</li>
+<li>为什么无法定义1px左右高度的容器 IE6下这个问题是因为默认的行高造成的,解决的方法也有很多,例如 verflow:hidden | zoom:0.08 | line-height:1px</li>
+<li>li和li之间看不见的空白间隔是什么“？行框的排列会受到中间空白的影响，这些空白也会被应用样式，占据空间，所以会有间隔。在ul标签设置font-size＝0，在li中设置标签文字的大小，因为空格也属于字符，把字符大小设置为0,就没有空格了</li>
+<li>当一个元素的visibility属性被设置成collapse值后，对于一般的元素，它的表现跟hidden是一样的，但如果是table相关的元素，例如table行，table group，table列，table column group，它的表现跟display:none一样，也就是说，它们占用的空间会释放。这个还有三个值？</li>
+</ol>
+<p>###浏览器渲染问题####</p>
+<ol>
+<li>浏览器是如何进行加载，解析，渲染的呢？</li>
+<li>用户访问网页，dns服务器（域名解析系统）会根据用户提供的域名查找对应的ip地址，找到后，系统会向对应的ip地址的网络服务器发送一个http请求。</li>
+<li>网络服务器解析请求，并发送请求给数据库服务器。</li>
+<li>数据库服务器将请求的资源返回给网络服务器，网络服务器解析数据，并生成html文件，放入http response中，返回浏览器。</li>
+<li>浏览器解析http response;</li>
+<li>1-4步需要了解http协议，访问服务器端可能遭受的问题：如果网络服务器无法获取数据库服务器返回的资源文件 404 由于并发原因暂时无法处理用户的http请求500.</li>
+<li>浏览器解析http文件之后，需要下载html文件，以及html文件内包含的外部应用文件，以及文件内涉及的图片或者多媒体文件。</li>
+<li>重点：加载顺序</li>
+<li>当获得一个http文件时，会自上而下的加载，并在加载过程中实现解析渲染。</li>
+<li>加载</li>
+<li>加载过程中遇到外部css文件的时候，浏览器会发出一个请求，获取css文件，遇到图片资源，也会发出一个请求，这是异步请求，并不影响html文档的加载，但是当遇到js文件的时候，html会挂起来渲染，不仅会等待js文件加载完毕，还要等待解析完毕才行。才可以恢复html文档的渲染线程。（主要原因是js文件可能会修改dom所以在这个后面的html渲然现在看来都是没有意义的）</li>
+<li>还有一个要注意的是虽然css文件的记载不影响js的加载，但是影响他的执行，同样的原因，还是这个可能会修改他的结果，所以只有在css文件下载和解析完成的时候，js代码才会执行。</li>
+<li>解析：html文档解析生成解析树，由dom元素和属性节点组成，树的根是document对象。</li>
+<li>渲染：就是构建渲染树的过程，他是原来的dom树的可视化，构建这棵树正式为了以正确的顺序绘制文档内容。在其中，不可见的dom元素是不会被插入到渲染树中的，还有一些节点的位置为绝对定位和浮动定位，这些节点也会在文本流之外，因此会在两棵树上的不同位置，渲染树表示出真实的位置，并用一个展位结构标识出他们原来的位置。</li>
+<li>渲染最大的困难就是为每一个dom计算符合他的最终样式。首先为每一个元素找到匹配的样式规则，需要遍历整个规则表。（右–左）；</li>
+<li>webkit渲染:避免后代选择符，尽量使用子选择符。原因：子元素匹配符的概率要大于后代元素匹配符。后代选择符;#tp p{} 子选择符：#tp&gt;p{}</li>
+<li>避免使用通配符，举一个例子，.mod .hd *{font-size:14px;} 根据匹配顺序,将首先匹配通配符,也就是说先匹配出通配符,然后匹配.hd（就是要对dom树上的所有节点进行遍历他的父级元素）,然后匹配.mod,这样的性能耗费可想而知</li>
+<li>页面的渲染 需要首先生成dom树，再由css生成CSSOM，最后两个一起生成render tree。由前面两个例子 可以证明dom树有最小的生成要求，及只要body标签被生成，dom树就可以和CSSOM一起进行渲染啦</li>
+<li>定律一：资源是否下载依赖 JS 执行结果。<br>定律二：JS 执行依赖 CSS 最新渲染。<br>定律三：现代浏览器存在 prefetch 优化。</li>
+<li>不同于一般的浏览器chrome为每个tab都配备了各自的渲染引擎实例。</li>
+<li>渲染引擎：渲染，浏览器窗口中显示的请求的内容。默认情况下，渲染引擎可以显示html，xml文件，他也可以借助插件显示其他数据，例如pdf阅读器。</li>
+<li>渲染主流程：通过网络获取所请求的文档的内容，通常以8K分块的方式完成。</li>
+<li>构建dom树–构建render树–布局render树-绘制render树。</li>
+<li>解析可以分为两个子过程–语法分析和词法分析。解析器将工作分配给两个组件-词法分析器负责将输入分解为合法的符号，词法分析器知道怎么跳过空白和换行之类的无关字符。</li>
+<li>解析过程是迭代的，解析器从词法分析器处取到一个新的符号，并试着用这个符号匹配语法规则，如果匹配到了规则，那么这个符号对应的节点将被加到解析树上，然后解析器再去请求另一个符号。如果没有匹配到规则，解析器将在内部保留该符号，并从词法分析器去下一个符号，直到所有的内部保存的符号能够匹配一项语法规则。如果最终没有找到匹配的规则，解析器将抛出一个异常，这意味着文档无效或是包含语法错误。</li>
+<li>解析器分为自顶向下解析以及自底向上解析。</li>
+<li>在树的构建阶段，将修改以document为根的dom树，将元素附加到到树上。每个由符号识别器生成的节点将会被狗在其处理，规范中定义了每个符号响应的dom元素，对应的dom元素将会被创建。这些元素除了会被添加到dom树种，好讲被添加到开放元素的堆栈中,这个堆栈用来纠正嵌套的未匹配的和未闭合的标签，这个算法也是状态机制来描述，所有的状态都是采用插入机制。</li>
+<li>在碰到最后一个html标签的时候，意味着dom解析结束，在这个阶段，浏览器将文档标记为可交互的，并开始解析处于延时模式的脚本-这些脚本在文档解析之后执行。文档状态为完成，同时触发一个load事件。</li>
+<li>欲解析不是改变dom树，而是将这个工作留给主解析过程，自己解析外部资源的引用，比如脚本，样式表以及图片。</li>
+<li>样式表采用另一种不同的模式，理论上，既然样式表不改变dom树，那就没必要停下文档的解析等待他们，但是当脚本在执行的过程中请求样式信息，如果样式还没有加载和解析，脚本将得到错误的信息，firefox采用的是存在样式表加载和解析的时候阻塞所有的脚本，而chrome只是当在脚本试图访问某些可能未加载的样式所影响的特定的样式属性时才阻塞这些脚本。</li>
+<li>渲染树的构建：当dom树构建完成时，浏览器开始构建另一颗树-渲染树。渲染树由元素显示序列中可见元素组成，他是文档中的可视化表现，构建这棵树是为了以正确的顺序绘制文档内容。</li>
+<li>每个渲染对象用一个和该节点的css盒模型相对应的矩形区域来表示，正如css2所描述的那样，他包含诸如宽，高和位置之类的几何信息。和模型的类型受该节点相关的display样式属性的影响。</li>
+<li>元素的类型也是要考虑的，例如，表单控件和表格带有特殊的框架。在webkit中，如果一个元素想要创建一个特殊的渲染对象，他需要重写createRender方法，使渲染对象指向不包含几何信息的样式对象，那他的css怎么加啊。</li>
+<li>渲染树和dom树是相对应的，但这种关系不是一一对应的，不可见得dom元素不会被插入渲染树，例如head元素。另外display为none的元素是不会在渲染树中出现的，visiiblty属性为hidden的树将会出现在渲染树中。</li>
+<li>还有一些dom元素对应几个可见对象，他们一般是一些具有复杂结构的元素，无法用一个矩形来描述。例如select元素有三个渲染对象–显示对象，下拉列表，按钮。1：当文本因为宽度不够而折行的时候，新行将作为额外的渲染元素被添加2：根据css规范，一个行内元素只能包括行内元素或仅包含块状元素，在存在混合内容时，将会创建匿名的块状渲染对象包裹住行内元素。</li>
+<li>一些渲染对象和所对应的dom节点不在树上的相同位置，例如，浮动元素和绝对定位元素在文本流之外，在两棵树上的位置不同，渲染树上标识出真实的结构，并用一个占位结构标识出他们原来的位置。</li>
+<li>创建树的过程：在firefox中表示为监听dom的更新，将frame的创建委派给constructor，这个构造器计算样式并创建一个frame.</li>
+<li>webkit中，计算样式并生成渲染对象的过程为attactment，每个dom节点有一个attach方法，attachment的过程是同步的，调用新节点的attach方法将节点插入到dom树种。</li>
+<li>计算html和body标签将构建渲染树的根，这个根渲染对象应被css规范称为containing block的元素–包含了其他所有块级元素的顶级块元素。他的大小就是viewport–浏览器窗口的显示区域，树中的其他部分都将作为一个插入的dom节点被创建。</li>
+<li>样式计算：样式来源的复杂，样式数据是非常大的数据结构。找到元素的性能问题</li>
+<li>css 规则树：样式树的使用使得节点共享这些属性值不需要计算多次，同事节省了存储空间。</li>
+<li>所有匹配的规则都存在规则树种，一条路径中的底层节点拥有最高的优先级，这棵树包含了所找到的所有规则匹配的路径。每条路径对应一个节点，路径上包含了该节点所匹配的所有规则。规则树并不是一开始就为所有的节点进行计算，而是在某个节点需要计算样式的时候，才进行相应的计算，并将计算之后的路径添加到树中。</li>
+<li>结构化：样式按照上下文结构划分，一个结构中的所有特性不是继承的就是非继承的，对于继承的特性，除非元素自身有定义，否则就从他的parent继承。非继承的特性如果没有定义，则使用默认的值。样式上下文树缓存完整的结构，这样，如果底层节点没有为一个结构提供样式，那么就使用上层节点缓存的结构。</li>
+<li>使用规则树来计算样式上下文：当为一个特定的元素计算样式时，首先计算出规则树的一条路径，或是使用已经存在的一条，然后使用路径中的规则去填充新的样式上下文从样式的底层节点开始计算，它具有最高的优先级，遍历规则树，直到填满结构，如果那个规则节点没有定义所需要的结构规则，就沿着路径向上，直到找到该结构规则。</li>
+<li>css样式权重完全是看着那个好找就用哪个？</li>
+<li>布局：当渲染对象被创建并添加到树中，这个时候没有位置和大小，计算和谐值得过程称为layout或者reflow.</li>
+<li>布局是一个递归的过程，由根渲染对象开始，它对应html文档元素，布局继续递归，通过一些或所有的frame层级，为每个需要几何信息的渲染对象进行计算。</li>
+<li>为了不使每个微小的变化都不必全部重新布局，浏览器有一个diety bi系统，一个渲染对象发生了变化或是被添加了，就标记他的chidren为dirty。</li>
+<li>当layout在整棵渲染树触发时，成为全局layout,这可能在下面的情况下发生：一个全局的样式改变影响所有的渲染对象，比如字号的改变。窗口resieze.</li>
+<li>绘制：遍历渲染树并调用渲染对象的paint方法将他们的内容显示在屏幕上，绘制使用UI组件。</li>
+<li>一个块渲染对象的堆栈顺序是：背景色，背景图，border,children,outline，</li>
+<li>动态变化：浏览器总是试着以最小的动作响应一个变化，所以一个元素颜色的变化将只会导致改元素的重绘，元素位置的变化将大致元素的布局重绘，添加一个dom节点，也会导致这个元素的布局和重绘，一些主要的变化，比如增加html元素的字号，将会导致缓存失效，从而导致整数的布局和重绘。</li>
+<li>float－对象先像普通流一样布局，然后尽可能的向左或是向右移动</li>
+<li>对象在渲染树中的位置和Dom树中位置无关:absolute.</li>
+<li>第二个文档</li>
+<li>html和css规范中规定了浏览器解释html文档的方式，由w3c组织对这些规范进行维护，w3c是负责制定web标准的组织。</li>
+<li>浏览器引擎和渲染引擎还不是一回事：用来查询及操作渲染引擎的借口。</li>
+<li>数据存储-属于持久层，浏览器需要择硬盘中保存类似cookie的各种数据，h5定义了web database技术。</li>
+<li>值得注意的是为了更好地用户体验，渲染引擎将会尽可能早的将内容呈现到屏幕上，并不会等到所有的html都解析完成之后再去构建布局树，他是解析完一部分就显示一部分，同时，可能会在网络下载其余内容。</li>
+<li>html不能被一般的自上而下或者自底向上的解析器所解析。原因如下：这门语言是十分宽容的，浏览器对一些常见的非法html有容错机制，解析过程是往复的，通常源码是不会再解析过程中改变的，但在html中，脚本标签包含的document.write可能添加标签，这说明在解析过程中实际上修改了输入。所以html有专门的解析算法。-符号识别算法<br>###数据结构和算法###</li>
+<li>具体问题抽象出数据模型-设计算法-编程调试</li>
+<li>数据的逻辑结构，数据的运算–引用型运算：不改变数据中原有的数据元素的状态；加工型运算：改变数据结构中原有的数据状态。</li>
+<li>存储结构：顺序存储（数组），链式存储（指针，引用型数组实现）</li>
+<li>索引存储方法：散列存储方法：散列函数的书写是关键。</li>
+<li>时间复杂度：一个算法执行所耗费的时间，所有语句执行之和，而每条语句执行时间是该语句执行一次的时间和执行次数的乘积。</li>
+<li>时间渐进复杂度：O（1）&lt;O(log2n)&lt;O(n)&lt;O(nlog2n)&lt;O(n3)&lt;O(n3)&lt;O(2n);</li>
+<li>空间复杂度：算法所需要的存储量。</li>
+</ol>
+<p>###面试题开始了###</p>
+<ol>
+<li>iframe使用的场景：ajax上传文件，加载别的网站的内容（广告），在上传图片时，不用flash实现刷新，跨域访问的时候可以使用。</li>
+<li>在html中有三种结构特征：树结构，层次结构，框结构。iframe属于框结构的一种。每个iframe都是一个独立的沙箱，他们拥有自己的window以及dom.</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###隐藏元素###&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;overflow:hidden(占据空间，无法点击)&lt;/li&gt;
+&lt;li&gt;opacity:0(占据空间，可以点击)&lt;/li&gt;
+&lt;li&gt;visibility:hidden(占据空间，无法点击)&lt;/li&gt;
+&lt;li&gt;display:n
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -36,7 +624,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-关于图片的一些问题/</id>
     <published>2017-03-13T12:20:55.000Z</published>
-    <updated>2017-03-13T12:36:14.000Z</updated>
+    <updated>2017-03-17T05:43:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>###图片格式###</p>
 <ol>
@@ -59,7 +647,7 @@
     </summary>
     
     
-      <category term="关于图片的一些问题" scheme="https://github.com/skoll1/libateer.github.io/tags/%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+      <category term="小技巧" scheme="https://github.com/skoll1/libateer.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -68,7 +656,7 @@
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-%E9%A1%B5%E9%9D%A2%E4%BC%98%E5%8C%96/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/13/best-1-页面优化/</id>
     <published>2017-03-13T06:07:57.000Z</published>
-    <updated>2017-03-13T11:59:12.000Z</updated>
+    <updated>2017-03-21T14:16:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>###dns预加载</p>
 <ol>
@@ -260,8 +848,7 @@ callback();
 <li>adress在页面输出联系人信息。</li>
 <li>details summary 配合起来可以提供一个显示和隐藏文字的小工具。</li>
 <li>使用下拉列表：label for=“sd”我最爱的球队 input type=“text” name=“team” id=“team_list”<pre><code>1. datalist id=“team_list&quot;
-2. option edg
-                        1. option rng但是这个怎么自动生成啊，这只能玩现成的？
+2. option                                                                     
 </code></pre></li>
 </ol>
 ]]></content>
@@ -310,7 +897,7 @@ callback();
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-%E9%9D%A2%E8%AF%95html-css-2/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-面试html-css-2/</id>
     <published>2017-03-12T08:08:01.000Z</published>
-    <updated>2017-03-13T12:18:25.000Z</updated>
+    <updated>2017-03-23T13:09:40.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>标准盒模型：外盒尺寸：h+p+b+m  内盒：h+p+b</li>
@@ -382,6 +969,44 @@ callback();
 <li>浮动的历史：包裹特性：bfc块级格式化上下文。</li>
 <li>浮动具有破坏性。会让父级元素塌陷。</li>
 <li>浮动原来的作用是实现文字环绕。</li>
+<li>匿名函数的优势：将匿名函数当做参数传递给其他函数，这样接收函数就能够利用我们传递的函数完成许多事情，2：利用匿名函数执行一些一次性的任务。</li>
+<li>(function (count){<br>if(count&lt;5){<br>console.log(count);<br>arguments.callee(++count)<br>};<br>})(1);</li>
+<li>window是js在浏览器的全局对象。window的全局方法与浏览器相关的属性。</li>
+<li>页面导航方式：window.href=””location.href=””.location.assign=””</li>
+<li>document.documentElement是整个html的根节点。</li>
+<li>利用childrNodes，parentNode。这些我们可以实现结构结构之间的自有导航。并处理相关的文件操作，但是空白处也会成为一个文本节点，这就会让我们操作dom有一点不方便。</li>
+<li>p.previousSibling :p.nextSibling;</li>
+<li>document.title;document.domain(当前载入页面的域名访问);document.referrer.</li>
+<li>置换元素：浏览器根据元素的标签和属性，来决定元素的具体显示内容。img,input,select,textarea,</li>
+<li>元素的重绘：元素的外观发生改变，且在没有改变布局的情况下发生，如改变Outline,visibility,background,color,不会影响到dom结构渲染。</li>
+<li>reflow：影响到dom的结构渲染，同时会发生重绘，他会改变他本身和所有父辈元素，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多效果越明显。</li>
+<li><tr><br>    <td>123</td><td>456</td><td>789</td>  //横着来数据排列<br></tr></li>
+<li><dl><br><dt>sdf</dt><br><dd>123</dd><br><dd>456</dd></dl>  //竖着来排列</li>
+<li><code>&lt;input type=&quot;text&quot; list=&quot;brow&quot;&gt;
+&lt;datalist id=&quot;brow&quot;&gt;
+&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;12&lt;/option&gt;
+&lt;option value=&quot;3&quot;&gt;123&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;1234&lt;/option&gt;
+&lt;/datalist&gt;</code></li>
+<li><keygen name="security">是否在提交表单时添加钥匙。</li>
+<li>output输出结果，也是html五的新属性。</li>
+<li>onchange()改变失去焦距触发，blur()只要失去焦距就会触发。</li>
+<li>域名必须携带“http”协议.这个是真的。</li>
+<li>h1是最大的标题，通常我们看到的内容，都是放在body里面的。</li>
+<li>em起强调的作用。</li>
+<li>sup下标，sub上标。</li>
+<li>pre代码格式化，最后显示出来的跟源码中的样式一样，所见即所得。</li>
+<li>根据标题所在不同层级选取不同的h1,h2,h3，title标签用来描述网页最上层的标题。应该讲h1作为主标题，其次是h2,然后是h3。</li>
+<li>target=”_self”,target=”_blank”,target=”_top”,target=”_parent”;</li>
+<li>dl&gt;dt&gt;dd是用来定义列表的。</li>
+<li>div标签可以用来定义文档中的分区或节。来作为分区工具。</li>
+<li>css样式添加的方式 在css文件中@import url(css/style.css) 行内加样式，style标签嵌入，link引入样式。</li>
+<li>html负责网页的结构。</li>
+</ol>
+<p>###表单验证码实现###</p>
+<ol>
+<li>服务器端生成验证码之后一方面通过图片将验证码返回给客户端，同时在服务器端保存文本的验证码，有服务器端验证输入内容是否正确。</li>
 <li></li>
 </ol>
 ]]></content>
@@ -395,10 +1020,8 @@ callback();
     
     </summary>
     
-      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
     
-    
-      <category term="面试html-css-2" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95html-css-2/"/>
+      <category term="面试" scheme="https://github.com/skoll1/libateer.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -407,7 +1030,7 @@ callback();
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-css-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/12/best-1-css-代码案例/</id>
     <published>2017-03-12T05:57:05.000Z</published>
-    <updated>2017-03-12T06:15:35.000Z</updated>
+    <updated>2017-03-17T05:48:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>####做页脚效果：让网页的footer始终位于浏览器串口底部###</p>
 <ol>
@@ -472,10 +1095,8 @@ margin-bo
     
     </summary>
     
-      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
     
-    
-      <category term="css-代码案例" scheme="https://github.com/skoll1/libateer.github.io/tags/css-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B/"/>
+      <category term="css-代码片段收集" scheme="https://github.com/skoll1/libateer.github.io/tags/css-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E6%94%B6%E9%9B%86/"/>
     
   </entry>
   
@@ -484,7 +1105,7 @@ margin-bo
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/11/best-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/11/best-1-面向对象/</id>
     <published>2017-03-11T11:55:48.000Z</published>
-    <updated>2017-03-13T04:27:08.000Z</updated>
+    <updated>2017-03-20T16:07:55.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>对象的情况和数组很相似，只是他的键值类型是自定义的，也就是我们常说的索引方式不再局限于数字了，可以使用一些更加人性化的键值。也就是我们用数组来表示索引型数组，而用对象表示关联性数组</li>
@@ -545,7 +1166,160 @@ set:function(newtel){
 }
 </code></pre> }<br>});</li>
 </ol>
-<p>6.</p>
+<p>6.显示原型：proyotype属性，这个属性指向函数的原型对象。每个函数创建之后都有这个，指向函数的原型对象，但是除了function.prototype.bind方法构造出来的函数是个例外，他没有这个属性。该属性是一个原型对象用来创建新的对象实例。所有被创建的对象实例都会共享对象原型，且这些对象实例可以访问原型对象的属性。</p>
+<ol>
+<li>隐式原型：js中任何一个对象都由一个内置属性[[prototype]],在es5之前没有标准的方法访问这个内置的属性，但是绝大多数浏览器支持<em>proto</em>来访问。es5中有了对这个内置标准属性的get的方法。Object.getPrototypeOf()。除了Object.prototype这个对象例外。他的<em>proto</em>值为null。</li>
+<li>他们二者的关系，隐式原型指向创建这个对象的函数的prootype。</li>
+<li>始终确保用new来调用构造函数，否则就会出现改变全局对象的风险，而不是创建一个对象。当不是被new调用的时候，构造函数中的this对象等于全局对象中的对象。</li>
+<li>所有的对象都是继承到object.prototype().</li>
+<li>所有新创建的对象先是继承object的prototype的。</li>
+<li>`function rect(l,w){<pre><code>this.l=l;
+this.w=w;
+</code></pre>}<br>rect.prototype.get=function(){<pre><code>return this.l*this.w;
+</code></pre>}<br>function sound(size){<pre><code>this.l=size;
+this.w=size;
+</code></pre>}<br>sound.prototype=new rect();<br>sound.prototype.constructor=sound;这两步是继承的关键么？<br>sound.prototype.toString=function(){<pre><code>console.log(this.l)
+</code></pre>}<code>为什么这个不行了。。</code>function person(name,age){<br>this.name=name;<br>this.age=age;<br>this.sayname=function(){<br>console.log(this.name);<br>}<br>}</li>
+</ol>
+<p>function worker(name,age,job){<br>  this.job=job;<br>}<br>worker.prototype=new person();<br>worker.prototype.constructor=worker;`<br>难道上面的是这样写的？<br>for(var i=0;i&lt;person.prototype){<br>    worker.prototype[i]=person.prototype[i];<br>}<br>原型属性拷贝加原型链结合。</p>
+<p>`function person(name,age){<br>  this.name=name;<br>  this.age=age;<br>  this.sayname=function(){<br>    console.log(this.name);<br>  }<br>}</p>
+<p>function worker(name,age,job){<br>  person.call(this,name,age)<br>  this.job=job;<br>  this.sayjob=function(){<br>    console.log(this.job);<br>  }<br>}<br>worker.prototype=new person();<br>worker.prototype.constructor=worker;`</p>
+<ol>
+<li>定时器，事件，会出现this乱用，可以先把this赋值为_this.</li>
+<li>使用构造器函数的好处就是我们可以在创建对象时接受一些参数，这样，我们就可以用一个构造函数来创建不同的对象了。</li>
+<li>constructor这个属性实际上是指向一个用于创建该对象的构造器函数的引用。</li>
+<li>传递对象，当我们拷贝某个对象将他传递给某个函数的时候，传递的往往是该对象的引用，因此我们在引用上做的任何改动，实际上也会影响他所引用的原对象。</li>
+<li>原型都可以提供方法了，为什么还需要继承？</li>
+<li>对象比较：当我们对对象进行比较的时候，当且仅当两个引用指向同一个对象的时候才是true。而如果是不同的对象，及时他们碰巧有了相同的属性和方法，那么也会返回false.</li>
+<li>function有一个caller属性，这个属性会返回一个调用该函数对象的外层函数引用。也就是说，如果我们是在（）中调用A（），那么只要在a（）中返回a.caller，那么结果就会返回函数b.</li>
+<li><code>function a(){return a.caller;};function b(){return a();}b();function b(){return a();}</code></li>
+<li>arguments对象还有一个值得关注的属性，那就是callee,该属性引用的是当前被调用的函数对象。也就是说，如果我们所建的函数的返回值是argument.callee。那么该函数就会在被调用的时候返回自身的调用。</li>
+<li>利用原型可以添加方法和属性的方法。</li>
+<li><p><code>function person(name,age){
+this.name=name;
+this.age=age;
+this.sayname=function(){
+console.log(this.name);
+}
+}
+person.prototype={
+price:100,
+get:function(){
+return this.price;
+}
+}</code></p>
+</li>
+<li><p>对于原型来说，最重要的是要理解他的“驻留的概念”，由于在js中，对象都是通过引用的方式传递，因此我们所创建的每一个对象其实都没有自己的副本，也就是说我们可以随时修改原型，并且与之相关的对象也会继承这一改变，甚至会影响之前就已经创建好了的对象。</p>
+</li>
+<li>自身属性和原型属性。当我们访问newstoory的某个属性时，例如newSstoory.name时，js引擎就会遍历该对象的所有属性，查找这个值，如果没有找到就会查询创建这个对象的构造器属性的原型属性，如果找到就用这个。</li>
+<li>原型对象，自身属性，对象属性，可枚举属性。</li>
+<li><code>function Cat(name,color){
+　　　　Animal.apply(this, arguments);
+　　　　这个是可以成功的。
+　　　　this.name = name;
+　　　　this.color = color;
+　　}</code>继承1.
+　　</li>
+<li><ol>
+<li>竟然没发现这个东西。我们在定义函数的时候，默认的会有一个prototype属性，但是用new生成的函数就没有这个。</li>
+</ol>
+</li>
+<li><p>`function a(c){<br>this.b = c;<br>this.d =function(){</p>
+<pre><code>alert(this.b);
+</code></pre><p>}<br>}`a的prototype包含两个值，一个是constrocuor,一个是<em>proto</em>;第一个事构造这个例子的函数。</p>
+</li>
+<li><p>第二个是原型链的概念，每个对象都会在其内部初始化一个属性，就是<em>proto</em>，当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就去<em>proto</em>里面找，这个里面又有这个，就这样一直找下去。</p>
+</li>
+<li><code>function Foo(){};
+var f1 = new Foo;
+console.log(f1.__proto__ === Foo.prototype);//true</code></li>
+<li>Object.prototype的原型对象是null</li>
+<li>原型的作用现在来了第二个：给对象扩展功能。</li>
+<li>Array.prototype.isArray=function(value){for(var i=0,len=this.length;i&lt;len;i++){if(value===this[i]){return true;}}return flase;}扩展内建对象。</li>
+<li>在扩建之前先检查有没有现成的方法。if（！Array.prototype.isArray）{}</li>
+<li>当我们重写某个对象的prototype时，重置相应的constroctor属性是一个好习惯。</li>
+<li>继承，代码的重用。</li>
+<li>第一种继承方式：原型链继承。</li>
+<li>继承第一阶段 </li>
+<li><p><code>function shap(){
+this.name=&quot;shape&quot;;
+this.say=function(){
+return this.name;
+}
+}
+function two(){
+this.name=&#39;2D&#39;
+};
+function thres(side,height){
+this.name=&quot;3D&quot;;
+this.side=side;
+this.height=height;
+this.get=function(){
+return this.height*this.width;
+}
+}
+two.prototype=new shap();
+thres.property=new two();
+thres.prototype=new two();
+thres.prototype.constructor=thres;
+two.prototype.constructor=two;
+var my=new thres(10,33);
+my.constructor;
+my instanceof two
+my instanceof shap</code><br>以上是第一阶段的继承，实现了功能了。</p>
+</li>
+<li><p>将共享的属性迁移到原型中去。</p>
+</li>
+<li>出于效率的考虑，我们可以尽可能的把一些可以冲用的属性和方法添加到原型中去，如果这样的话，我们仅仅依靠原型就可以实现继承了。</li>
+<li><p>`function shap(){}</p>
+<pre><code>shap.prototype.name=&quot;shape&quot;;
+shap.prototype.say=function(){
+  return this.name;
+</code></pre><p>}</p>
+<p>function two(){};</p>
+<pre><code>two.prototype=shap.prototype;
+two.prototype.constructor=two;
+two.prototype.name=&quot;2D&quot;;
+</code></pre></li>
+</ol>
+<pre><code>function thres(side,height){
+  this.side=side;
+  this.height=height;
+</code></pre><p>}</p>
+<pre><code> 扩展对象必须在完成继承关系的构建。
+thres.prototype=two.prototype;
+thres.prototype.constructor=thres;
+thres.prototype.name=&quot;3d&quot;;
+thres.prototype.get=function(){
+  return this.height*this.side;
+</code></pre><p>}`这个是修正一点的了。<br>坏处是什么？一旦对子元素原型改变，那么父原型也会遭殃。通过实现临时构造器来实现继承。</p>
+<ol>
+<li>继承的由来，一开始每一个实例对象都有自己的属性和方法，不仅无法做到数据共享，而且十分浪费资源，所以发明了prototype属性，所有实例需要共享的属性和方法，都放在这个对象里面，那些不需要共享的属性和方法，就放在构造函数里面。</li>
+<li>function Cat(name,color){<br>　　　　Animal.apply(this, arguments);<br>　　　　this.name = name;<br>　　　　this.color = color;<br>　　}实现了功能的。继承2</li>
+<li>function extend(Child, Parent) {</li>
+</ol>
+<p>　　　　var F = function(){};<br>　　　　F.prototype = Parent.prototype;<br>　　　　Child.prototype = new F();<br>　　　　Child.prototype.constructor = Child;<br>　　　　Child.uber = Parent.prototype;<br>　　　　这个为什么不可以继承他的里面的，就是可以继承外面的。继承3
+　　</p>
+<ol>
+<li><p>function extend2(Child, Parent) {<br>　　　　var p = Parent.prototype;<br>　　　　var c = Child.prototype;<br>　　　　for (var i in p) {<br>　　　　　　c[i] = p[i];<br>　　　　　　}<br>　　　　c.uber = p;<br>　　} 继承4<br>　　<br>　21.`function animal(){</p>
+<pre><code>this.species=&quot;动物&quot;;
+</code></pre><p>}</p>
+<pre><code>animal.prototype.saya=function(){
+</code></pre><p>  console.log(“jib”);<br>}<br>function cat(name){<br>  animal.call(this)<br>  this.name=name;<br>  this.say=function(){<br>return this.name;<br>  }<br>}继承5</p>
+<p>这个和那个相比就是少了那个constroctor.完全可以实现<br>cat.prototype=new animal();`</p>
+</li>
+</ol>
+<p>###注意这些函数分别是来干什么的###</p>
+<ol>
+<li>Object.getPrototypeOf()</li>
+<li>Object.defineProperty()</li>
+<li>hasOwnProperty()这个只能检查自有属性</li>
+<li>Object.getOwnPropertyDescriptor(person,’name’);互逆的是两个。</li>
+<li>Object.preventExtensions(person);阻止对象扩展或添加。Object.isExtensible(person)返回一个值，该值指示是否可向对象添加新属性。</li>
+<li>object.seal()不能添加新的属性。不能删除或修改 object.isSealed()</li>
+<li>object.freeze()冻结对象。不能修改 object.isFreeze();<br>8.他们三个有区别么？</li>
+<li>isPrototypeOf()检查是不是他的原型对象。</li>
+</ol>
 ]]></content>
     
     <summary type="html">
@@ -566,7 +1340,7 @@ set:function(newtel){
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-CSS%E5%9F%BA%E7%A1%80/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-CSS基础/</id>
     <published>2017-03-10T15:30:02.000Z</published>
-    <updated>2017-03-11T10:44:02.000Z</updated>
+    <updated>2017-03-16T12:25:31.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>小东西：淘宝，搭配，比较-游戏-社交-好的一部分-商品评论</li>
@@ -602,7 +1376,67 @@ set:function(newtel){
 <li>布局：display:inline,block,flex,inline-felx,table</li>
 <li>display:none;彻底消失，原来是位置也腾出来。visibilty:hidden.就是简单的影藏，原来的位置还在。</li>
 <li>margin:相邻的margin会发生合并，我们称之为margin折叠。折叠只会发生在block元素。浮动元素的margin不发生任何折叠。根元素，绝对定位的元素也不发生折叠。</li>
-<li></li>
+<li>border-首先是我们熟悉的那一套，还有就是border-image:</li>
+<li><p>`width: 300px;</p>
+<pre><code>height: 300px;
+border: 30px red solid;
+&lt;!--必须有这个--&gt;
+border-image-source:url(1.jpg);
+border-image-slice: 27;
+border-image-width: 27px 1 10% 27px;
+border-image-outset:27px;
+/*border-image-repeat: stretch;*/
+/*border-image-repeat: repeat;*/
+/*border-image-repeat: round;*/
+border-image-repeat: space;`
+</code></pre></li>
+<li><p>background:可以加纯色。图片。渐变。</p>
+</li>
+<li>background-repeat:round;自动缩放，会有repeat效果;space：没有任何效果。</li>
+<li>background-attachment:fixed; scroll,local都不动</li>
+<li>background-position:数字，关键字。center center;</li>
+<li>但是background-origin:padding-box,content-box,border-box;只有这几个关键字能用。</li>
+<li>background-size:100% 100%这个会强行把他放大到全部包含背景,cover:等比例覆盖：可能会超出容器 ,contain:缩放，但是始终在容器内.在满足一个方向之后就不管了。。。;</li>
+<li>background-clip的真正作用是决定背景在哪些区域显示。如果它的值为border,则背景在元素的边框、补白和内容区域都会显示；如果值为padding,则背景只会在补白和内容区域显示；如果值为content，则背景只会在内容区域显示。</li>
+<li>background-origin是指背景显示的区域，或者说背景是从哪个区域开始绘制的(边框、补白或内容区域)。</li>
+<li>该属性指定了背景在哪些区域可以显示，但与背景开始绘制的位置无关，背景的绘制的位置可以出现在不显示背景的区域，这时就相当于背景图片被不显示背景的区域裁剪了一部分一样。</li>
+<li>该属性指定了背景从哪个区域(边框、补白或内容)开始绘制,但也仅仅能控制背景开始绘制的位置，你可以用这个属性在边框上绘制背景，但边框上的背景显不显示出来那就要由background-clip来决定了</li>
+<li>filter:属性，blur(设置高斯模糊)，brightness(%调节亮度)，contrast(%图片对比度)，drop-shadow(类似于盒子阴影),grayscale(%)定义图片灰度。hue-rotate(deg定义色相翻转),invert(%翻转输入图像)，saturate(%定义图像饱和度)，</li>
+<li>list-style-type:</li>
+<li>caption:默认的是在上边，而且他还不属于table里面。</li>
+<li>caotion-side:boottom,top,left;放在左边是不得先排那个字的走向</li>
+<li>empty-cells: show;表格无内容的时候，不显示边框。</li>
+<li>border-collapse: collapse;边框之间的边框省略。</li>
+<li>content:尾类中的使用；none,attr,url,string;</li>
+<li>所有主流浏览器都不支持 appearance 属性。为什么这样？</li>
+<li>浏览器对每个html元素的渲染都是不一样的，比如button,在chrome中，渲染出来的效果是不一样的。我们可以用appearance属性对任何元素的渲染风格改变，最简单的来说，我们可以把‘a’连接默认显示成“按钮”风格，那么我们可以使用‘appearance’设置为“button”.</li>
+<li>text-overflow:clip(超出部分裁掉)，ellipsis(替换为…);</li>
+<li>outline:设置或检查对象外的线条轮廓。</li>
+<li>cursor:鼠标各种的抚摸特效。</li>
+<li>zoom:设置对象缩放比例。可以缩放任何东西。</li>
+<li>user-select:none(文本不能被选择)，text(可以),all(将所有内容变成一个块的时候可以)，element(可以选，但是选择范围受限制)</li>
+<li>resize:如果希望此属性生效，需要设置对象的overflow属性.both.horizontal,vertical.</li>
+<li>transfrom:translate(),scale(),rotate(),skew()斜切扭曲。</li>
+<li>3D转换需要设置的新属性：perspective,transform-style:flat,perserve-3d;perspective-origin:指定透视点的位置。</li>
+<li>backface-visibility:visible,指定背面元素可见。hidden：指定元素背面不可见。</li>
+<li>transition:注意可以起作用的对象，z-index.</li>
+<li>animation: name 持续时间 过渡帧率 延迟时间 循环次数(1,infinite无限次) 动画的播放方向 默认向前播放，alternate（偶次向前，基数向前）</li>
+<li>media引入的两种方式：<link rel="stylesheet" type="text/css" href="styleA.css" media="screen and (min-width: 400px)"></li>
+<li><p>@media screen and (min-width:600px)and (max-width: 1000px){</p>
+<pre><code>    body {
+        background-color:lightblue;
+}
+</code></pre><p>}小的必须在前面，错了，跟这个没关系!有关系的是必须要在他们之间留下足够的空格。</p>
+</li>
+<li><p>选择所有作为E元素的子元素F E&gt;F适用于剔除孙子元素里面不想选的，但是子元素里面有的。也就是说孙子和儿子都有的东西，但是你只想选择儿子的。</p>
+</li>
+<li>选择紧贴在E元素之后F元素。 E+F p+p的选择就是先必须找到两个p,然后后一个被选中。</li>
+<li>选择E元素后面的所有兄弟元素F。 E~F  p~p 表示只要出现第一个p元素之后，接下来只要有p元素都会起到作用的</li>
+<li>选择中的标签属性，这个是来动态变化的添加css属性。</li>
+<li>img[type=”text”] img[type^=”text”] img[type$=”text”] img[type*=”text”] img[type|=”text”]开头具有用”-“分隔的字符串。</li>
+<li>link visited hover active focus(成为输入焦点的时候)</li>
+<li>还可以筛选文字形式给确定文字样式。</li>
+<li>border:none;border:0;的区别border:none;  =&gt; border-style: none;border:0;       =&gt; border-width: 0;两者理论上都是一个效果，就是不显示边框实际上，我记得 none 在某个 ie 下面有 bug，用 0 没有 bug。<br>至于 border:0 none; 没必要;后一个是小号内存了。</li>
 </ol>
 ]]></content>
     
@@ -628,7 +1462,7 @@ set:function(newtel){
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-%E7%BD%91%E7%AB%99%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-网站代码分析/</id>
     <published>2017-03-10T15:22:43.000Z</published>
-    <updated>2017-03-12T06:17:52.000Z</updated>
+    <updated>2017-03-17T05:49:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>###bootstrap###</p>
 <ol>
@@ -741,7 +1575,7 @@ set:function(newtel){
     </summary>
     
     
-      <category term=" 网站代码分析" scheme="https://github.com/skoll1/libateer.github.io/tags/%E7%BD%91%E7%AB%99%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
+      <category term="网站代码分析" scheme="https://github.com/skoll1/libateer.github.io/tags/%E7%BD%91%E7%AB%99%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -750,7 +1584,7 @@ set:function(newtel){
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-%E8%87%AA%E9%80%82%E5%BA%94%E9%A1%B5%E9%9D%A2/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-1-自适应页面/</id>
     <published>2017-03-10T15:18:38.000Z</published>
-    <updated>2017-03-11T11:17:10.000Z</updated>
+    <updated>2017-03-17T05:49:20.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>box-sizing:border-box;</li>
@@ -869,8 +1703,6 @@ set:function(newtel){
     
     </summary>
     
-      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
-    
     
       <category term="自适应页面" scheme="https://github.com/skoll1/libateer.github.io/tags/%E8%87%AA%E9%80%82%E5%BA%94%E9%A1%B5%E9%9D%A2/"/>
     
@@ -881,7 +1713,7 @@ set:function(newtel){
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/10/best-3-%E6%88%98%E4%BA%89%E7%9A%84%E9%80%BB%E8%BE%91-%E6%99%AE%E9%B2%81%E5%A3%AB%E5%88%B0%E5%BE%B7%E5%9B%BD%E5%B4%9B%E8%B5%B7/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/10/best-3-战争的逻辑-普鲁士到德国崛起/</id>
     <published>2017-03-10T14:32:27.000Z</published>
-    <updated>2017-03-11T08:53:49.000Z</updated>
+    <updated>2017-03-19T14:09:40.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>没有什么东西能够够比陆军和海军更加依赖经济前提。一发炮弹是那个时代农民五年的收入<br>2.一旦技术上的进步可以用于军事并且已经用于军事目的，他们便立刻几乎强制的。而且往往是违反指挥官意图而引起作战方式的改变甚至是变革。随着技术武器的出现，将再也不可能出现落后文明对高等文明的征服，也就是说，类似与成吉思汗之类的草莽英雄再也不会回来了。 </li>
@@ -924,7 +1756,118 @@ set:function(newtel){
 <li>塞尔维亚起义成功–俄国开始以“奥斯曼帝国东正教基督徒的保护着为名”，这样就是可以插手一些国际事务了。</li>
 <li>希腊要起义了。—为了减少俄国早巴尔干半岛的影响。最后俄委员会认为，一旦奥斯曼帝国崩溃，那么欧洲列强各国对土耳其瓜分的狂潮，并将导致分脏不均而引发世界大战。</li>
 <li>同时英国为了减弱俄国的影响力，决定帮助希腊独立—希腊独立以后，这更加鼓舞了巴尔干各民族争取独立的斗志。</li>
-<li>1841年-规定黑韩海峡由国际共同管理，并对各国军舰封闭，这就废除了此前俄国十多年的n</li>
+<li>1841年-规定黑韩海峡由国际共同管理，并对各国军舰封闭，这就废除了此前俄国十多年的侵略计划。</li>
+<li>我们不会研究英国国王或首相的个人问题，也不会去研究发过总统或总理的特征，作为民主国家的领袖，他们只是实现国家利益的的工具，其个人特征在国家事物影响非常小，但在专制独裁或者是威权国家里就不同了，国家利益往往是和独裁者本人的利益不符合的，独裁者本人往往没有国人的智慧，却拥有了无限的权利。这就往往是悲剧的根源，更可悲的是，一些聪明的人确只能眼睁睁的看着这个国家在义无反顾的走向悬崖。最可悲的是这个国家的人民，他们被虚无的爱国热情和民族主义宣传和煽动，成为独裁者实现个人野心的工具，如果胜利了他们会获得一丝荣誉，一无所获，如果失败了他们却要承受所有的苦难。荣耀和苦难，他们只能被动的承受，因为他们根本没有选择的权利。</li>
+<li>威廉二世不挂海军上将的徽章就不会去养鱼池，不打扮成英国陆军元帅就不吃葡萄干。每次狩猎都要当公鹿，每次婚礼都要当新娘，每次葬礼上都相当死人。</li>
+<li>英国的核心利益：本土安全，保护工商业的利益。大陆均衡政策，光荣孤立政策。不签订任何有束缚性质的条约，只是从各种博弈中得到自己想要的结果。</li>
+<li>由于第一次工业革命的完成，，这些国家需要一个原材料能稳定供应，并且稳定的市场销售范围，促使各国纷纷走上了开辟海外殖民低的活动，企图独占原材料的供应和销售市场。海外扩展本质上是一场经济活动，是一种谋求高额利润的活动，但是殖民地一定会给他的国家带来利润么？帝国主义内部有着不同的利益集团，虽然总体上殖民某一个地区从今机上是不划算的，但支付的是整个国家，也就是全体纳税人，而真正获得利益的确实某个特定的利益集团，这些利益集团有着巨大的能量，让真个国家为了他们的利益敷处理巨大的代价，他们左右国家的政策其实非常高明，往往宣称某一地区是十分重要的，殖民该地区对国家是多么的有利益，往往把自己的私利藏在这个后面，还有一天最重要额私利就是虚妄的荣耀的成就感带来的感觉，感觉自己可以建功立业了，开疆扩土了，但是为这个虚妄的成就感付出的确实实实在在的代价，这就是很多国家扩张之后突然崩溃的结果。</li>
+<li>非洲是最后的一个被殖民的地区—甚至最后只能把他们卖了才有油水。</li>
+<li>威廉二世为了满足自己的虚荣就想开阔新的殖民地，但是这样虽然没有很大的利益，但是确使英国产生了更大的警惕，于是越走越远，最后德国不得不把英国作为自己的假想敌来指定战争策略。</li>
+<li>于是他开始发展自己的海军，。。等20年后，当海军以建造完毕，那是我将用另一种语言讲话。</li>
+<li>他无法简答的理解匹斯麦，只是单纯的认为，德国越强大越越安全。为了发展自身安全而发展军事量那会一定会导致危机的。</li>
+<li>“大炮巨舰主义”</li>
+<li>德国的疯狂扩充海军的装备引起了英国的海军恐慌。“海军要求6艘，经济学家只肯给四艘，我们折中了一些，决定给8艘”。</li>
+<li>在维持一个强大的陆军的同时在维持一个强大的海军是德国承担不起的。而且疯狂的军备竞赛之后的军舰。在一战的时候，全部的海军都被英国人封锁在波罗的海侠里面。</li>
+<li>战前英国多年的政治活动使我们坚信，德国作战舰队的迅速扩展是使英国站到敌对面的重要原因。一个强大的海军给德国带来一个世界上最强大的敌人，最终把自己的祖国送到坟墓。</li>
+<li>按照英法的要求；这只舰队的主力要求群不赔偿给协约国德国不愿意，最后全都沉到了海里。</li>
+<li>由于海峡被封锁，我国出口减少98%，进口降低95%，土耳其利用黑海海峡彻底封锁了俄国。由此导致了“二月革命”，“十月革命”</li>
+<li>土耳其被德国拖入战船。</li>
+<li>罗马尼亚的参战不仅没有帮助协约国，而且帮了德国的忙，80%的士兵在一枪潍坊的时候就投降了，20%临阵脱逃。</li>
+<li>加特林是一个一声发明的，为了减少士兵的数量。每分钟6000发可以瞬间摧毁一辆汽车</li>
+<li>马克沁机枪的射程长达四公里，所以防御一方的枪手把机枪朝天，到达对方阵营的子弹就变成了真正的枪林弹雨，能祈祷的只是运气。</li>
+<li>大炮，铁丝网，马克沁机枪，战壕可以说是当时最强大的防御武器。</li>
+<li>地狱般的战壕生活：由于进攻只是简单的送死，所以双方士兵便长年累月的蜷缩在战壕里，承受着难以想象的折磨和痛苦。床没有，有的只是狗洞，污水，没有热的食物，厕所，疾病，虱子，老鼠带来的病，冬天，夏天，秋天，哪怕站直身体呼吸一口威风带来的新鲜空气都是奢望，地狱般的战壕生活让人们对敌人也产生了惺惺相惜的情感，甚至在某些地段达成默契，不主动攻击，形成一种“你活着，我也活着的”状态。</li>
+<li>坦克的出现正是为了打破这一僵局，不怕铁丝网，可以承受机枪的打击，但是这个时候坦克只是步兵的从属地位。</li>
+<li>毒气是德国发明的这一武器，氯气与尿产生的滑雪反应可以让他失去毒性。</li>
+<li>飞机：则是高度和速度的比拼，以至于当时的人称之为飞行的棺材。</li>
+<li>潜艇：鱼雷。所有的战斗条件都是极其残酷的。</li>
+<li>消耗战的开始，英国人封锁了海峡，他们认为只要德国人没有制造火药额化学药品就会投降，但是以为叫做哈文的科学研究出了在空气中提取氯气，利用氯气合成氨的工艺。</li>
+<li>英国人明白对德国的封锁其实就是饥饿的战争，没有人会对饥饿战争，因为抗争的结果就是死亡。</li>
+<li>世界各地的小麦和其他粮食都是签收的，为我们提供了一次绝好的机会，如果我们不抓住他们，那就是一种罪过，我们可以实行无限制的潜艇作战，迫使英国在五个月内投降。</li>
+<li>每个人都对战争充满了恐惧，因为战争夺取了他们生命中最美好的东西，带给他们的只是饥饿还有失去亲人的痛苦。</li>
+<li>二月革命之后，成立的临时政府为了能获得战后胜利的获利品。决定继续参战，但是此时俄国和普通民众早已精疲力尽，于是德国就运送回了俄国的核武器。列宁，他到处发表演讲，呼吁人命反抗临时政府，痛骂战争，并许诺他们所有的愿望，为了支持他的革命，德国支付了7500万欧元。</li>
+<li>然后就是十月革命了，签订了一些列条约分裂出好多国家做缓冲带，但是一战之后，各国修生养息的时候，他们却陷入了更加惨烈的内战。</li>
+<li>美国参战了，英法已经欠了美国很多的欠条，以至于美国人要为这些债主的生命安全操心了。</li>
+<li>战败的德国为什么继续不被欺负不仅仅是因为四年的大战耗尽了人力，财力，物力。更为重要的是战场上美国的影响力已经越来越大了。如果继续下去，那么英法可能成为美国的附庸，美国将主导战后的秩序。德国国内已经有布尔什维克主义的倾向，使德国政府从这个当中脱身，平叛国内的革命，维持秩序，才能符合协约国的利益。</li>
+<li>救济凡尔赛和约的唯一条件在于迫使我们击败的敌人不能履行他的条件。</li>
+<li>法国进攻鲁尔园区导致德国彻底的经济崩溃，物价飞涨，由此导致非常严重的通货膨胀，工资必须每天发一次，喝咖啡之前都得先结账，因为喝完可能就会涨价</li>
+<li>恶性通货膨胀其实本质是一场财富的重新分配，他把财富从中产阶级手里夺走，然后交给大资本家，大资本家在银行的资本因为通货膨胀而全部消失，那些在战争中处于爱国热情而购买公债的人也彻底破产了，五年前这些钱支持了德国四年的战争，五年后这些钱甚至不能买一片面包，有权有势的人大肆囤货齐聚，把工薪阶层最后一点值钱的东西都席卷一空，中产阶级和工人在陷入愤怒和绝望之后便开始相信希特勒的歪理邪说。</li>
+<li>法国因为鲁尔区的骚乱导致自己国内的经济大幅度倒退，在德国工人运动风起云涌的时候，德国总理告诉大家，他的政府也许是德国最后的资产阶级政府。德国的解体就是债务人的失踪。</li>
+<li>英美的干涉导致法国再也不敢独立干涉德国的事物，从此以后法国就亦步亦趋的跟在英国人后面，如果没有鲁尔时间，在对德国崛起最警惕的法国，一定会在希特勒撕毁凡尔赛和约是给他沉重的打击。</li>
+<li>之后，协约国决定给德国巨额的贷款来用于发展国内经济。凡尔赛和约的目的就是限制国内经济来彻底削弱德国，现在借给他的钱比战争赔款还多，资金实际上在流入德国，帮助其发展崛起。</li>
+<li>但是德国经济快速增长是建立在外国资本投资的情况下的，所以一旦国际形势发生变化，那么德国经济会立马陷入崩溃。</li>
+<li>德国外交史上的胜利：利用苏联和英法的矛盾，迫使英法让步，利用英法的矛盾，迫使法国让步，仅仅用了7年就摆脱了战败国的地位，成为被承认的国际大国。</li>
+<li>任何国家都没有违约债务的权利，如果政权更迭就可以赖账的话，哪还有什么国家敢在国际上发行债券了。但布尔什维克克就是赖定了不换。</li>
+<li>沙皇-苏联-俄国-三个赖账国家都是。</li>
+<li>随着《拉巴洛协定》的签订，苏德迅速进入蜜月期，为打破凡尔赛对德国军备的限制，由德国提供军事工业所需的机器及技术，苏联负责为他建造，提供坦克，军用飞机和化学武器的试验场。德国可以避开协约国的监督生产武器，而俄国得到先进的技术，20年后驰骋在苏德战场上把双方士兵杀得人仰马翻的武器很度都是两国共同研究的。</li>
+<li>当所有的钱都投入股市的时候再也没有新钱来职场股票的价格上涨的，聪明的人必然会明白这个循环会被打破，他们在崩溃之前就撤离这个战场，从而引发恐慌性抛售导致循环提前来临。</li>
+<li>随着股市崩溃，银行业的倒塌，银行及债权人开始向工厂索取债务，导致工厂无法正常生产，企业开始破产，失业的人口无法购买商品导致共产更加的举步维艰。</li>
+<li>对于德国经济来说，这个是更加崩溃的事情。失业工人根本无法明白，自己辛勤努力的工作，遵纪手法的生活怎么武断的丢了饭碗被感到了大街上，面对妻子的愁容，嗷嗷待付的孩子他们又能怎么办？这是一个叫希特勒的人出现了。如果他上台，德国将恢复强大，拒付赔款，撕毁法尔赛和约，肃清贪污，迫使金融巨头就范，甚至保证在第三帝国的每个女郎都会找到一个丈夫（当时有180万的寡妇）</li>
+<li>席卷世界的金融风暴没有波及到苏联，其主要原因就是本来经济就差，没什么可以坏的，然后就是一直十倍封闭的，很少和外界有经济来往。因为经济危机，所有的国家都是关紧国门，保护自己的民主产业，只有一个国家敞开胸怀迎接一切的技术和机器设备，那就是苏联。</li>
+<li>由于这些工厂是在不发达的工业社会中建造起来的，就必须要在他们周围形成一个包括原材料在内的供应厂和备件唱的完整体系。</li>
+<li>客观的说，西方尤其是美国的机器设备帮助苏联完成了工业化，不但是与军事工业相关，还包括几乎当时所有的工业门类。</li>
+<li>苏联在短短的十年内就建造了如此多的大型企业，那他们的钱是哪里来的，除了征地拆迁不需要钱，别的其他的东西都要钱？</li>
+<li>苏联是怎么从农民身上弄出钱来作为工业化的资金呢？这就是第一个五年计划来时的时候的农业集体化，斯大林的工业计划就是一项由国家规划的努力，其募捐资金的手法就是将农场集体化，意味着这些农场的产品是属于国家，因此，政府能够更加名正言顺的把这些东西拿去外销。</li>
+<li>如此严厉的粮食征收政策导致1933年的乌克兰大饥荒，苏联出口的粮食换来了4.45亿卢布的外汇，但是确饿死了几百万人。</li>
+<li>从此以后，好像历来苏联的粮食都是进口的。</li>
+<li>一个苏联官员自豪的对前来参观的美国代表团宣布，在下一个五年计划完成的时候，每个苏联家庭都将有一架飞机，美国人大吃一惊，有这个必要么？苏联官员眼里透着坚毅的目光，比如你住在莫斯科，但居住在列宁格勒的表兄说那里开始供应鸡蛋了，你就可以开着飞机去那里排队了啊。</li>
+<li>苏联连个五年计划完成的东西都是与军事相关的工业，而对于人命生活息息相关的勤工而已却完全被忽视，这一畸形的发展不但没有停下，反而在冷战的时候更加的强化，结果就是苏联人民始终生活在经济匮乏中，凡是日用平，不但质量少，而且差。</li>
+<li>奥地利人最大的成就就是让全世界以为希特勒是德国人，莫扎特是奥地利人。</li>
+<li>希特勒是个坚定地理想主义者，他坚信自己做的一切都是为了德国人民，他要为德国人民建设一个人间天堂。正应为如此他才获得了一种道德的优越感，才对自己所犯下的罪行不屑一顾，因为在它看来，这些事不过是为了建设天堂所犯的代价罢了。他的悲剧，或者说是人类的悲剧就是人间天堂未建成，确建成了地狱。所有想要建设天堂的伟大理想无一类外的都落实为建造地狱的具体行动。</li>
+<li>希特勒最厉害的不是演讲能力，组织能力，还是募捐的能力，1933年希特勒拥有武装的冲锋队200万，这是比德国军队多20倍，这200多万人的工资都是纳粹党养活。</li>
+<li>用德国的剑为德国的梨取得土地，为德国人民取得每天的面包。今天我们来谈欧洲的土地，我们指的是首先只能是德国和他的藩国。这就是他之所以打败法国的情况下还要进攻苏联的原因。德国将成为整个欧洲的顶端，不同的殖民地满足德国不同的需求和工业原材料，而整个欧洲都将成为德国工业品的市场。</li>
+<li>人民的苦难给极端党派以肥沃的土壤，纳粹的发展就是明证。800万的失业工人和他们的家人大多成了纳粹的拥护者，很难说是他们认同的纳粹的政治理念，但他们知道希特勒许诺给他们工作，给他们面包，这就够了。</li>
+<li>扩军是整个军官团的愿望，只要扩军军官们自然人人都能升官，希特勒以此收买了整个军官团。</li>
+<li>他操控货币的本领可以说是神通广大，他也开动了印钞机，但是他印了200多种不同面额的钞票，这就是使得钞票的流通变得很麻烦。居然没有发生通货膨胀。</li>
+<li>在希特勒统治的前期，德国社会各阶层都是其政策的受益者。对于广大资本家，他取消了工会，禁止罢工，禁止工人和资方进行集体谈判，对于工人，希特勒给了他们工作，给了他们面包，对于农民，希特勒让他们收入增加，对于军队，希特勒积极扩军，军官唐人人升官，自然对希特勒感恩戴德。在第三帝国的前期，希特勒确实获得了的货人命的衷心拥戴。即使被他迫害的知识分子阶层，也由与希特勒恢复了德国的光荣而屈服在他的脚下。</li>
+<li>在任何时候，新政都没有导致繁荣的完全恢复，这样的恢复速度，要等到1940-1941年国防开支进入快速挡的时候才出现，美国经济的真正复苏都是二战爆发之后再战争的刺激下才可以开始。</li>
+<li>挽救德国经济，拒付赔款，撕毁凡尔赛和约，重整军备，进展莱茵非军事区，短短的俩年内希特勒取得了一系类的令人眼花缭乱的成就，他不但给工人工作和面包，给了农民的金钱，军官们升职，极大地没满足了德国自一次大战后严重受挫的民族自尊心，极大地提升了德意志的民族自豪感，希特勒真正的赢的德国的民心。</li>
+<li>经历过社会最顶层生活又靠着残酷政治斗争掌权的希特勒一下子就摸清了英国人的底牌，那就是不想打仗。元首当然不想放过这个弱点，于是他就开始叫嚣战争了。</li>
+<li>墨索里尼一心想要重现罗马帝国的荣光，这对于国力羸弱的意大利来说是力不从心，于是墨索里尼给自己找了个更弱的对手，非洲的土著国家。</li>
+<li>我们必须经常提出那么多的要求以至于我们绝对不可能得到满足。</li>
+<li>五月危机的消除说明了只要英，法，苏三国联合，希特勒就不可能发动战争了，可是却被希特勒分个瓦解。</li>
+<li>英国人实行绥靖政策的原因。</li>
+<li>英国人在一战中赢了战争，输掉了优势-称重的财务负担，每天打战的时候想到与英国每天往战场上㭁51吨黄金，得到的是什么？不过是一些贫瘠的殖民地和德国所谓的赔款承诺。为了弥补巨大的战争债务，发行公债，直到2015年才把第一次世界大战所欠的债务还完，这还是免了利息的。英镑霸主地位的动摇：铸币税的利益就没有，工业制造能力和市场的萎缩，商船和海外资产的巨减，大英帝国的分裂，惨重的人员伤亡，没有人会知道战争会如此的残酷，竟会长达四年之久，参战各国人民都是在爱国主义的狂热宣传下不但真诚的相信本国会取得胜利。</li>
+<li>一战期间忧郁男人都上了战场所以妇女大量进了工厂，所以妇女的地位提高了，妇女似乎是天生的爱好和平，而男人总是想着吧别的男人送上战场。</li>
+<li>希特勒的要求似乎是合法的。</li>
+<li>在英国人看来，欧洲大战的结果肯定是灾难的，但获胜的不是德国就是俄国，不困发生什么，作为一个大国的大不列颠的地位及时不完全跨下也会下降，英国政府力求和平，而不是一场战争的胜利。</li>
+<li>民主政体显然不是总能做出正确的决定，但民主制度一个好处就是他能很快的纠正自己的错误，而且付出的代价极其的小，，只需要换一拨人就可以了，没有路线斗争，没有党的分裂，没有国家的分裂，没有事后清算，因为所有的决定都是大家投票做出的决定，但是专治国家就不一样了，领袖是不能犯错的，因为领袖是不能下台的，但是领袖怎么呢才能不犯错呢？很简单，需要一个替罪羊，替罪羊可以是国内的卖国集团，阴谋家，也可以是国外的敌对势力，总之，领袖一定是正确的，遇到的困难总是暂时的，犯下的错误都是别人的。</li>
+<li>自由不是免费的。</li>
+<li>法国实行绥靖主义的原因。</li>
+<li>我们要不惜一切代价来谋求和平，因为人民的真是情感已被战争所控制。</li>
+<li>事实上法国总理在签完慕尼黑协定之后心情非常沉重的，他实在没有想到在出卖了自己最忠实的盟友后法国人民竟会热烈欢呼他带来和平。面对欢呼的人民，他说，一群傻瓜，他们哪里知道他们在欢呼的是什么？</li>
+<li>德国为什么选择战争？</li>
+<li>不平等的法尔赛和约，让他们普遍有一种复仇的心理。</li>
+<li>没有沉重的经济负担，可以重整装备。</li>
+<li>实际上是在消耗战中被打败的，但是欧普通民众都是不知道，他们老说是被人背后捅了一刀。</li>
+<li>德国是一个独裁国家。</li>
+<li>希特勒是要挑起战争，但却绝不是世界大战。他要的事一场场小的战争，有一场场晓得战争变成一个大的战争。</li>
+<li>波兰亡国：波兰还给俄国选过沙皇。。</li>
+<li>民族自决原则。</li>
+<li>意大利在反法西斯战争中起到了一个不是卧底，胜似卧底，虽是敌人，甚是盟友的一个无可替代的角色。</li>
+<li>意大利人也真是醉了。。这份清单足以气死一头公牛，如果他认识字的话。</li>
+<li>在最后几天的和平的战争的时候，英法几乎是以一种囚犯的身份等待希特勒的裁决，或是战争，或是和平，他们只希望自己近乎西斯底里的坚决态度能够吓唬住希特勒。</li>
+<li>在这个世界上，勇气永远战争不了炮火。</li>
+<li>马奇诺防线让法国士兵认为完全可以安全的躲在公事内一边吃饭，一边开动机枪大炮将来犯的德军一片一片的打倒在地。</li>
+<li>法国事实上默认了德国在欧洲有随意扩张的权利，只要不直接触及他的自身安全就行，法国用一条坚固的防线将自己紧紧的保护起来。法国已经完全失去了欧洲大陆的全局观念，不但出卖了最忠实的盟友捷克斯洛伐克，还做视另一个盟友波兰亡国。全面防御是法国头难僵化的表现，法国完全看不到坦克，飞机带给进攻一方带来的巨大优势，而是继续沉溺在所谓的一战胜利的经验上，企图再打一场战壕战。而马奇诺防线更像是一条锁链，不但束缚了法军的手脚而且束缚了法军的头脑，让法军吧战略进攻的主动权让给了德军。</li>
+<li>希特勒以一种恶作剧的方式来表达他对法国人的耻辱，那就是不让钱来谈判的法国代表领事团知道谈判的具体地点，以便从法国人巨大的惊愕和羞辱中获得一种只有征服者才能体会到的快感。在纳粹德国灭亡前，这节火车厢被希特勒亲自炸毁，以免他成为第三次停战的前字地。</li>
+<li>法国二战就打了6个星期就投降了。</li>
+<li>1935年就组件了世界上第一个装甲师。当看到坦克群隆隆的驶来，元首高兴的说，这就是我想要的。这就是我需要的。</li>
+<li>墨索里尼在希腊的轻举妄动以及南斯拉夫的局势变化使得原本在941年春季就实施的“巴巴罗萨”计划被迫推迟到夏季，这就使得德军在1941年可以作战的时间大大缩短了，随着多雨的夏季和严寒的冬季的到来，德军被迫放满了进攻的步伐，这就使得苏联获得了一个极为难得的喘息的机会，得以动员大量的后备以的人员入伍。苏德战争不再是闪电战了，而是变成了消耗战了。</li>
+<li>苏联之所以最后能赢得战争的胜利很大原因是因为他不在插手军事行动了。</li>
+<li>德军失败的原因：</li>
+<li>战争无非是政治通过另一种手段的继续。所以分析战争的时候就不能脱离战争的双方的政治而单纯的研究战争本身，否则就会必然得出错误的观点，尤其是面对苏联这个庞然大物，由于战争不能在短时间结束，呢么政治的重要性就更加不言而喻了。</li>
+<li>由于大清洗的时候共产党的所做所为，导致很多苏军将领认为这次战争可能是苏联出现新秩序的曙光，但是希特勒的残酷虐待战俘的行为确实的苏军不得不奋斗到底，由此造成了很多不必要的牺牲。</li>
+<li>苏军在1941年的战役中坚持下来，主要依靠领土的辽阔和冬季的严寒。</li>
+<li>斯大林是靠庞大的人口和土地压倒了希特勒。2000万的面积。1.6亿的人口。</li>
+<li>这个时候苏联都是受到了美国全方位的帮助，汽油，高射炮。</li>
+<li>苏联的动员能立，依靠着内战，大清洗，和集体化运动，元帅早已牢牢地掌握了这个国家，所有反抗他的人都被枪毙和送进了劳改营。</li>
+<li>我没有别的，我只有热血，辛劳，眼泪和汗水贡献给大家，但战争不是靠着热血，辛劳，眼泪和泪水就能打赢的，这些东西美洲的印第安人和黑人兄弟也有的，战争是要靠着钱才能打赢的，有了钱不见得可以打赢战争，但是没有钱是绝对不可能打赢的。</li>
+<li>二战之后：大英帝国对殖民地原材料的低价掠夺和工业品的垄断销售的特权被美国人打破了。大英帝国的海上霸权再也不复存在了。</li>
+<li>至少有200万的妇女被苏军官兵强奸，甚至杀了人。在如此可怕的战争后，他们和妇女们玩一玩又有什么可怕的呢？主要是你们把红军理想化了，然而他们不是理想的军队。。最重要的是，他们应该打击德军，而且他们做的很好。其他的一切都是次要的。</li>
+<li>以前土地才是财富的来源，但是现在以电气化为代表的第二次工业革命的开始，技术成为创造财富的最关键的因素，土地，人口已经不再变得那么重要了，掌握先进科学技术才能创造巨大的财富，而拥有人口，土地，工厂的国家则沦为产业链的下游，只能从科学技术那里捡一点残羹冷饭。但科学技术是无形的，他的载体是人，或者说更准确的是科学家，他不像普通的东西那样可以通过掠夺来获取。科学家是培养出来的。有了先进的技术，各国的消费者要排着队把钱送过来，为什么要发动战争呢？技术的进步给我带来和平，因为他使真正变得毫无意义，相反，战争会使我们大家都变成穷人。</li>
+<li>宗教，爱国主义，民族主义，这三者在战争中起到了很重要的作用，以他们的名义要求一部分人为了整体而做出一部分的牺牲，这个牺牲包括各个方面的，时间，金钱，劳动，甚至是生命。这些东西会被大力提倡并给他们崇高的理由。从本质上来说，就是让一部分人做出牺牲，并且给他们的牺牲找到意义。</li>
+<li>对你从没做过的事引以为豪，对你从没见过的人恨之入骨。爱国主义是往往是通过仇恨本国的敌人来体现的，而不是关爱本国的弱势群体来体现。所以的，当两个国家产生冲突的时候，爱国主义和民族主义会是冲突激化，从而失去妥协的余地，导致真正的战争爆发。</li>
 </ol>
 ]]></content>
     
@@ -945,9 +1888,76 @@ set:function(newtel){
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-JS%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-JS代码规范/</id>
     <published>2017-03-09T15:19:23.000Z</published>
-    <updated>2017-03-13T12:01:28.000Z</updated>
+    <updated>2017-03-22T04:53:35.000Z</updated>
     
-    <content type="html"><![CDATA[<p>###腾讯代码规范###</p>
+    <content type="html"><![CDATA[<p>###编程模式与设计模式###</p>
+<ol>
+<li>命名空间：为了减少命名冲突，必须减少使用全局变量的机会，最好的办法就是将变量和方法定义在不同的命名空间里面。</li>
+<li>`var my=window.my||{};<br> my.event={<br>   get:function(){<br> console.log(1);<br>},<br>   set:function(){<br> console.log(this.name)<pre><code>}
+</code></pre>}`</li>
+<li><p>`    var NameSpace = window.NameSpace || {};</p>
+<pre><code>NameSpace.Hello = (function() {
+
+  var self = {};
+
+  var name = &apos;world&apos;;
+
+  self.sayHello = function(_name) {
+
+return &apos;Hello &apos; + (_name || name);
+</code></pre><p>};<br>return self;</p>
+<p> }());`</p>
+</li>
+</ol>
+<ol>
+<li><p>`var NameSpace = window.NameSpace || {};</p>
+<pre><code>NameSpace.Hello = new function() {
+  var self = this;
+  var name = &apos;world&apos;;
+  self.sayHello = function(_name) {
+</code></pre><p> return ‘Hello ‘ + (_name || name);<br>};<br>};`    </p>
+</li>
+<li><p>初始化分支：在加载的时候，对代码进行分支管理，而不是在浏览器运行事件的时候在判断行为。当再次调用的时候就不需要检测了。</p>
+</li>
+<li><p><code>var start={};
+start.event={
+addListener:null,
+removeListener:null
+}
+if(typeOf window.onload===&quot;fn&quot;){
+start.event.addListener=function(el,type,fn){
+ el.addEventListener(type,fn,false);
+}
+start.event.removeEventListener=function(el,type,fn){
+ el.removeEventListener(type,fn,false)
+}
+}else if(typeOf document.attachEvent===&quot;function&quot;){
+start.event.addListener=function(el,type,fn){
+ el.attachEvent(&#39;on&#39;+type,fn);
+};
+start.event.removeListener=function(el,type,fn){
+ el.detachEvent(&#39;on&#39;+type,fn)
+};
+}else{
+start.event.addListener=function(el,type,fn){
+ el[&#39;on&#39;+type]=fn;
+};
+start.event.removeListener=function(el,type,fn){
+ el[&#39;on&#39;+type]=null;
+};
+};</code></p>
+</li>
+<li><p>变量名之前的前缀应该是名词，myName,函数名前缀应该是动词(can,has,is,get,set);</p>
+</li>
+<li>for in 是用来遍历对象的，而不是数组。for(var i in person){console.log(i+person[i])};连值带属性</li>
+<li>避免全局变量的原因：任何在全局中定义的变量都是window的对象或属性，全局变量越多，得到错误的几率越大。</li>
+<li>命名冲突，代码脆弱性，难以测试。</li>
+<li>意外的全局变量：党给一个未被var声明过得变量赋值的时候。</li>
+<li>将代码置于严格模式会改变很多js行为，对于新的代码，最好使用严格模式来避免以外的全局变量。</li>
+<li>当事件触发时，事件对象会作为回调函数参数传入事件程序中，event对象包含所有和时间相关的信息，包括事件的宿主（target）以及其他和事件类型相关的数据。</li>
+<li></li>
+</ol>
+<p>###腾讯代码规范###</p>
 <ol>
 <li>项目名字全部小写，中间用下划线分割。</li>
 <li>有复数形式的时候要采用复数命名法。scripts</li>
@@ -1217,19 +2227,15 @@ break;
     
     <summary type="html">
     
-      &lt;p&gt;###腾讯代码规范###&lt;/p&gt;
+      &lt;p&gt;###编程模式与设计模式###&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;项目名字全部小写，中间用下划线分割。&lt;/li&gt;
-&lt;li&gt;有复数形式的时候要采用复数命名法。scripts&lt;/li&gt;
-&lt;li&gt;Js文件命名：参照项目名字&lt;/li&gt;
-&lt;li&gt;html语法：缩进四个空格。嵌套的节点要缩进。属性上
+&lt;li&gt;命名空间：为了减少命名冲突，必须减少使用全局变量的机会，最好的办法就是将变量和方法定义在不同的命名空间里面。&lt;/li&gt;
+&lt;li&gt;`var my=window.my||{};&lt;br&gt; my.event={&lt;br&gt;   
     
     </summary>
     
-      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
     
-    
-      <category term="代码规范-风格书写" scheme="https://github.com/skoll1/libateer.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83-%E9%A3%8E%E6%A0%BC%E4%B9%A6%E5%86%99/"/>
+      <category term="js代码规范" scheme="https://github.com/skoll1/libateer.github.io/tags/js%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
     
   </entry>
   
@@ -1238,7 +2244,7 @@ break;
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-新特性/</id>
     <published>2017-03-09T15:06:25.000Z</published>
-    <updated>2017-03-09T15:19:08.000Z</updated>
+    <updated>2017-03-17T05:49:45.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>保留字可以做为属性键了，在对象中，点操作符后面可以使用保留字作为非引用属性键。</li>
@@ -1268,7 +2274,7 @@ break;
     <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-unicode/"/>
     <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-unicode/</id>
     <published>2017-03-09T13:53:34.000Z</published>
-    <updated>2017-03-09T14:57:57.000Z</updated>
+    <updated>2017-03-17T05:49:55.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>字符和字形：字符相当于拼音，字形就是汉字。字形是语言的基本单位。</li>
@@ -1285,8 +2291,6 @@ break;
     
     </summary>
     
-    
-      <category term="js和unicode" scheme="https://github.com/skoll1/libateer.github.io/tags/js%E5%92%8Cunicode/"/>
     
   </entry>
   
@@ -1390,368 +2394,6 @@ break;
     
     
       <category term="移动设计-互动精髓" scheme="https://github.com/skoll1/libateer.github.io/tags/%E7%A7%BB%E5%8A%A8%E8%AE%BE%E8%AE%A1-%E4%BA%92%E5%8A%A8%E7%B2%BE%E9%AB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>weui-移动开发</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-weui/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-weui/</id>
-    <published>2017-03-09T13:19:26.000Z</published>
-    <updated>2017-03-11T11:20:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。</li>
-<li>他的样式注意啊：position:fixed;top:0;left:0;right:0;自动撑满页面。连宽高都没有就可以填出来颜色为什么？还用padding调整大小。</li>
-<li>然后他最大的所有的容器也是用了position:absolute;top:0,left:0;right:0;bottom:0;这个是可以撑满整个页面的么？那这个absolute的用处是什么？</li>
-<li>还有就是所有如果想要自己重新调整他的顺序的话，就要调整display。</li>
-<li>Overflow：hidden;</li>
-<li>在body里面添加公共样式，如字体，颜色。</li>
-<li>正式看到了用opacity来实现出现和消失的效果。原来是自己做过这个。</li>
-<li>用padding来调整里面的位置。甚至是变相改变盒子的大小。</li>
-<li>好像什么里面都可以加img标签。p ,a ,h1,</li>
-<li>他这个里面的字体好像没变化，都是加上px。还是不知道是不一开做了兼容。</li>
-<li>只要是大量重复的东西都是用列表做成的。偏偏li里面还什么都能包。</li>
-<li>这个里面变化都要加css的transition.现在还没发现是哪块需要这个过渡。。</li>
-<li>.flex{</li>
-<li>height: 100px;</li>
-<li>border:1px solid red;</li>
-<li></li>
-<li>/<em> display: -webkit-box; </em>/</li>
-<li>/<em> display: -webkit-flex; </em>/</li>
-<li></li>
-<li>/<em> display: -moz-box; </em>/</li>
-<li>/<em> display: -moz-flex; </em>/</li>
-<li></li>
-<li>/<em> display: -ms-flexbox; </em>/</li>
-<li></li>
-<li>display: flex;</li>
-<li></li>
-<li>/<em> 水平居中</em>/</li>
-<li>/<em> -webkit-box-align: center; </em>/</li>
-<li>/<em> -moz-box-align: center; </em>/</li>
-<li>-ms-flex-align:center;/<em> IE 10 </em>/</li>
-<li></li>
-<li>/<em> -webkit-justify-content: center; </em>/</li>
-<li>/<em> -moz-justify-content: center; </em>/</li>
-<li>/<em> justify-content: center; </em>/</li>
-<li>/<em> IE 11+,Firefox 22+,Chrome 29+,Opera 12.1</em>/</li>
-<li></li>
-<li>/<em> 垂直居中 </em>/</li>
-<li>-webkit-box-pack: center;</li>
-<li>-moz-box-pack: center;</li>
-<li>-ms-flex-pack:center;/<em> IE 10 </em>/</li>
-<li></li>
-<li>-webkit-align-items: center;</li>
-<li>-moz-align-items: center;</li>
-<li>align-items: center;</li>
-<li>}</li>
-<li>.flex&gt;div{</li>
-<li>background-color:red;</li>
-<li>padding:5px 10px;</li>
-<li>}</li>
-<li></li>
-<li></li>
-<li><body></body></li>
-<li><div class="flex"></div></li>
-<li><div>test</div></li>
-<li><div>haha</div></li>
-<li>水平这个简单，垂直居中怎么搞？下面明天。这个就是做遮罩的时候容易找到中间的东西，还必须是个正方形的时候才行。</li>
-<li>结构：li&gt;div|div(div&gt;a|a|a|a|a &gt;(div&gt;p,div,div)下面的div是隐藏起来的一开始)</li>
-<li>.jian{</li>
-<li>display: inline-block;</li>
-<li>height: 6px;</li>
-<li>width: 6px;</li>
-<li>border-width: 2px 2px 0 0;</li>
-<li>border-color:red;</li>
-<li>border-style: solid;</li>
-<li>position: relative;</li>
-<li>-webkit-transform:matrix(0.71,0.71,-0.71,-0.71,0,0);</li>
-<li>transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);</li>
-<li>left: 305px;</li>
-<li>}一个箭头的css.</li>
-<li>P，span包裹文字有什么区别么？</li>
-<li>weui层级规范，四层—最下面是内容，然后是fixed元素，然后是遮罩，最后是遮罩上的点击东西。</li>
-<li>他一开始的结构是很简单的，后来的样式都是拿js渲染出来的。一开始就两个div,一个是警告的，一个是container</li>
-<li>$(function(){</li>
-<li>var winH = $(window).height();</li>
-<li>console.log(winH);</li>
-<li><p>var categorySpace = 10;</p>
-</li>
-<li><p>$(‘.js_item’).on(‘click’, function(){</p>
-</li>
-<li>var id = $(this).data(‘id’);</li>
-<li>window.pageManager.go(id);</li>
-<li>console.log(“1”);</li>
-<li>});</li>
-<li>$(‘.js_category’).on(‘click’, function(){</li>
-<li>var $this = $(this),</li>
-<li>$inner = $this.next(‘.js_categoryInner’),</li>
-<li>$page = $this.parents(‘.page’),</li>
-<li>$parent = $(this).parent(‘li’);</li>
-<li>var innerH = $inner.data(‘height’);</li>
-<li><p>bear = $page;</p>
-</li>
-<li><p>if(!innerH){</p>
-</li>
-<li>$inner.css(‘height’, ‘auto’);</li>
-<li>innerH = $inner.height();</li>
-<li>$inner.removeAttr(‘style’);</li>
-<li>$inner.data(‘height’, innerH);</li>
-<li><p>}</p>
-</li>
-<li><p>if($parent.hasClass(‘js_show’)){</p>
-</li>
-<li>$parent.removeClass(‘js_show’);</li>
-<li>}else{</li>
-<li><p>$parent.siblings().removeClass(‘js_show’);</p>
-</li>
-<li><p>$parent.addClass(‘js_show’);</p>
-</li>
-<li>if(this.offsetTop + this.offsetHeight + innerH &gt; $page.scrollTop() + winH){</li>
-<li><p>var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;</p>
-</li>
-<li><p>if(scrollTop &gt; this.offsetTop){</p>
-</li>
-<li>scrollTop = this.offsetTop - categorySpace;</li>
-<li><p>}</p>
-</li>
-<li><p>$page.scrollTop(scrollTop);</p>
-</li>
-<li>}</li>
-<li>}</li>
-<li>});</li>
-<li>});第一段js代码。</li>
-<li>a标签这个里面很多的都是不直接规定大小的，例如长度和高度，而是利用padding，line-height;来撑开高度。而实现这种类似块的结构的都是加display：block;</li>
-<li>为什么他不直接加上边框，非要用这个呢？<br>.weui-btn:after {</li>
-<li>content: “ “;</li>
-<li>width: 200%;</li>
-<li>height: 200%;</li>
-<li>position: absolute;</li>
-<li>top: 0;</li>
-<li>left: 0;</li>
-<li>border: 1px solid rgba(0, 0, 0, 0.2);</li>
-<li>-webkit-transform: scale(0.5);</li>
-<li>transform: scale(0.5);</li>
-<li>-webkit-transform-origin: 0 0;<br>11.<br>transform-origin: 22 12;</li>
-<li>box-sizing: border-box;</li>
-<li>border-radius: 10px;</li>
-<li>} </li>
-</ol>
-<p>*<br>.weui-btn + .weui-btn {</p>
-<pre><code>1. margin-top: 15px;
-</code></pre><p>}<br>想在一些东西之间除了第一个都来些上下间距。。。就用这个。。。</p>
-<ul>
-<li>Input</li>
-<li>为什么他这块的单位又可以是em.</li>
-<li>为什么简单得加个边框，他非要做成这样。。<br>.weui-cells:before {</li>
-</ul>
-<ol>
-<li>content: “ “;</li>
-<li>position: absolute;</li>
-<li>left: 0;</li>
-<li>top: 0;</li>
-<li>right: 0;</li>
-<li>height: 1px;</li>
-<li>border-top: 1px solid #D9D9D9;</li>
-<li>color: #D9D9D9;</li>
-<li>-webkit-transform-origin: 0 0;</li>
-<li>transform-origin: 0 0;</li>
-<li>-webkit-transform: scaleY(0.5);</li>
-<li>transform: scaleY(0.5);<br>}<br>.weui-cells:after {</li>
-<li>content: “ “;</li>
-<li>position: absolute;</li>
-<li>left: 0;</li>
-<li>bottom: 0;</li>
-<li>right: 0;</li>
-<li>height: 1px;</li>
-<li>border-bottom: 1px solid #D9D9D9;</li>
-<li>color: #D9D9D9;</li>
-<li>-webkit-transform-origin: 0 100%;</li>
-<li>transform-origin: 0 100%;</li>
-<li>-webkit-transform: scaleY(0.5);</li>
-<li>transform: scaleY(26.5);<br>}</li>
-</ol>
-<p>一个是给上边的加一个，一个是给下边的加一个。。</p>
-<ol>
-<li>想在下一行用一个很小的地方做个图标之类的东西，那就可以用给他的父元素设置flex，下面整个都是flex=1;</li>
-<li>他那个自定义选择的对勾，就是checbox,那个。。。</li>
-<li>先看结构吧。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;首先最上面有一个错误提示的东西开始都是藏起来的，藏得最深的。&lt;/li&gt;
-&lt;li&gt;他的样式注意啊：position:fixed;top:0;left:0;right:0;自动撑满页面。连宽高都没有就可以填出来颜色为什么？还用padding调整大小。&lt;/li&gt;
-&lt;l
-    
-    </summary>
-    
-    
-      <category term="weui" scheme="https://github.com/skoll1/libateer.github.io/tags/weui/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人工智能</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-3-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-3-人工智能/</id>
-    <published>2017-03-09T13:17:38.000Z</published>
-    <updated>2017-03-09T13:19:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>其中一个好处就是你有机会亲眼见证一个研究领域的发展过程以及那些原始梦想成真的瞬间</li>
-<li>儿童并不是人们过去想的那种小大人，他们思考问题的方式和大人的差异非常大，而且在成长过程种每个不同阶段都通过不同的方式进行推理。</li>
-<li>为了研究出人类大脑的替代物，我们需要掌握神经突触将两个细胞联系在一起的的具体机制，同时我们也需要掌握大脑中各种结构对活跃在她们周围的丰富的电厂，激素，神经递质，营养素一集大脑中其他化学物质的反应机制。</li>
-<li>人类智能最大的特性不是在于工作的时候所进行的活动，而是没有工作的时候大脑所进行的活动。</li>
-<li>你能像想象以前人们使用的图书馆里，那些书记不能聊天，在未来的生活中，只是将是活生生的，而不是在被禁止的，他们不是被动的等待你使用它，而是主动与它感兴趣的对象进行联系，并进行合作。</li>
-<li>无聊，随机写出一个东西，大家聊和这个东西有关的事情，不大于四个字。</li>
-<li>可不可以实现一种自动对话的东西，让那些app制动读取你的信息，在你不方便的时候替你回答。转接</li>
-<li>你正在阅读的书可以告诉你可能对那些章节感兴趣，而房间里的书架着会向你展示有关的书籍，与此同时，你在墙上悬挂的注目的相片还会在你注视她的时候告诉你最最近的健康状况</li>
-<li>我说想到的和自己能做的差距太大了。发现自己的优势，产品开发思维，－－最快的速度把知识压缩，应用。</li>
-<li>可不可以仿照人的方式发展人工智能，就是这个机器先是歌盲人，然后再射向他的功能。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;其中一个好处就是你有机会亲眼见证一个研究领域的发展过程以及那些原始梦想成真的瞬间&lt;/li&gt;
-&lt;li&gt;儿童并不是人们过去想的那种小大人，他们思考问题的方式和大人的差异非常大，而且在成长过程种每个不同阶段都通过不同的方式进行推理。&lt;/li&gt;
-&lt;li&gt;为了研究出人类大
-    
-    </summary>
-    
-    
-      <category term="人工智能" scheme="https://github.com/skoll1/libateer.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Chrome调试</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-chrome%E8%B0%83%E8%AF%95/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-chrome调试/</id>
-    <published>2017-03-09T09:10:01.000Z</published>
-    <updated>2017-03-09T13:51:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>console.log()还可以用Jquery语法。</li>
-<li>cmd+o打开当前文件夹。</li>
-<li>查找当前元素绑定的js文件。css也可以找到。</li>
-<li>在console.log()中输入getEventListeners(a)可以获得当前节点的所有绑定的事件。</li>
-<li>在Js文件中选中一段代码后，ctrl+shift+e可以在console.log()面板中运行这段代码。</li>
-<li>console.trace()可以追踪代码执行过程中的栈信息。</li>
-<li>timeline时间线如果出现红线就说明渲染时间超过了18ms，点击这些红色的线，就可以知道相应的警告信息，不超过16ms的才是流畅的画面。</li>
-<li>快捷方法$()返回指定的css的选择器相匹配的的第一个元素。$$()返回与指定的css选择器相匹配的所有元素的数组。</li>
-<li>chrome第一个elements右边的那一行最后两个是干嘛的。</li>
-<li>cmd+o是寻找整个文件中你想要知道的东西的位置。</li>
-<li>cmd+f是当前文件夹内寻找。</li>
-<li>如果你希望在所有加载的文件中搜索特定的文字，你可以用下面的快捷键来加载搜索框界面：cmd+ shift+f</li>
-<li>Cmd + Shitf + O 定位到特定的函数。</li>
-<li>network查看网络请求的全部信息。</li>
-<li>lnitiator:parser:请求是html发起的。script：脚本。redirect:页面重定向发起的。other:其他发出的。</li>
-<li>Cmd + K 清除控制台</li>
-<li>Shitf + Enter 允许你从控制台进入多行模式。</li>
-<li>###console.log()API###</li>
-<li>console.trace()跟踪一条栈信息。</li>
-<li>console.assert(blloean,obj):如果表达式错误，就把obj打印</li>
-<li>console.count()记录当前被执行的次数。</li>
-<li></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;console.log()还可以用Jquery语法。&lt;/li&gt;
-&lt;li&gt;cmd+o打开当前文件夹。&lt;/li&gt;
-&lt;li&gt;查找当前元素绑定的js文件。css也可以找到。&lt;/li&gt;
-&lt;li&gt;在console.log()中输入getEventListeners(a)可以
-    
-    </summary>
-    
-    
-      <category term="Chorme 调试" scheme="https://github.com/skoll1/libateer.github.io/tags/Chorme-%E8%B0%83%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>标准全局变量</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-全局变量/</id>
-    <published>2017-03-09T08:44:01.000Z</published>
-    <updated>2017-03-09T08:49:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1：布尔值，数字和字符串这三种原始值都有对应的构造函数：Boolean,Number,String().他们的实例包含原始值，作为构造函数，他们创建的对象和他们包装的原始值有很大的不同。作为函数，他们会将值转换为相应的原始值，注意，避免包装对象是一种最佳实践，毕竟没有什么事是对象能做而原始值不能的。</p>
-<p>2：包装值是对象。注意他比较大小的时候，不能比较大小。</p>
-<p>3：当需要对一个原始值增加属性的时候，首先要对原始值包装并且给包装后的对象增加属性，当您使用值得时候就要先对他去包装。</p>
-<p>4：去包装是调用valueOf（）。将包装对象转为原始值是用Blloean (new Blloean(true));值得注意的是转换为原始值得时候只能正确提出数字和字符串，而布尔值不能。</p>
-<p>5：原始值会从包装器中借调方法，只是在严格模式和宽松模式中发生不同的处理方法。</p>
-<p>6：强制类型转换：它是指从一种类型隐式的转换为另外一种类型。强制类型会出现BUG,所以在这一方面的时候要注意，可以先把将变量转换为合适的类型。</p>
-<p>7：Boolean()转换。undefined,null,false,NAN,0,’’,除了这些，别的都是true.</p>
-<p>8:Number（），好像是类似于一般的字符串解释,undefined-NAN,null-0,false-0,true-1,字符串会被解析，对象会先被转为原始值，然后在转为数字。</p>
-<p>9：String（），这个就是所有原始值转换为字符串。</p>
-<p>10：Object()这个还是？我去。。。将一个东西转为对象。。。’abc’ instanceof String;  false; Object(‘abc’) instanceof String-true. typeOf Object(‘abc’)-Object;Object(null),object(undefined)–{}.空数组都是。</p>
-<ol>
-<li>全局变量：所有的全局变量都是全局对象本身或者继承自全局对象（WINDOW）的属性。</li>
-<li>全局构造器：Array().Blloean().Date(),Function(),Number(),Object(),RegExp(),String(),</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1：布尔值，数字和字符串这三种原始值都有对应的构造函数：Boolean,Number,String().他们的实例包含原始值，作为构造函数，他们创建的对象和他们包装的原始值有很大的不同。作为函数，他们会将值转换为相应的原始值，注意，避免包装对象是一种最佳实践，毕竟没有什么事
-    
-    </summary>
-    
-      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JSON</title>
-    <link href="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-Json/"/>
-    <id>https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-Json/</id>
-    <published>2017-03-09T06:25:01.000Z</published>
-    <updated>2017-03-09T07:30:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>json字符串的使用必须是双引号，字符串变量‘ok’是错的。</li>
-<li>属性键也必须使用双引号。</li>
-<li><code>JSON.stringify(value,replacer,space)</code>把js对象变成json格式.第一个参数是要处理的值，第二个的值是要在做之后对值处理</li>
-<li><p>var student = new Object();<br> student.name = “Lanny”;<br> student.age = “25”;<br> student.location = “China”; </p>
-<p> // var json = JSON.stringify(student);<br> 如果没这个函数的话，只是弹出来的时候还是[object,object]但是你找的时候还是很简答的啊。<br> alert(student);</p>
-</li>
-<li>var students = new Array() ;<br>students[0] = “Lanny”;<br>students[1] = “dong”;<br>students[2] = “I love you”;<br>var json = JSON.stringify(students,switchUpper);<br>function switchUpper(key, value) {<br>return value.toString().toUpperCase();<br>}<br>alert(json); </li>
-<li><p>parse用于从一个字符串中解析出json对象,如</p>
-<p> var str = ‘{“name”:”huangxiaojian”,”age”:”23”}’</p>
-<p> 结果：JSON.parse(str)</p>
-</li>
-<li>可选参数replacer是用来替换参数Valued的。具体的替换规则是这样的：JSON.stringify({A:5,B:[9,2]},replacer);function replacer(key,value){<br> if(typeof value==’number’){<pre><code>value=2*value;
-</code></pre> }<br> return value;<br>}<br>“{“A”:10,”B”:[18,4]}”</li>
-<li>当replacer为数组的时候，用来隐藏非数组对象内属性不在这个列表中的所有属性。JSON.stringify({foo:1,bar:{foo:1,bar:2}},[‘bar’]);—<br>“{“bar”:{“bar”:2}}”</li>
-<li>最后一个是用来影响输出格式的。如果没有这个参数，那么变换后的结果实单行的文本。有了这个可以可以插入新行而且通过数组和对象的嵌套增加缩进。有这两种方法可以指定如何缩进。</li>
-<li>他的参数可以是什么呢？数字。。。将数字会成以相对应的数量的空格来缩进。</li>
-<li>一个不被JSON支持的值将解析成为undefined,而不是string.</li>
-<li>可以使用一个函数toJSON来先把这个转换为字符串，然后使用该方法来做JSON.stringify().</li>
-<li></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;json字符串的使用必须是双引号，字符串变量‘ok’是错的。&lt;/li&gt;
-&lt;li&gt;属性键也必须使用双引号。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;JSON.stringify(value,replacer,space)&lt;/code&gt;把js对象变成json格式.第一个参数是
-    
-    </summary>
-    
-      <category term="Code" scheme="https://github.com/skoll1/libateer.github.io/categories/Code/"/>
-    
     
   </entry>
   

@@ -101,7 +101,7 @@
 访问对象的方式/.[]如果我们访问的属性名字是不确定的就必须要用中括号来表示，它允许我们在运行的时候通过相关的变量来实现先关属性的动态属性的存取。
 可以使用一些很奇怪的属性名字，但是遇到保留字的情况要加上‘’这个
 构">
-<meta property="og:updated_time" content="2017-03-13T04:27:08.000Z">
+<meta property="og:updated_time" content="2017-03-20T16:07:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象">
 <meta name="twitter:description" content="对象的情况和数组很相似，只是他的键值类型是自定义的，也就是我们常说的索引方式不再局限于数字了，可以使用一些更加人性化的键值。也就是我们用数组来表示索引型数组，而用对象表示关联性数组
@@ -443,7 +443,160 @@ set:function(newtel){
 }
 </code></pre> }<br>});</li>
 </ol>
-<p>6.</p>
+<p>6.显示原型：proyotype属性，这个属性指向函数的原型对象。每个函数创建之后都有这个，指向函数的原型对象，但是除了function.prototype.bind方法构造出来的函数是个例外，他没有这个属性。该属性是一个原型对象用来创建新的对象实例。所有被创建的对象实例都会共享对象原型，且这些对象实例可以访问原型对象的属性。</p>
+<ol>
+<li>隐式原型：js中任何一个对象都由一个内置属性[[prototype]],在es5之前没有标准的方法访问这个内置的属性，但是绝大多数浏览器支持<em>proto</em>来访问。es5中有了对这个内置标准属性的get的方法。Object.getPrototypeOf()。除了Object.prototype这个对象例外。他的<em>proto</em>值为null。</li>
+<li>他们二者的关系，隐式原型指向创建这个对象的函数的prootype。</li>
+<li>始终确保用new来调用构造函数，否则就会出现改变全局对象的风险，而不是创建一个对象。当不是被new调用的时候，构造函数中的this对象等于全局对象中的对象。</li>
+<li>所有的对象都是继承到object.prototype().</li>
+<li>所有新创建的对象先是继承object的prototype的。</li>
+<li>`function rect(l,w){<pre><code>this.l=l;
+this.w=w;
+</code></pre>}<br>rect.prototype.get=function(){<pre><code>return this.l*this.w;
+</code></pre>}<br>function sound(size){<pre><code>this.l=size;
+this.w=size;
+</code></pre>}<br>sound.prototype=new rect();<br>sound.prototype.constructor=sound;这两步是继承的关键么？<br>sound.prototype.toString=function(){<pre><code>console.log(this.l)
+</code></pre>}<code>为什么这个不行了。。</code>function person(name,age){<br>this.name=name;<br>this.age=age;<br>this.sayname=function(){<br>console.log(this.name);<br>}<br>}</li>
+</ol>
+<p>function worker(name,age,job){<br>  this.job=job;<br>}<br>worker.prototype=new person();<br>worker.prototype.constructor=worker;`<br>难道上面的是这样写的？<br>for(var i=0;i&lt;person.prototype){<br>    worker.prototype[i]=person.prototype[i];<br>}<br>原型属性拷贝加原型链结合。</p>
+<p>`function person(name,age){<br>  this.name=name;<br>  this.age=age;<br>  this.sayname=function(){<br>    console.log(this.name);<br>  }<br>}</p>
+<p>function worker(name,age,job){<br>  person.call(this,name,age)<br>  this.job=job;<br>  this.sayjob=function(){<br>    console.log(this.job);<br>  }<br>}<br>worker.prototype=new person();<br>worker.prototype.constructor=worker;`</p>
+<ol>
+<li>定时器，事件，会出现this乱用，可以先把this赋值为_this.</li>
+<li>使用构造器函数的好处就是我们可以在创建对象时接受一些参数，这样，我们就可以用一个构造函数来创建不同的对象了。</li>
+<li>constructor这个属性实际上是指向一个用于创建该对象的构造器函数的引用。</li>
+<li>传递对象，当我们拷贝某个对象将他传递给某个函数的时候，传递的往往是该对象的引用，因此我们在引用上做的任何改动，实际上也会影响他所引用的原对象。</li>
+<li>原型都可以提供方法了，为什么还需要继承？</li>
+<li>对象比较：当我们对对象进行比较的时候，当且仅当两个引用指向同一个对象的时候才是true。而如果是不同的对象，及时他们碰巧有了相同的属性和方法，那么也会返回false.</li>
+<li>function有一个caller属性，这个属性会返回一个调用该函数对象的外层函数引用。也就是说，如果我们是在（）中调用A（），那么只要在a（）中返回a.caller，那么结果就会返回函数b.</li>
+<li><code>function a(){return a.caller;};function b(){return a();}b();function b(){return a();}</code></li>
+<li>arguments对象还有一个值得关注的属性，那就是callee,该属性引用的是当前被调用的函数对象。也就是说，如果我们所建的函数的返回值是argument.callee。那么该函数就会在被调用的时候返回自身的调用。</li>
+<li>利用原型可以添加方法和属性的方法。</li>
+<li><p><code>function person(name,age){
+this.name=name;
+this.age=age;
+this.sayname=function(){
+console.log(this.name);
+}
+}
+person.prototype={
+price:100,
+get:function(){
+return this.price;
+}
+}</code></p>
+</li>
+<li><p>对于原型来说，最重要的是要理解他的“驻留的概念”，由于在js中，对象都是通过引用的方式传递，因此我们所创建的每一个对象其实都没有自己的副本，也就是说我们可以随时修改原型，并且与之相关的对象也会继承这一改变，甚至会影响之前就已经创建好了的对象。</p>
+</li>
+<li>自身属性和原型属性。当我们访问newstoory的某个属性时，例如newSstoory.name时，js引擎就会遍历该对象的所有属性，查找这个值，如果没有找到就会查询创建这个对象的构造器属性的原型属性，如果找到就用这个。</li>
+<li>原型对象，自身属性，对象属性，可枚举属性。</li>
+<li><code>function Cat(name,color){
+　　　　Animal.apply(this, arguments);
+　　　　这个是可以成功的。
+　　　　this.name = name;
+　　　　this.color = color;
+　　}</code>继承1.
+　　</li>
+<li><ol>
+<li>竟然没发现这个东西。我们在定义函数的时候，默认的会有一个prototype属性，但是用new生成的函数就没有这个。</li>
+</ol>
+</li>
+<li><p>`function a(c){<br>this.b = c;<br>this.d =function(){</p>
+<pre><code>alert(this.b);
+</code></pre><p>}<br>}`a的prototype包含两个值，一个是constrocuor,一个是<em>proto</em>;第一个事构造这个例子的函数。</p>
+</li>
+<li><p>第二个是原型链的概念，每个对象都会在其内部初始化一个属性，就是<em>proto</em>，当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就去<em>proto</em>里面找，这个里面又有这个，就这样一直找下去。</p>
+</li>
+<li><code>function Foo(){};
+var f1 = new Foo;
+console.log(f1.__proto__ === Foo.prototype);//true</code></li>
+<li>Object.prototype的原型对象是null</li>
+<li>原型的作用现在来了第二个：给对象扩展功能。</li>
+<li>Array.prototype.isArray=function(value){for(var i=0,len=this.length;i&lt;len;i++){if(value===this[i]){return true;}}return flase;}扩展内建对象。</li>
+<li>在扩建之前先检查有没有现成的方法。if（！Array.prototype.isArray）{}</li>
+<li>当我们重写某个对象的prototype时，重置相应的constroctor属性是一个好习惯。</li>
+<li>继承，代码的重用。</li>
+<li>第一种继承方式：原型链继承。</li>
+<li>继承第一阶段 </li>
+<li><p><code>function shap(){
+this.name=&quot;shape&quot;;
+this.say=function(){
+return this.name;
+}
+}
+function two(){
+this.name=&#39;2D&#39;
+};
+function thres(side,height){
+this.name=&quot;3D&quot;;
+this.side=side;
+this.height=height;
+this.get=function(){
+return this.height*this.width;
+}
+}
+two.prototype=new shap();
+thres.property=new two();
+thres.prototype=new two();
+thres.prototype.constructor=thres;
+two.prototype.constructor=two;
+var my=new thres(10,33);
+my.constructor;
+my instanceof two
+my instanceof shap</code><br>以上是第一阶段的继承，实现了功能了。</p>
+</li>
+<li><p>将共享的属性迁移到原型中去。</p>
+</li>
+<li>出于效率的考虑，我们可以尽可能的把一些可以冲用的属性和方法添加到原型中去，如果这样的话，我们仅仅依靠原型就可以实现继承了。</li>
+<li><p>`function shap(){}</p>
+<pre><code>shap.prototype.name=&quot;shape&quot;;
+shap.prototype.say=function(){
+  return this.name;
+</code></pre><p>}</p>
+<p>function two(){};</p>
+<pre><code>two.prototype=shap.prototype;
+two.prototype.constructor=two;
+two.prototype.name=&quot;2D&quot;;
+</code></pre></li>
+</ol>
+<pre><code>function thres(side,height){
+  this.side=side;
+  this.height=height;
+</code></pre><p>}</p>
+<pre><code> 扩展对象必须在完成继承关系的构建。
+thres.prototype=two.prototype;
+thres.prototype.constructor=thres;
+thres.prototype.name=&quot;3d&quot;;
+thres.prototype.get=function(){
+  return this.height*this.side;
+</code></pre><p>}`这个是修正一点的了。<br>坏处是什么？一旦对子元素原型改变，那么父原型也会遭殃。通过实现临时构造器来实现继承。</p>
+<ol>
+<li>继承的由来，一开始每一个实例对象都有自己的属性和方法，不仅无法做到数据共享，而且十分浪费资源，所以发明了prototype属性，所有实例需要共享的属性和方法，都放在这个对象里面，那些不需要共享的属性和方法，就放在构造函数里面。</li>
+<li>function Cat(name,color){<br>　　　　Animal.apply(this, arguments);<br>　　　　this.name = name;<br>　　　　this.color = color;<br>　　}实现了功能的。继承2</li>
+<li>function extend(Child, Parent) {</li>
+</ol>
+<p>　　　　var F = function(){};<br>　　　　F.prototype = Parent.prototype;<br>　　　　Child.prototype = new F();<br>　　　　Child.prototype.constructor = Child;<br>　　　　Child.uber = Parent.prototype;<br>　　　　这个为什么不可以继承他的里面的，就是可以继承外面的。继承3
+　　</p>
+<ol>
+<li><p>function extend2(Child, Parent) {<br>　　　　var p = Parent.prototype;<br>　　　　var c = Child.prototype;<br>　　　　for (var i in p) {<br>　　　　　　c[i] = p[i];<br>　　　　　　}<br>　　　　c.uber = p;<br>　　} 继承4<br>　　<br>　21.`function animal(){</p>
+<pre><code>this.species=&quot;动物&quot;;
+</code></pre><p>}</p>
+<pre><code>animal.prototype.saya=function(){
+</code></pre><p>  console.log(“jib”);<br>}<br>function cat(name){<br>  animal.call(this)<br>  this.name=name;<br>  this.say=function(){<br>return this.name;<br>  }<br>}继承5</p>
+<p>这个和那个相比就是少了那个constroctor.完全可以实现<br>cat.prototype=new animal();`</p>
+</li>
+</ol>
+<p>###注意这些函数分别是来干什么的###</p>
+<ol>
+<li>Object.getPrototypeOf()</li>
+<li>Object.defineProperty()</li>
+<li>hasOwnProperty()这个只能检查自有属性</li>
+<li>Object.getOwnPropertyDescriptor(person,’name’);互逆的是两个。</li>
+<li>Object.preventExtensions(person);阻止对象扩展或添加。Object.isExtensible(person)返回一个值，该值指示是否可向对象添加新属性。</li>
+<li>object.seal()不能添加新的属性。不能删除或修改 object.isSealed()</li>
+<li>object.freeze()冻结对象。不能修改 object.isFreeze();<br>8.他们三个有区别么？</li>
+<li>isPrototypeOf()检查是不是他的原型对象。</li>
+</ol>
 
       
     </div>
@@ -553,7 +706,7 @@ set:function(newtel){
           
             <div class="site-state-item site-state-posts">
               <a href="/libateer.github.io/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -575,7 +728,7 @@ set:function(newtel){
             
             <div class="site-state-item site-state-tags">
               <a href="/libateer.github.io/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

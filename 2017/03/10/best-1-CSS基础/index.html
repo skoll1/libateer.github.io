@@ -107,7 +107,7 @@ font-weight:粗细就看这个
 font-stretch:chrome不支持
 @font-face{ font-family:’iconfont’; src:url(‘’);}引入字体。
 font-varight">
-<meta property="og:updated_time" content="2017-03-11T10:44:02.000Z">
+<meta property="og:updated_time" content="2017-03-16T12:25:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css-基础">
 <meta name="twitter:description" content="小东西：淘宝，搭配，比较-游戏-社交-好的一部分-商品评论
@@ -427,7 +427,67 @@ font-varight">
 <li>布局：display:inline,block,flex,inline-felx,table</li>
 <li>display:none;彻底消失，原来是位置也腾出来。visibilty:hidden.就是简单的影藏，原来的位置还在。</li>
 <li>margin:相邻的margin会发生合并，我们称之为margin折叠。折叠只会发生在block元素。浮动元素的margin不发生任何折叠。根元素，绝对定位的元素也不发生折叠。</li>
-<li></li>
+<li>border-首先是我们熟悉的那一套，还有就是border-image:</li>
+<li><p>`width: 300px;</p>
+<pre><code>height: 300px;
+border: 30px red solid;
+&lt;!--必须有这个--&gt;
+border-image-source:url(1.jpg);
+border-image-slice: 27;
+border-image-width: 27px 1 10% 27px;
+border-image-outset:27px;
+/*border-image-repeat: stretch;*/
+/*border-image-repeat: repeat;*/
+/*border-image-repeat: round;*/
+border-image-repeat: space;`
+</code></pre></li>
+<li><p>background:可以加纯色。图片。渐变。</p>
+</li>
+<li>background-repeat:round;自动缩放，会有repeat效果;space：没有任何效果。</li>
+<li>background-attachment:fixed; scroll,local都不动</li>
+<li>background-position:数字，关键字。center center;</li>
+<li>但是background-origin:padding-box,content-box,border-box;只有这几个关键字能用。</li>
+<li>background-size:100% 100%这个会强行把他放大到全部包含背景,cover:等比例覆盖：可能会超出容器 ,contain:缩放，但是始终在容器内.在满足一个方向之后就不管了。。。;</li>
+<li>background-clip的真正作用是决定背景在哪些区域显示。如果它的值为border,则背景在元素的边框、补白和内容区域都会显示；如果值为padding,则背景只会在补白和内容区域显示；如果值为content，则背景只会在内容区域显示。</li>
+<li>background-origin是指背景显示的区域，或者说背景是从哪个区域开始绘制的(边框、补白或内容区域)。</li>
+<li>该属性指定了背景在哪些区域可以显示，但与背景开始绘制的位置无关，背景的绘制的位置可以出现在不显示背景的区域，这时就相当于背景图片被不显示背景的区域裁剪了一部分一样。</li>
+<li>该属性指定了背景从哪个区域(边框、补白或内容)开始绘制,但也仅仅能控制背景开始绘制的位置，你可以用这个属性在边框上绘制背景，但边框上的背景显不显示出来那就要由background-clip来决定了</li>
+<li>filter:属性，blur(设置高斯模糊)，brightness(%调节亮度)，contrast(%图片对比度)，drop-shadow(类似于盒子阴影),grayscale(%)定义图片灰度。hue-rotate(deg定义色相翻转),invert(%翻转输入图像)，saturate(%定义图像饱和度)，</li>
+<li>list-style-type:</li>
+<li>caption:默认的是在上边，而且他还不属于table里面。</li>
+<li>caotion-side:boottom,top,left;放在左边是不得先排那个字的走向</li>
+<li>empty-cells: show;表格无内容的时候，不显示边框。</li>
+<li>border-collapse: collapse;边框之间的边框省略。</li>
+<li>content:尾类中的使用；none,attr,url,string;</li>
+<li>所有主流浏览器都不支持 appearance 属性。为什么这样？</li>
+<li>浏览器对每个html元素的渲染都是不一样的，比如button,在chrome中，渲染出来的效果是不一样的。我们可以用appearance属性对任何元素的渲染风格改变，最简单的来说，我们可以把‘a’连接默认显示成“按钮”风格，那么我们可以使用‘appearance’设置为“button”.</li>
+<li>text-overflow:clip(超出部分裁掉)，ellipsis(替换为…);</li>
+<li>outline:设置或检查对象外的线条轮廓。</li>
+<li>cursor:鼠标各种的抚摸特效。</li>
+<li>zoom:设置对象缩放比例。可以缩放任何东西。</li>
+<li>user-select:none(文本不能被选择)，text(可以),all(将所有内容变成一个块的时候可以)，element(可以选，但是选择范围受限制)</li>
+<li>resize:如果希望此属性生效，需要设置对象的overflow属性.both.horizontal,vertical.</li>
+<li>transfrom:translate(),scale(),rotate(),skew()斜切扭曲。</li>
+<li>3D转换需要设置的新属性：perspective,transform-style:flat,perserve-3d;perspective-origin:指定透视点的位置。</li>
+<li>backface-visibility:visible,指定背面元素可见。hidden：指定元素背面不可见。</li>
+<li>transition:注意可以起作用的对象，z-index.</li>
+<li>animation: name 持续时间 过渡帧率 延迟时间 循环次数(1,infinite无限次) 动画的播放方向 默认向前播放，alternate（偶次向前，基数向前）</li>
+<li>media引入的两种方式：<link rel="stylesheet" type="text/css" href="styleA.css" media="screen and (min-width: 400px)"></li>
+<li><p>@media screen and (min-width:600px)and (max-width: 1000px){</p>
+<pre><code>    body {
+        background-color:lightblue;
+}
+</code></pre><p>}小的必须在前面，错了，跟这个没关系!有关系的是必须要在他们之间留下足够的空格。</p>
+</li>
+<li><p>选择所有作为E元素的子元素F E&gt;F适用于剔除孙子元素里面不想选的，但是子元素里面有的。也就是说孙子和儿子都有的东西，但是你只想选择儿子的。</p>
+</li>
+<li>选择紧贴在E元素之后F元素。 E+F p+p的选择就是先必须找到两个p,然后后一个被选中。</li>
+<li>选择E元素后面的所有兄弟元素F。 E~F  p~p 表示只要出现第一个p元素之后，接下来只要有p元素都会起到作用的</li>
+<li>选择中的标签属性，这个是来动态变化的添加css属性。</li>
+<li>img[type=”text”] img[type^=”text”] img[type$=”text”] img[type*=”text”] img[type|=”text”]开头具有用”-“分隔的字符串。</li>
+<li>link visited hover active focus(成为输入焦点的时候)</li>
+<li>还可以筛选文字形式给确定文字样式。</li>
+<li>border:none;border:0;的区别border:none;  =&gt; border-style: none;border:0;       =&gt; border-width: 0;两者理论上都是一个效果，就是不显示边框实际上，我记得 none 在某个 ie 下面有 bug，用 0 没有 bug。<br>至于 border:0 none; 没必要;后一个是小号内存了。</li>
 </ol>
 
       
@@ -544,7 +604,7 @@ font-varight">
           
             <div class="site-state-item site-state-posts">
               <a href="/libateer.github.io/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -566,7 +626,7 @@ font-varight">
             
             <div class="site-state-item site-state-tags">
               <a href="/libateer.github.io/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

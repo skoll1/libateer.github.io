@@ -71,7 +71,7 @@
 <link href="/libateer.github.io/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="代码规范-风格书写," />
+  <meta name="keywords" content="js代码规范," />
 
 
 
@@ -89,34 +89,31 @@
 
 
 
-<meta name="description" content="###腾讯代码规范###
+<meta name="description" content="###编程模式与设计模式###
 
-项目名字全部小写，中间用下划线分割。
-有复数形式的时候要采用复数命名法。scripts
-Js文件命名：参照项目名字
-html语法：缩进四个空格。嵌套的节点要缩进。属性上都用双引号，属性名都小写，用中划线做分隔符。不要再自动闭合的变迁结尾处做斜线，不要忽略可选的关闭标签。
-Lang属性；在HTML标签上加上lang属性。这会给语音工具和翻译工具帮助，告诉他们怎么发音和翻译">
+命名空间：为了减少命名冲突，必须减少使用全局变量的机会，最好的办法就是将变量和方法定义在不同的命名空间里面。
+`var my=window.my||{}; my.event={   get:function(){ console.log(1);},   set:function(){ console.log(this.name)}
+}`
+`    var Name">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js代码书写规范">
 <meta property="og:url" content="https://github.com/skoll1/libateer.github.io/2017/03/09/best-1-JS代码规范/index.html">
 <meta property="og:site_name" content="李巴特儿de小屋子">
-<meta property="og:description" content="###腾讯代码规范###
+<meta property="og:description" content="###编程模式与设计模式###
 
-项目名字全部小写，中间用下划线分割。
-有复数形式的时候要采用复数命名法。scripts
-Js文件命名：参照项目名字
-html语法：缩进四个空格。嵌套的节点要缩进。属性上都用双引号，属性名都小写，用中划线做分隔符。不要再自动闭合的变迁结尾处做斜线，不要忽略可选的关闭标签。
-Lang属性；在HTML标签上加上lang属性。这会给语音工具和翻译工具帮助，告诉他们怎么发音和翻译">
-<meta property="og:updated_time" content="2017-03-13T12:01:28.000Z">
+命名空间：为了减少命名冲突，必须减少使用全局变量的机会，最好的办法就是将变量和方法定义在不同的命名空间里面。
+`var my=window.my||{}; my.event={   get:function(){ console.log(1);},   set:function(){ console.log(this.name)}
+}`
+`    var Name">
+<meta property="og:updated_time" content="2017-03-22T04:53:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js代码书写规范">
-<meta name="twitter:description" content="###腾讯代码规范###
+<meta name="twitter:description" content="###编程模式与设计模式###
 
-项目名字全部小写，中间用下划线分割。
-有复数形式的时候要采用复数命名法。scripts
-Js文件命名：参照项目名字
-html语法：缩进四个空格。嵌套的节点要缩进。属性上都用双引号，属性名都小写，用中划线做分隔符。不要再自动闭合的变迁结尾处做斜线，不要忽略可选的关闭标签。
-Lang属性；在HTML标签上加上lang属性。这会给语音工具和翻译工具帮助，告诉他们怎么发音和翻译">
+命名空间：为了减少命名冲突，必须减少使用全局变量的机会，最好的办法就是将变量和方法定义在不同的命名空间里面。
+`var my=window.my||{}; my.event={   get:function(){ console.log(1);},   set:function(){ console.log(this.name)}
+}`
+`    var Name">
 
 
 
@@ -336,28 +333,6 @@ Lang属性；在HTML标签上加上lang属性。这会给语音工具和翻译�
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/libateer.github.io/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -393,7 +368,74 @@ Lang属性；在HTML标签上加上lang属性。这会给语音工具和翻译�
       
 
       
-        <p>###腾讯代码规范###</p>
+        <p>###编程模式与设计模式###</p>
+<ol>
+<li>命名空间：为了减少命名冲突，必须减少使用全局变量的机会，最好的办法就是将变量和方法定义在不同的命名空间里面。</li>
+<li>`var my=window.my||{};<br> my.event={<br>   get:function(){<br> console.log(1);<br>},<br>   set:function(){<br> console.log(this.name)<pre><code>}
+</code></pre>}`</li>
+<li><p>`    var NameSpace = window.NameSpace || {};</p>
+<pre><code>NameSpace.Hello = (function() {
+
+  var self = {};
+
+  var name = &apos;world&apos;;
+
+  self.sayHello = function(_name) {
+
+return &apos;Hello &apos; + (_name || name);
+</code></pre><p>};<br>return self;</p>
+<p> }());`</p>
+</li>
+</ol>
+<ol>
+<li><p>`var NameSpace = window.NameSpace || {};</p>
+<pre><code>NameSpace.Hello = new function() {
+  var self = this;
+  var name = &apos;world&apos;;
+  self.sayHello = function(_name) {
+</code></pre><p> return ‘Hello ‘ + (_name || name);<br>};<br>};`    </p>
+</li>
+<li><p>初始化分支：在加载的时候，对代码进行分支管理，而不是在浏览器运行事件的时候在判断行为。当再次调用的时候就不需要检测了。</p>
+</li>
+<li><p><code>var start={};
+start.event={
+addListener:null,
+removeListener:null
+}
+if(typeOf window.onload===&quot;fn&quot;){
+start.event.addListener=function(el,type,fn){
+ el.addEventListener(type,fn,false);
+}
+start.event.removeEventListener=function(el,type,fn){
+ el.removeEventListener(type,fn,false)
+}
+}else if(typeOf document.attachEvent===&quot;function&quot;){
+start.event.addListener=function(el,type,fn){
+ el.attachEvent(&#39;on&#39;+type,fn);
+};
+start.event.removeListener=function(el,type,fn){
+ el.detachEvent(&#39;on&#39;+type,fn)
+};
+}else{
+start.event.addListener=function(el,type,fn){
+ el[&#39;on&#39;+type]=fn;
+};
+start.event.removeListener=function(el,type,fn){
+ el[&#39;on&#39;+type]=null;
+};
+};</code></p>
+</li>
+<li><p>变量名之前的前缀应该是名词，myName,函数名前缀应该是动词(can,has,is,get,set);</p>
+</li>
+<li>for in 是用来遍历对象的，而不是数组。for(var i in person){console.log(i+person[i])};连值带属性</li>
+<li>避免全局变量的原因：任何在全局中定义的变量都是window的对象或属性，全局变量越多，得到错误的几率越大。</li>
+<li>命名冲突，代码脆弱性，难以测试。</li>
+<li>意外的全局变量：党给一个未被var声明过得变量赋值的时候。</li>
+<li>将代码置于严格模式会改变很多js行为，对于新的代码，最好使用严格模式来避免以外的全局变量。</li>
+<li>当事件触发时，事件对象会作为回调函数参数传入事件程序中，event对象包含所有和时间相关的信息，包括事件的宿主（target）以及其他和事件类型相关的数据。</li>
+<li></li>
+</ol>
+<p>###腾讯代码规范###</p>
 <ol>
 <li>项目名字全部小写，中间用下划线分割。</li>
 <li>有复数形式的时候要采用复数命名法。scripts</li>
@@ -682,7 +724,7 @@ break;
       
         <div class="post-tags">
           
-            <a href="/libateer.github.io/tags/代码规范-风格书写/" rel="tag"># 代码规范-风格书写</a>
+            <a href="/libateer.github.io/tags/js代码规范/" rel="tag"># js代码规范</a>
           
         </div>
       
@@ -783,7 +825,7 @@ break;
           
             <div class="site-state-item site-state-posts">
               <a href="/libateer.github.io/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -805,7 +847,7 @@ break;
             
             <div class="site-state-item site-state-tags">
               <a href="/libateer.github.io/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
